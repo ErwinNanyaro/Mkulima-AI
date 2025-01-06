@@ -51,36 +51,3 @@ footer {
   color: white;
   padding: 1rem;
 }
-section {
-  display: none; /* Hide all sections initially */
-}
-
-section#main-content {
-  display: block; /* Show the main content by default */
-}
-
-section:target {
-  display: block; /* Show the clicked section */
-}
-
-nav ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-around;
-  background-color: #333;
-  padding: 10px 0;
-}
-
-nav ul li {
-  margin: 0 10px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-
-nav ul li a:hover {
-  color: #00ff00; /* Highlight on hover */
-}
