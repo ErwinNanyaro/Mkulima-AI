@@ -1,2 +1,2 @@
-# The-Green-Neighborhood
+# Green-Neighborhood
 Non profit organization Website
