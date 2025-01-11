@@ -140,19 +140,15 @@ nav {
 
 /* Menu styles */
 #menu {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  position: fixed; /* Keeps the menu in a fixed position */
+  right: 20px; /* Positions it from the right */
+  top: 20px; /* Positions it from the top */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-}
-
-#menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  z-index: 100; /* Ensures it stays above other elements */
 }
 
 #menu ul li {
