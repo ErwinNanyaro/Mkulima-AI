@@ -8,8 +8,30 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to My Website!</h1>
-    <p>This is the homepage of my new site.</p>
+    <div class="menu-container">
+      <button class="menu-button" onclick="toggleMenu()">Menu</button>
+    </div>
+    <nav id="menu" class="hidden">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
+
+  <main>
+    <h1>Welcome to The Green Neighborhood</h1>
+    <h3>Where people and nature thrive together</h3>
+  </main>
+
+  <script>
+    // Function to toggle the menu visibility
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
 </body>
+
 </html>
