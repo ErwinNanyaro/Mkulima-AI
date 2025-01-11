@@ -1,7 +1,4 @@
-section {
-  display: none;
-}
-
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -24,159 +21,77 @@ p {
   font-size: 16px;
   color: #333;
 }
-/* Styling for the menu button */
-.menu-container {
-  text-align: right;
-  padding: 10px;
-}
 
-.menu-button {
+/* Styling for Menu Button */
+#menu-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   background-color: #4CAF50;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
+  border-radius: 5px;
 }
 
-.menu-button:hover {
+#menu-button:hover {
   background-color: #45a049;
 }
 
-/* Styling for the menu */
-nav {
-  background-color: #f4f4f4;
+/* Styling for the Menu */
+#menu {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
   border: 1px solid #ddd;
+  border-radius: 5px;
   padding: 10px;
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  width: 200px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-nav.hidden {
+#menu.hidden {
   display: none;
 }
 
-nav ul {
+#menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav ul li {
-  margin: 10px 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-}
-
-nav ul li a:hover {
-  color: #4CAF50;
-}
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-nav {
-  background-color: #2f8f2f;
-  padding: 10px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-
-.menu {
-  position: relative;
-  display: inline-block;
-}
-
-.menu-button {
-  background-color: white;
-  color: #2f8f2f;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.menu-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.menu-content a {
-  color: #2f8f2f;
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.menu-content a:hover {
-  background-color: #ddd;
-}
-
-.menu:hover .menu-content {
-  display: block;
-}
-
-.section {
-  padding: 60px 20px;
-  margin-top: 60px;
-}
-/* Hide sections by default */
-.hidden {
-  display: none;
-}
-
-/* Menu styles */
-#menu {
-  position: fixed; /* Keeps the menu in a fixed position */
-  right: 20px; /* Positions it from the right */
-  top: 20px; /* Positions it from the top */
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-  z-index: 100; /* Ensures it stays above other elements */
-}
-
 #menu ul li {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 #menu ul li a {
   text-decoration: none;
   color: #007bff;
+  font-weight: bold;
 }
 
-/* Visible sections */
-.visible {
-  display: block;
+#menu ul li a:hover {
+  color: #4CAF50;
 }
-#menu {
-  position: fixed; /* Fixes the position */
-  top: 20px;       /* Position 20px from the top */
-  right: 20px;     /* Position 20px from the right */
+
+/* Styling for Sections */
+main section {
+  display: none;
+  padding: 20px;
+  margin: 20px;
   background-color: #ffffff;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensures it stays above other elements */
 }
-.hidden {
+
+main section.hidden {
   display: none;
 }
 
+main section:not(.hidden) {
+  display: block;
+}
