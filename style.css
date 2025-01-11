@@ -156,3 +156,10 @@ nav ul li a:hover {
   background-color: #4CAF50;
   color: white;
 }
+/* Style the welcome text section */
+h1, h3 {
+  background-color: #4CAF50;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
