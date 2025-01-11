@@ -77,3 +77,59 @@ nav ul li a {
 nav ul li a:hover {
   color: #4CAF50;
 }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #2f8f2f;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.menu {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-button {
+  background-color: white;
+  color: #2f8f2f;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.menu-content a {
+  color: #2f8f2f;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-content a:hover {
+  background-color: #ddd;
+}
+
+.menu:hover .menu-content {
+  display: block;
+}
+
+.section {
+  padding: 60px 20px;
+  margin-top: 60px;
+}
