@@ -8,14 +8,12 @@ body {
   padding: 0;
   color: #333;
 }
-
 header {
   background: #4CAF50;
   color: white;
   padding: 1rem;
   text-align: center;
 }
-
 nav ul {
   list-style: none;
   background: #333;
@@ -24,30 +22,24 @@ nav ul {
   display: flex;
   justify-content: center;
 }
-
 nav ul li {
   margin: 0 15px;
 }
-
 nav ul li a {
   color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
-
 nav ul li a:hover {
   background: #4CAF50;
   border-radius: 5px;
 }
-
 main {
   padding: 2rem;
 }
-
 section {
   margin-bottom: 2rem;
 }
-
 footer {
   text-align: center;
   background: #333;
@@ -59,7 +51,6 @@ footer {
   text-align: right;
   padding: 10px;
 }
-
 .menu-button {
   background-color: #4CAF50;
   color: white;
@@ -68,11 +59,9 @@ footer {
   cursor: pointer;
   font-size: 16px;
 }
-
 .menu-button:hover {
   background-color: #45a049;
 }
-
 /* Styling for the menu */
 nav {
   background-color: #f4f4f4;
@@ -84,26 +73,21 @@ nav {
   width: 200px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 nav.hidden {
   display: none;
 }
-
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 nav ul li {
   margin: 10px 0;
 }
-
 nav ul li a {
   text-decoration: none;
   color: #333;
 }
-
 nav ul li a:hover {
   color: #4CAF50;
 }
