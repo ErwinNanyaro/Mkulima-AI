@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const menuButton = document.getElementById("menu-button");
+  const menu = document.getElementById("menu");
   const menuLinks = document.querySelectorAll("#menu ul li a");
 
+  // Toggle menu visibility
+  menuButton.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+
+  // Add functionality to menu links
   menuLinks.forEach(link => {
     link.addEventListener("click", event => {
       event.preventDefault();
 
       // Hide all sections
-      const sections = document.querySelectorAll("section");
+      const sections = document.querySelectorAll("main section");
       sections.forEach(section => section.classList.add("hidden"));
 
       // Show the clicked section
@@ -15,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (targetSection) {
         targetSection.classList.remove("hidden");
       }
+
+      // Hide the menu after clicking a link
+      menu.classList.add("hidden");
     });
   });
 });
