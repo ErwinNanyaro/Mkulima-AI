@@ -3,51 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>Welcome to The Green Neighborhood</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-  <h1>Welcome to Green Neighborhood Organization</h1>
-  <h3>Creating a world where people and nature thrive together</h3>
-  <div class="menu-container">
-    <button class="menu-button" onclick="toggleMenu()">Menu</button>
-    <nav id="menu" class="hidden">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Menu -->
+  <nav>
+    <div class="menu">
+      <button class="menu-button">Menu</button>
+      <div class="menu-content">
+        <a href="#about-us">About Us</a>
+        <a href="#projects">Projects</a>
+        <a href="#support-us">Support Us</a>
+        <a href="#contact-us">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sections -->
+  <div id="about-us" class="section">
+    <h2>About Us</h2>
+    <h3>Who Are We?</h3>
+    <p>The Green Neighborhood is a passionate organization committed to combating climate change in line with SDG 13: “Take urgent action to combat climate change and its impacts.” Guided by our vision of a world where people and nature thrive together, we empower communities through education, capacity building, and hands-on initiatives like workshops, hiking events, and training. Focused on marginalized groups, women, and youth, we champion land and water management, climate conflict resolution, and sustainable resource use. By inspiring action and fostering collaboration, we aim to protect the planet and create a future where humanity and nature flourish side by side.</p>
+    <h3>Vision</h3>
+    <p>To create a world where people and nature thrive together.</p>
+    <h3>Mission</h3>
+    <p>To explore, enjoy, and protect the wild places of the earth; to practice and promote the responsible use of the earth’s ecosystems and resources; to educate and enlist humanity to protect and restore the quality of the natural and human environment; and to use all lawful means to carry out these objectives.</p>
+    <h3>Values</h3>
+    <ul>
+      <li><b>Sustainability:</b> We are dedicated to promoting practices that ensure the long-term health of our planet and its ecosystems.</li>
+      <li><b>Accountability:</b> We uphold transparency and responsibility in all our actions, ensuring trust and integrity in our efforts.</li>
+      <li><b>Collaboration:</b> We believe in the power of partnerships, working with local and global stakeholders to achieve impactful and sustainable outcomes.</li>
+    </ul>
   </div>
-</header>
-  <main>
-</main>
-<section id="about" style="display: none;">
-  <h2>About Us</h2>
-  <p>Our mission is to protect the earth’s ecosystems and promote responsible use of resources for a sustainable future.</p>
-</section>
-<section id="projects" style="display: none;">
-  <h2>Our Projects</h2>
-  <p>We work on initiatives that restore nature, empower communities, and combat climate change.</p>
-</section>
-<section id="contact" style="display: none;">
-  <h2>Contact Us</h2>
-  <p>Email: greenneighborhood@protonmail.com</p>
-  <p>Phone: +255 715126561</p>
-</section>
-  </main>
 
-  <script>
-    // Function to toggle the menu visibility
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('hidden');
-    }
-  </script>
+  <div id="projects" class="section">
+    <h2>Projects</h2>
+    <p>Details about your projects will go here.</p>
+  </div>
+
+  <div id="support-us" class="section">
+    <h2>Support Us</h2>
+    <ul>
+      <li><a href="#donate">Donate Here</a> (Link coming soon)</li>
+      <li>Career Opportunity</li>
+      <li>Collaboration</li>
+    </ul>
+  </div>
+
+  <div id="contact-us" class="section">
+    <h2>Contact Us</h2>
+    <p>Email: greenneighborhood@protonmail.com</p>
+    <p>Phone: +255 715126561</p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
+
 <script>
   function toggleMenu() {
     const menu = document.getElementById('menu');
