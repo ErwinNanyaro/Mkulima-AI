@@ -133,3 +133,38 @@ nav {
   padding: 60px 20px;
   margin-top: 60px;
 }
+/* Hide sections by default */
+.hidden {
+  display: none;
+}
+
+/* Menu styles */
+#menu {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu ul li {
+  margin: 5px 0;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Visible sections */
+.visible {
+  display: block;
+}
