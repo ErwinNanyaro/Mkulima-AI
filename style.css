@@ -6,72 +6,17 @@ body {
   background-color: #f4f4f4;
 }
 
-header {
-  background-color: #007acc;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  margin: 0;
-}
-
-p {
-  font-size: 16px;
-  color: #333;
-}
-
-/* Logo Styling */
-.logo {
-  width: 50px;
-  height: auto;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-
-header h1 {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0;
-}
-
-/* Footer Styles */
-footer {
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #007acc;
-  color: white;
-}
-
-.social-media {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.social-media li a img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%; /* Circular icons */
-  transition: transform 0.3s ease;
-}
-
-.social-media li a img:hover {
-  transform: scale(1.2); /* Hover zoom effect */
-}
 /* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #007acc;
-  padding: 10px 20px;
   color: white;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-left {
@@ -79,29 +24,67 @@ header {
   align-items: center;
 }
 
-header h1 {
-  margin: 0;
-  margin-left: 10px;
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
 
-.menu {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  gap: 15px;
-}
-
-.menu li {
-  display: inline;
-}
-
-.menu a {
-  text-decoration: none;
-  color: white;
+.organization-name {
+  font-size: 20px;
   font-weight: bold;
+  white-space: nowrap;
 }
 
-.menu a:hover {
-  color: #4CAF50;
+.menu-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-button:hover {
+  background-color: #45a049;
+}
+
+/* Hidden Navigation Menu */
+#menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 200px;
+}
+
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu ul li {
+  padding: 10px;
+}
+
+#menu ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+#menu ul li a:hover {
+  background-color: #f4f4f4;
+  color: #007acc;
+}
+
+/* Visible sections */
+.hidden {
+  display: none;
 }
