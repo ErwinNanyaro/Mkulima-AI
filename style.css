@@ -10,18 +10,15 @@ body {
   display: none;
 }
 
-/* Header Styling */
 header {
+  background-image: url('nature-header.jpg'); /* Replace with your image file name */
+  background-size: cover; /* Ensures the image covers the entire header */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: white; /* Adjust text color for better visibility */
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #007acc;
-  color: white;
-  padding: 10px 20px;
-}
-
-.header-left {
-  display: flex;
   align-items: center;
 }
 
