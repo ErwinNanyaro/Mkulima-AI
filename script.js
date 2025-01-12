@@ -1,31 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const menuButton = document.getElementById("menu-button");
-  const menu = document.getElementById("menu");
-  const menuLinks = document.querySelectorAll("#menu ul li a");
+// Add functionality to show/hide sections
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll(".menu a");
+  const sections = document.querySelectorAll("main section");
 
-  // Toggle menu visibility
-  menuButton.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-
-  // Add functionality to menu links
-  menuLinks.forEach(link => {
-    link.addEventListener("click", event => {
-      event.preventDefault();
+  links.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent default link behavior
+      const targetId = this.getAttribute("href").substring(1);
 
       // Hide all sections
-      const sections = document.querySelectorAll("main section");
-      sections.forEach(section => section.classList.add("hidden"));
+      sections.forEach((section) => {
+        section.classList.add("hidden");
+      });
 
-      // Show the clicked section
-      const targetId = link.getAttribute("href").substring(1);
+      // Show the target section
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         targetSection.classList.remove("hidden");
       }
-
-      // Hide the menu after clicking a link
-      menu.classList.add("hidden");
     });
+  });
+
+  // Hide all sections on page load (to keep the home page empty)
+  sections.forEach((section) => {
+    section.classList.add("hidden");
   });
 });
