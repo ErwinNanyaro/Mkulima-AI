@@ -22,148 +22,21 @@ p {
   color: #333;
 }
 
-/* Styling for Menu Button */
-#menu-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-#menu-button:hover {
-  background-color: #45a049;
-}
-
-/* Styling for the Menu */
-#menu {
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-#menu.hidden {
-  display: none;
-}
-
-#menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#menu ul li {
-  margin: 10px 0;
-}
-
-#menu ul li a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-#menu ul li a:hover {
-  color: #4CAF50;
-}
-
-/* Styling for Sections */
-main section {
-  display: none;
-  padding: 20px;
-  margin: 20px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-main section.hidden {
-  display: none;
-}
-
-main section:not(.hidden) {
-  display: block;
-}
-/* Responsive Design */
-
-/* For tablets (screens 768px and smaller) */
-@media (max-width: 768px) {
-  header {
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 1.8em;
-  }
-
-  #menu-button {
-    font-size: 14px;
-    padding: 8px 15px;
-  }
-
-  main section {
-    padding: 15px;
-    margin: 15px;
-  }
-}
-
-/* For mobile phones (screens 480px and smaller) */
-@media (max-width: 480px) {
-  header {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 1.5em;
-  }
-
-  #menu-button {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  #menu {
-    width: 90%;
-    top: 50px;
-    right: 5%;
-    font-size: 14px;
-  }
-
-  main section {
-    padding: 10px;
-    margin: 10px;
-  }
-
-  main section h2 {
-    font-size: 1.4em;
-  }
-
-  main section p {
-    font-size: 14px;
-  }
-}
+/* Logo Styling */
 .logo {
   width: 50px;
   height: auto;
   vertical-align: middle;
   margin-right: 10px;
 }
+
 header h1 {
   display: inline-block;
   vertical-align: middle;
   margin: 0;
 }
+
+/* Footer Styles */
 footer {
   text-align: center;
   margin-top: 20px;
@@ -178,69 +51,16 @@ footer {
   margin: 0;
   display: inline-flex;
   gap: 15px;
+  justify-content: center;
 }
 
 .social-media li a img {
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 50%; /* Circular icons */
   transition: transform 0.3s ease;
 }
 
 .social-media li a img:hover {
-  transform: scale(1.2);
-}
-/* Footer and Social Media Styles */
-footer {
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #007acc;
-  color: white;
-}
-
-.social-media {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
-  gap: 15px;
-}
-
-.social-media li a img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.social-media li a img:hover {
-  transform: scale(1.2);
-}
-/* Footer and Social Media Styles */
-footer {
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #007acc;
-  color: white;
-}
-
-.social-media {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
-  gap: 15px;
-}
-
-.social-media li a img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%; /* Makes icons circular */
-  transition: transform 0.3s ease;
-}
-
-.social-media li a img:hover {
-  transform: scale(1.2); /* Slight zoom effect on hover */
+  transform: scale(1.2); /* Hover zoom effect */
 }
