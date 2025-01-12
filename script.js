@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const menuButton = document.querySelector(".menu-button");
+  const menu = document.querySelector(".menu");
   const links = document.querySelectorAll(".menu a");
   const sections = document.querySelectorAll("main section");
 
+  // Toggle menu visibility
+  menuButton.addEventListener("click", function () {
+    menu.classList.toggle("hidden");
+  });
+
+  // Handle menu item clicks
   links.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -12,16 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("hidden");
       });
 
+      // If "Home" is clicked, do nothing
+      if (targetId === "home") {
+        return;
+      }
+
       // Show the target section
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         targetSection.classList.remove("hidden");
       }
-    });
-  });
 
-  // Hide all sections on page load
-  sections.forEach((section) => {
-    section.classList.add("hidden");
+      // Close the menu
+      menu.classList.add("hidden");
+    });
   });
 });
