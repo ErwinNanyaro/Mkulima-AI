@@ -11,73 +11,76 @@ body {
 }
 
 header {
-  background-image: url('nature-header.jpg'); /* Replace with your image file name */
-  background-size: cover; /* Ensures the image covers the entire header */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  color: white; /* Adjust text color for better visibility */
-  padding: 20px;
+  position: relative;
+  background-image: url('nature-header.jpg'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px 40px;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+header .header-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.header-left {
+  display: flex;
   align-items: center;
 }
 
 .logo {
   width: 50px;
-  height: auto;
   margin-right: 10px;
 }
 
 .organization-name {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
 }
 
-.menu-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.menu-button:hover {
-  background-color: #45a049;
-}
-
-#menu ul {
+.menu {
   list-style: none;
-  padding: 0;
+  display: flex;
   margin: 0;
-  background-color: white;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  padding: 0;
+  gap: 20px;
 }
 
-#menu ul li {
-  padding: 10px;
-}
-
-#menu ul li a {
+.menu li a {
   text-decoration: none;
-  color: #007acc;
-  display: block;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
-#menu ul li a:hover {
-  background-color: #f4f4f4;
+.menu li a:hover {
+  color: #4CAF50;
 }
 
-/* Footer Styling */
+main {
+  padding: 20px;
+}
+
 footer {
   text-align: center;
-  padding: 20px;
   background-color: #007acc;
   color: white;
+  padding: 20px;
 }
 
 .social-media {
@@ -87,26 +90,6 @@ footer {
   padding: 0;
 }
 
-.social-media li a img {
+.social-media li img {
   width: 30px;
-  height: 30px;
-}
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-  z-index: 1;
-}
-
-header .header-content {
-  position: relative; /* Ensures content appears above the overlay */
-  z-index: 2;
-}
-
-header h1, header nav {
-  margin: 0;
 }
