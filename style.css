@@ -1,11 +1,3 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
 /* Header Styling */
 header {
   display: flex;
@@ -46,23 +38,21 @@ header {
   background-color: #45a049;
 }
 
-/* Hidden Navigation Menu */
-#menu {
+#menu.hidden {
   display: none;
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 200px;
 }
 
 #menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #menu ul li {
@@ -78,17 +68,12 @@ header {
   color: #007acc;
 }
 
-/* Sections */
-.hidden {
-  display: none;
-}
-
-/* Footer Styles */
+/* Footer Styling */
 footer {
   text-align: center;
+  padding: 20px;
   background-color: #007acc;
   color: white;
-  padding: 20px;
 }
 
 .social-media {
@@ -96,15 +81,4 @@ footer {
   display: inline-flex;
   gap: 15px;
   padding: 0;
-}
-
-.social-media img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-.social-media img:hover {
-  transform: scale(1.2);
 }
