@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll("#menu ul li a");
   const sections = document.querySelectorAll("main section");
 
+  // Toggle menu visibility
   menuButton.addEventListener("click", () => {
     menu.classList.toggle("hidden");
   });
 
+  // Show the correct section and hide others
   links.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
