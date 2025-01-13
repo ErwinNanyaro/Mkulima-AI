@@ -15,8 +15,13 @@ header {
   background-image: url('nature-header.jpg'); /* Replace with your image */
   background-size: cover;
   background-position: center;
-  color: white;
- padding-top: 20px; /* Adjust spacing if needed */
+  background-repeat: no-repeat;
+  height: 400px; /* Adjust this value to increase header height */
+  color: white; /* Ensure text remains visible */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
 header::before {
