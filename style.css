@@ -9,11 +9,14 @@ body {
 .hidden {
   display: none;
 }
+
 header {
-  background-image: url('nature-header.jpg'); /* Current header background */
+  position: relative;
+  background-image: url('nature-header.jpg'); /* Replace with your image */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  color: white;
+  padding: 20px 40px;
 }
 
 header::before {
