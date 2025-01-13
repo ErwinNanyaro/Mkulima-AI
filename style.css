@@ -10,7 +10,7 @@ body {
   display: none;
 }
 header {
-  background-image: url('path/to/new-background.jpg'); /* Adjust the file path */
+  background-image: url('path/to/new-background.jpg.jpg'); /* Adjust the file path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
