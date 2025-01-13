@@ -16,7 +16,7 @@ header {
   background-size: cover;
   background-position: center;
   color: white;
-  padding: 20px 40px;
+ padding-top: 20px; /* Adjust spacing if needed */
 }
 
 header::before {
