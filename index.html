@@ -8,48 +8,44 @@
 </head>
 <body>
 <header>
-  <div class="header-content">
-    <div class="header-left">
-      <img src="logo.png" alt="Green Neighborhood Logo" class="logo">
-      <h1 class="organization-name">Green Neighborhood</h1>
-    </div>
-    <button id="menu-button" class="menu-button">Menu</button>
-    <nav id="menu" class="menu">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li class="dropdown">
-          <a href="#about" class="dropdown-btn">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="#who-we-are">Who We Are</a></li>
-            <li><a href="#founder-story">Founder Story</a></li>
-          </ul>
-        </li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#support">Support Us</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </nav>
-  </div>
+  <img src="logo.png" alt="Green Neighborhood Logo" class="logo">
+  <h1>Green Neighborhood</h1>
+  <button id="menu-button">Menu</button>
+  <nav id="menu" class="hidden">
+    <ul>
+      <li><a href="#" data-section="home">Home</a></li>
+      <li>
+        <a href="#" data-section="about">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="#" data-section="who-we-are">Who We Are</a></li>
+          <li><a href="#" data-section="founder-story">Founder Story</a></li>
+        </ul>
+      </li>
+      <li><a href="#" data-section="projects">Our Projects</a></li>
+      <li><a href="#" data-section="support">Support Us</a></li>
+      <li><a href="#" data-section="contact">Contact Us</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main>
   <section id="home" class="hidden">
     <h2>Welcome to Green Neighborhood</h2>
-    <p>Our mission is to create sustainable futures for all.</p>
+    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+      <p>Our mission is to create sustainable futures for all.</p>
   </section>
 
-  <section id="who-we-are">
-  <h2>WHO WE ARE</h2>
-  <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-    The Green Neighborhood is a passionate organization committed to combating climate change in line with 
+  <section id="who-we-are" class="hidden">
+    <h2>Who We Are</h2>
+    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+      The Green Neighborhood is a passionate organization committed to combating climate change in line with 
     <strong>SDG 13</strong>: “Take urgent action to combat climate change and its impacts.” Guided by our vision of 
     creating a world where people and nature thrive together, we empower communities through education, capacity 
     building, and hands-on initiatives like workshops, hiking events, and training. We champion land and water 
     management, climate conflict resolution, and sustainable resource use. By inspiring action and fostering 
     collaboration, we aim to protect the planet and create a future where humanity and nature flourish side by side.
   </p>
-
-  <h3>Vision</h3>
+   <h3>Vision</h3>
   <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
     To create a world where people and nature thrive together.
   </p>
@@ -67,15 +63,15 @@
     <li style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;"><strong>Collaboration</strong> – We believe in the power of partnerships, working with local and global stakeholders to achieve impactful and sustainable outcomes.</li>
   </ul>
 </section>
+  </section>
 
-   <section id="founder-story">
-  <h2>Founder Stories</h2>
-
-  <div class="founder">
-    <img src="erwin-nanyaro.png" alt="Erwin Nanyaro">
-    <h3>Erwin Nanyaro</h3>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Hailing from Tanzania, Erwin Nanyaro is a dedicated climate advocate with a passion for creating sustainable futures. Their journey into climate action began with a transformative experience working on the landmark CLIFT project, a collaborative initiative by Mzumbe University and the University of Copenhagen. This project focused on smart climate agriculture and involved extensive data collection across Tanzania’s Iringa, Morogoro, and Arusha regions.
+  <section id="founder-story" class="hidden">
+    <h2>Founder Stories</h2>
+    <div class="founder">
+      <img src="erwin-nanyaro.png" alt="Erwin Nanyaro">
+      <h3>Erwin Nanyaro</h3>
+      <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+         Hailing from Tanzania, Erwin Nanyaro is a dedicated climate advocate with a passion for creating sustainable futures. Their journey into climate action began with a transformative experience working on the landmark CLIFT project, a collaborative initiative by Mzumbe University and the University of Copenhagen. This project focused on smart climate agriculture and involved extensive data collection across Tanzania’s Iringa, Morogoro, and Arusha regions.
     </p>
     <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
       While engaging with smallholder farmers, Erwin Nanyaro witnessed firsthand the devastating vulnerabilities they face due to climate impacts. The stark contrast between urban and rural resilience levels, shaped by unequal infrastructure priorities, ignited a deep commitment to champion climate justice. Inspired by the resilience of these communities, Erwin Nanyaro founded The Green Neighborhood to bridge these gaps and create tangible solutions for both urban and rural populations.
@@ -86,13 +82,12 @@
     <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
       With a vision of creating a world where people and nature thrive together, Erwin Nanyaro has turned their academic expertise and field experience into a powerful platform for change. Their work continues to inspire individuals and organizations worldwide to join hands in building a sustainable and inclusive future.
     </p>
-  </div>
-
-  <div class="founder">
-    <img src="doreen-mosha.png" alt="Doreen D. Mosha">
-    <h3>Doreen D. Mosha</h3>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Doreen D. Mosha is a passionate advocate for environmental sustainability and a dedicated climate action leader. With a profound understanding of the challenges posed by climate change, Doreen has committed herself to creating practical solutions that address its impacts within her community and beyond.
+    </div>
+    <div class="founder">
+      <img src="doreen-mosha.png" alt="Doreen D. Mosha">
+      <h3>Doreen D. Mosha</h3>
+      <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+       Doreen D. Mosha is a passionate advocate for environmental sustainability and a dedicated climate action leader. With a profound understanding of the challenges posed by climate change, Doreen has committed herself to creating practical solutions that address its impacts within her community and beyond.
     </p>
     <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
       As the co-founder of the Green Neighborhood Organization, Doreen strives to inspire individuals and communities to take responsibility for protecting our planet. Her work focuses on raising awareness, promoting sustainable practices, and empowering people with the knowledge and tools to combat climate change effectively.
@@ -103,35 +98,27 @@
     <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
       Through the Green Neighborhood Organization, Doreen aims to build a movement where everyone is a steward of the earth, contributing to a world where current and future generations can live and prosper in balance with nature.
     </p>
-  </div>
-</section>
+    </div>
   </section>
 
   <section id="projects" class="hidden">
-    <h2>Projects</h2>
-    <p>Stay tuned for updates on our upcoming projects!</p>
+    <h2>Our Projects</h2>
+    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+      Stay tuned for updates on our upcoming projects!
+    </p>
   </section>
 
   <section id="support" class="hidden">
     <h2>Support Us</h2>
-    <p>
-      Help us bring our vision to life! Whether it’s through donations, volunteering, or partnering with us, your support fuels our mission to build a greener world. Every contribution, no matter how small, makes a significant difference.
-    </p>
-    <p>
-      Visit our <a href="#support">Support Us</a> page to learn more about donation options, volunteer opportunities, and corporate collaborations. Let’s work together to create lasting change!
+    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+      Help us create a sustainable future. Whether through donations or volunteering, your support makes a difference.
     </p>
   </section>
 
   <section id="contact" class="hidden">
     <h2>Contact Us</h2>
-    <p>
-      We’d love to hear from you! Whether you have a question, a suggestion, or want to collaborate, feel free to get in touch with us.
-    </p>
-    <p>
-      Email: <a href="mailto:greenneighborhood@protonmail.com">greenneighborhood@protonmail.com</a><br>
-    </p>
-    <p>
-      Follow us on social media to stay updated on our latest projects and initiatives. Together, let’s make our neighborhoods green and vibrant!
+    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
+      Email: <a href="mailto:greenneighborhood@protonmail.com">greenneighborhood@protonmail.com</a>
     </p>
   </section>
 </main>
@@ -152,6 +139,34 @@
   </ul>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // Menu functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+    const sections = document.querySelectorAll('main section');
+
+    menuButton.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+
+        sections.forEach(section => {
+          section.classList.add('hidden');
+        });
+
+        if (sectionId) {
+          document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        menu.classList.add('hidden'); // Close menu after selection
+      });
+    });
+  });
+</script>
 </body>
 </html>
