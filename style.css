@@ -30,7 +30,7 @@ header::before {
   z-index: 1;
 }
 
-header .header-content {
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,6 +76,11 @@ header .header-content {
   right: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  display: none;
+}
+
+.menu.show {
+  display: block;
 }
 
 .menu li {
@@ -113,6 +118,7 @@ footer {
 .social-media li img {
   width: 30px;
 }
+
 /* Dropdown Menu */
 nav ul {
   list-style: none;
