@@ -34,7 +34,7 @@ header::before {
 
 .header-content {
   display: flex;
-  justify-content: flex-end; /* Ensure the logo and organization name are on the right */
+  justify-content: flex-end; /* Ensure the logo and organization name are on the left */
   align-items: center;
   gap: 10px; /* Add some space between the logo and the text */
   position: relative;
@@ -49,7 +49,7 @@ header::before {
   font-size: 16px;
   cursor: pointer;
   z-index: 2; /* Ensure it's above the overlay */
-  margin-right: auto; /* Push the button to the left */
+  margin-right: auto; /* Push the button to the right */
 }
 
 .logo {
