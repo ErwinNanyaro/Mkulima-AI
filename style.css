@@ -9,40 +9,47 @@ body {
 .hidden {
   display: none;
 }
-
-.header-content {
+header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Spread the items to opposite ends */
   align-items: center;
+  background-image: url('nature-header.jpg'); /* Ensure the image is applied */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px 40px;
+  position: relative;
 }
 
-.menu {
-  display: none;
-}
-
-.menu.show {
-  display: block;
+header::before {
+  content: '';
   position: absolute;
-  top: 100%;
-  right: 20px;
-  background: white;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
 }
-
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Ensure the logo and organization name are on the right */
   align-items: center;
+  gap: 10px; /* Add some space between the logo and the text */
   position: relative;
   z-index: 2;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
+.menu-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2; /* Ensure it's above the overlay */
+  margin-right: auto; /* Push the button to the left */
 }
 
 .logo {
@@ -53,6 +60,7 @@ body {
 .organization-name {
   font-size: 24px;
   font-weight: bold;
+  z-index: 2;
 }
 
 .menu-button {
