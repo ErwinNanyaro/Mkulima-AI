@@ -1,26 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Neighborhood</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <header>
-  <div class="header-content">
-    <div class="header-left">
-      <img src="logo.png" alt="Green Neighborhood Logo" class="logo">
-      <span class="organization-name">Green Neighborhood</span>
-    </div>
-    <button class="menu-button" id="menu-button">Menu</button>
-    <ul class="menu" id="menu">
-      <li><a href="#home">Home</a></li>
+  <img src="logo.png" alt="Green Neighborhood Logo" class="logo">
+  <h1>Green Neighborhood</h1>
+  <button id="menu-button">Menu</button>
+  <nav id="menu" class="hidden">
+    <ul>
+      <li><a href="#" data-section="home">Home</a></li>
       <li>
-        <a href="#">About Us</a>
+        <a href="#" data-section="about">About Us</a>
         <ul class="dropdown-menu">
-          <li><a href="#who-we-are">Who We Are</a></li>
-          <li><a href="#founder-story">Founder Story</a></li>
+          <li><a href="#" data-section="who-we-are">Who We Are</a></li>
+          <li><a href="#" data-section="founder-story">Founder Story</a></li>
         </ul>
       </li>
-      <li><a href="#projects">Our Projects</a></li>
-      <li><a href="#support">Support Us</a></li>
-      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#" data-section="projects">Our Projects</a></li>
+      <li><a href="#" data-section="support">Support Us</a></li>
+      <li><a href="#" data-section="contact">Contact Us</a></li>
     </ul>
-  </div>
+  </nav>
 </header>
-
 <main>
   <section id="home" class="hidden">
     <h2>Welcome to Green Neighborhood</h2>
