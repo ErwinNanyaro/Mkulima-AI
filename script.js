@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const menuButton = document.querySelector(".menu-button");
-  const menu = document.querySelector(".menu");
+  const menuButton = document.getElementById("menu-button");
+  const menu = document.getElementById("menu");
   const links = document.querySelectorAll(".menu a");
   const sections = document.querySelectorAll("main section");
 
   // Toggle menu visibility
   menuButton.addEventListener("click", function () {
-    menu.classList.toggle("hidden");
+    menu.classList.toggle("show");
   });
 
   // Handle menu item clicks
@@ -20,23 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
         section.classList.add("hidden");
       });
 
-      // If "Home" is clicked, do nothing
-      if (targetId === "home") {
-        return;
-      }
-
-      // Show the target section
+      // Show the selected section
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         targetSection.classList.remove("hidden");
       }
 
       // Close the menu
-      menu.classList.add("hidden");
+      menu.classList.remove("show");
     });
   });
-});
-document.getElementById('menu-button').addEventListener('click', function () {
-  const menu = document.getElementById('menu');
-  menu.classList.toggle('hidden');
 });
