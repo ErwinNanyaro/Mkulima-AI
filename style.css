@@ -223,3 +223,9 @@ section {
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.copyright {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #ffffff;
+  opacity: 0.8; /* Slightly faded look */
+}
