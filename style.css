@@ -20,7 +20,7 @@ header {
   padding: 20px 40px;
   position: relative;
 }
-header::before {
+header::before { 
   content: '';
   position: absolute;
   top: 0;
@@ -33,11 +33,29 @@ header::before {
 
 .header-content {
   display: flex;
-  justify-content: flex-end; /* Ensure the logo and organization name are on the left */
+  justify-content: space-between; /* Separate logo and menu button to opposite sides */
   align-items: center;
-  gap: 10px; /* Add some space between the logo and the text */
+  gap: 10px; /* Add space between items */
   position: relative;
   z-index: 2;
+  padding: 10px 20px; /* Add some spacing inside the header */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Push the logo and name to the right */
+  gap: 10px; /* Space between the logo and text */
+}
+
+.menu-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2; /* Ensure it's above the overlay */
 }
 
 .menu-button {
