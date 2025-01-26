@@ -51,3 +51,47 @@ document.addEventListener('DOMContentLoaded', () => {
     urbanProjects.classList.add('hidden'); // Ensure urban is hidden
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+  const sections = document.querySelectorAll('main section');
+  const dropdownLinks = document.querySelectorAll('nav .dropdown-menu a');
+
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  // Handle general menu links
+  document.querySelectorAll('nav > ul > li > a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const sectionId = link.getAttribute('data-section');
+      sections.forEach(section => section.classList.add('hidden'));
+
+      if (sectionId && document.getElementById(sectionId)) {
+        document.getElementById(sectionId).classList.remove('hidden');
+      }
+
+      // Close the menu after selection
+      menu.classList.add('hidden');
+    });
+  });
+
+  // Handle dropdown links inside "Our Projects"
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const sectionId = link.getAttribute('data-section');
+      sections.forEach(section => section.classList.add('hidden'));
+
+      if (sectionId && document.getElementById(sectionId)) {
+        document.getElementById(sectionId).classList.remove('hidden');
+      }
+
+      // Close the menu after selection
+      menu.classList.add('hidden');
+    });
+  });
+});
