@@ -1,26 +1,36 @@
 /* General Styles */
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #007acc;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: var(--background-color);
 }
 
 .hidden {
   display: none;
 }
+
+/* Header */
 header {
   display: flex;
-  justify-content: space-between; /* Spread the items to opposite ends */
+  justify-content: space-between;
   align-items: center;
-  background-image: url('nature-header.jpg'); /* Ensure the image is applied */
+  background-image: url('nature-header.jpg');
   background-size: cover;
   background-position: center;
   color: white;
   padding: 20px 40px;
   position: relative;
 }
-header::before { 
+
+header::before {
   content: '';
   position: absolute;
   top: 0;
@@ -33,66 +43,43 @@ header::before {
 
 .header-content {
   display: flex;
-  justify-content: space-between; /* Separate logo and menu button to opposite sides */
+  justify-content: space-between;
   align-items: center;
-  gap: 10px; /* Add space between items */
+  gap: 10px;
   position: relative;
   z-index: 2;
-  padding: 10px 20px; /* Add some spacing inside the header */
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Push the logo and name to the right */
-  gap: 0; /* Remove space between the logo and text */
-}
-
-.menu-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  z-index: 2; /* Ensure it's above the overlay */
-}
-
-.menu-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  z-index: 2; /* Ensure it's above the overlay */
-  margin-right: auto; /* Push the button to the right */
+  gap: 10px;
 }
 
 .logo {
   width: 50px;
-  margin-right: 10px;
 }
 
 .organization-name {
   font-size: 24px;
   font-weight: bold;
-  z-index: 2;
 }
 
 .menu-button {
-  background-color: #4CAF50;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .menu-button:hover {
   background-color: #45a049;
 }
 
+/* Menu */
 .menu {
   list-style: none;
   margin: 0;
@@ -116,25 +103,50 @@ header::before {
 
 .menu li a {
   text-decoration: none;
-  color: #007acc;
+  color: var(--secondary-color);
   display: block;
 }
 
 .menu li a:hover {
-  background-color: #f4f4f4;
+  background-color: var(--background-color);
 }
 
+.menu li a.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Main Content */
 main {
   padding: 20px;
 }
 
+/* Section Styling */
+section {
+  padding: 20px;
+  margin: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
 footer {
   text-align: center;
-  background-color: #007acc;
+  background-color: var(--secondary-color);
   color: white;
   padding: 20px;
 }
 
+.copyright {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #ffffff;
+  opacity: 0.8; /* Slightly faded look */
+}
+
+/* Social Media Icons */
 .social-media {
   list-style: none;
   display: inline-flex;
@@ -158,7 +170,7 @@ nav ul {
 nav ul li {
   position: relative;
 }
-/* For dropdown menus */
+
 nav ul li .dropdown-menu {
   display: none;
   position: absolute;
@@ -178,18 +190,14 @@ nav ul li:hover .dropdown-menu {
 
 nav ul li .dropdown-menu li a {
   text-decoration: none;
-  color: #007acc;
+  color: var(--secondary-color);
 }
 
 nav ul li .dropdown-menu li a:hover {
-  color: #4CAF50;
+  color: var(--primary-color);
 }
 
-nav ul li:hover .dropdown-menu {
-  display: block;
-}
-
-/* Founder Story */
+/* Founder Section */
 .founder {
   text-align: center;
   margin: 20px 0;
@@ -210,25 +218,11 @@ nav ul li:hover .dropdown-menu {
 
 .founder p {
   font-size: 1em;
-  color: #333;
+  color: var(--text-color);
   line-height: 1.6;
 }
 
-/* Section Styling */
-section {
-  padding: 20px;
-  margin: 20px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.copyright {
-  font-size: 14px;
-  margin-top: 10px;
-  color: #ffffff;
-  opacity: 0.8; /* Slightly faded look */
-}
+/* Projects List */
 .projects-list {
   list-style: none;
   padding: 0;
@@ -240,13 +234,13 @@ section {
 
 .projects-list a {
   text-decoration: none;
-  color: #007acc;
+  color: var(--secondary-color);
   font-weight: bold;
   cursor: pointer;
 }
 
 .projects-list a:hover {
-  color: #4CAF50;
+  color: var(--primary-color);
 }
 
 .projects-list ul {
@@ -258,5 +252,3 @@ section {
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-
