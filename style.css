@@ -45,7 +45,7 @@ header::before {
   display: flex;
   align-items: center;
   justify-content: flex-end; /* Push the logo and name to the right */
-  gap: 10px; /* Space between the logo and text */
+  gap: 0; /* Remove space between the logo and text */
 }
 
 .menu-button {
