@@ -242,6 +242,6 @@ section {
   }
 
   .menu-button {
-    align-self: flex-start; /* Move menu button to the left */
+    align-self: flex-start; /* Move menu button to the right */
   }
 }
