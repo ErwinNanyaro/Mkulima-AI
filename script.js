@@ -31,3 +31,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // Existing code...
+
+  const urbanToggle = document.getElementById('urban-projects-toggle');
+  const ruralToggle = document.getElementById('rural-projects-toggle');
+  const urbanProjects = document.getElementById('urban-projects');
+  const ruralProjects = document.getElementById('rural-projects');
+
+  urbanToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    urbanProjects.classList.toggle('hidden');
+  });
+
+  ruralToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    ruralProjects.classList.toggle('hidden');
+  });
+});
