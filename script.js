@@ -32,20 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
-  // Existing code...
-
   const urbanToggle = document.getElementById('urban-projects-toggle');
   const ruralToggle = document.getElementById('rural-projects-toggle');
   const urbanProjects = document.getElementById('urban-projects');
   const ruralProjects = document.getElementById('rural-projects');
 
+  // Toggle Urban Projects
   urbanToggle.addEventListener('click', (e) => {
     e.preventDefault();
     urbanProjects.classList.toggle('hidden');
+    ruralProjects.classList.add('hidden'); // Ensure rural is hidden
   });
 
+  // Toggle Rural Projects
   ruralToggle.addEventListener('click', (e) => {
     e.preventDefault();
     ruralProjects.classList.toggle('hidden');
+    urbanProjects.classList.add('hidden'); // Ensure urban is hidden
   });
 });
