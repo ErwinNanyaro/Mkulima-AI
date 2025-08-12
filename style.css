@@ -92,20 +92,18 @@ header {
   transition: var(--transition);
 }
 
-.header.scrolled {
-  padding: 10px 5%;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
 .header-content {
   display: flex;
   align-items: center;
   gap: 15px;
+  max-width: 80%; /* Prevent header content from taking full width */
 }
 
 .logo {
-  height: 50px;
-  width: auto;
+  height: 50px; /* Fixed height */
+  width: auto; /* Maintain aspect ratio */
+  max-width: 150px; /* Prevent logo from being too wide */
+  object-fit: contain; /* Ensure logo fits properly */
   transition: var(--transition);
 }
 
@@ -114,6 +112,9 @@ header {
   font-weight: 700;
   color: var(--dark-color);
   transition: var(--transition);
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if text is too long */
 }
 
 .menu-button {
