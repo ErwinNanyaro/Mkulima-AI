@@ -4,6 +4,9 @@ const navMenu = document.getElementById('menu');
 const sections = document.querySelectorAll('main section');
 const navLinks = document.querySelectorAll('nav a');
 const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+const viewMoreButtons = document.querySelectorAll('.view-more');
+const closeModalButtons = document.querySelectorAll('.close-modal');
+const storyModals = document.querySelectorAll('.story-modal');
 
 // Mobile Menu Toggle
 menuButton.addEventListener('click', () => {
@@ -68,6 +71,33 @@ dropdownLinks.forEach(link => {
     e.preventDefault();
     const sectionId = link.getAttribute('data-section');
     showSection(sectionId);
+  });
+});
+
+// Story Modals functionality
+viewMoreButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const storyId = button.getAttribute('data-story');
+    document.getElementById(storyId).classList.remove('hidden');
+    document.body.classList.add('no-scroll');
+  });
+});
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    storyModals.forEach(modal => modal.classList.add('hidden'));
+    document.body.classList.remove('no-scroll');
+  });
+});
+
+// Close modals when clicking outside
+storyModals.forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    }
   });
 });
 
@@ -153,6 +183,16 @@ if (contactForm) {
   });
 }
 
+// Donation form handling
+const donationForms = document.querySelectorAll('.donate-button');
+donationForms.forEach(form => {
+  form.addEventListener('click', (e) => {
+    e.preventDefault();
+    // In a real implementation, this would open a payment modal/process
+    alert('Thank you for your interest in supporting Mkulima AI! You will be redirected to our secure donation platform.');
+  });
+});
+
 // Subscribe form handling
 const subscribeForm = document.querySelector('.subscribe-form');
 if (subscribeForm) {
@@ -164,7 +204,7 @@ if (subscribeForm) {
     if (email) {
       // Here you would typically send the email to your mailing list
       console.log('Subscribed email:', email);
-      alert('Thank you for subscribing!');
+      alert('Thank you for subscribing to our newsletter!');
       emailInput.value = '';
     }
   });
@@ -174,6 +214,7 @@ if (subscribeForm) {
 function handleResize() {
   if (window.innerWidth > 768) {
     navMenu.classList.remove('hidden');
+    document.body.classList.remove('no-scroll');
   } else {
     navMenu.classList.add('hidden');
   }
@@ -182,12 +223,41 @@ function handleResize() {
 window.addEventListener('resize', handleResize);
 handleResize();
 
-// Add class to body when menu is open to prevent scrolling
-document.addEventListener('DOMContentLoaded', () => {
-  const menuButton = document.getElementById('menu-button');
-  const body = document.body;
+// Add smooth scrolling to all links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Add active class to current section in view
+window.addEventListener('scroll', () => {
+  let current = '';
   
-  menuButton.addEventListener('click', () => {
-    body.classList.toggle('menu-open');
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    
+    if (window.scrollY >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('data-section') === current || 
+        link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
   });
 });
