@@ -3,160 +3,348 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Green Neighborhood</title>
+  <meta name="description" content="Mkulima AI - AI-powered mobile app for smallholder farmers in Tanzania. Offline agricultural assistance in Swahili.">
+  <title>Mkulima AI - Smart Farming for Tanzania</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
   <button class="menu-button" id="menu-button">Menu</button>
   <div class="header-content">
-    <img src="logo.png" alt="Green Neighborhood Logo" class="logo">
-    <span class="organization-name">Green Neighborhood</span>
+    <img src="assets/logo.png" alt="Mkulima AI Logo" class="logo">
+    <span class="organization-name">Mkulima AI</span>
   </div>
 </header>
 <nav id="menu" class="hidden">
   <ul>
     <li><a href="#" data-section="home">Home</a></li>
     <li>
-      <a href="#" data-section="about">About Us</a>
+      <a href="#" data-section="about">About</a>
       <ul class="dropdown-menu">
-        <li><a href="#" data-section="who-we-are">Who We Are</a></li>
+        <li><a href="#" data-section="who-we-are">Our Mission</a></li>
         <li><a href="#" data-section="founder-story">Founder Story</a></li>
       </ul>
-      
     </li>
     <li>
-      <a href="#">Our Projects</a>
+      <a href="#" data-section="features">App Features</a>
+    </li>
+    <li>
+      <a href="#" data-section="projects">Our Work</a>
       <ul class="dropdown-menu">
-        <li><a href="#" data-section="urban-projects">Urban Projects</a></li>
-        <li><a href="#" data-section="rural-projects">Rural Projects</a></li>
+        <li><a href="#" data-section="research">Research</a></li>
+        <li><a href="#" data-section="field-work">Field Work</a></li>
       </ul>
     </li>
     <li><a href="#" data-section="support">Support Us</a></li>
-    <li><a href="#" data-section="contact">Contact Us</a></li>
+    <li><a href="#" data-section="contact">Contact</a></li>
   </ul>
 </nav>
 <main>
-  <section id="home" class="hidden">
-    <h2>Welcome to Green Neighborhood</h2>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Our mission is to create sustainable futures for all.
-    </p>
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>Empowering Farmers with AI</h1>
+      <p class="hero-text">Swahili-based, offline-ready artificial intelligence for smallholder farmers in Tanzania</p>
+      <div class="cta-buttons">
+        <a href="#support" class="cta-button">Support Our Mission</a>
+        <a href="#features" class="cta-button secondary">Learn About Features</a>
+      </div>
+    </div>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </section>
 
   <section id="who-we-are" class="hidden">
-    <h2>Who We Are</h2>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      The Green Neighborhood is a passionate organization committed to combating climate change in line with 
-      <strong>SDG 13</strong>: “Take urgent action to combat climate change and its impacts.” Guided by our vision of 
-      creating a world where people and nature thrive together, we empower communities through education, capacity 
-      building, and hands-on initiatives like workshops, hiking events, and training.
-    </p>
-    <h3>Vision</h3>
-  <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-    To create a world where people and nature thrive together.
-  </p>
+    <h2>Our Mission & Vision</h2>
+    <div class="mission-container">
+      <div class="mission-card">
+        <i class="fas fa-bullseye mission-icon"></i>
+        <h3>Mission</h3>
+        <p>To empower rural smallholder farmers with inclusive, localized, and offline-ready artificial intelligence tools that enhance productivity, improve decision-making, and elevate household livelihoods across Tanzania and beyond.</p>
+      </div>
+      <div class="mission-card">
+        <i class="fas fa-eye mission-icon"></i>
+        <h3>Vision</h3>
+        <p>To become Africa's most accessible agricultural AI platform, closing the digital divide and transforming rural agriculture through inclusive technology designed with the farmer at heart.</p>
+      </div>
+    </div>
 
-  <h3>Mission</h3>
-  <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-    To explore, enjoy, and protect the wild places of the earth; to practice and promote the responsible use of the earth’s ecosystems and resources; to educate and enlist humanity to protect 
-    and restore the quality of the natural and human environment; and to use all lawful means to carry out these objectives.
-  </p>
-
-  <h3>Our Values</h3>
-  <ul>
-    <li style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;"><strong>Sustainability</strong> – We are dedicated to promoting practices that ensure the long-term health of our planet and its ecosystems.</li>
-    <li style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;"><strong>Accountability</strong> – We uphold transparency and responsibility in all our actions, ensuring trust and integrity in our efforts.</li>
-    <li style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;"><strong>Collaboration</strong> – We believe in the power of partnerships, working with local and global stakeholders to achieve impactful and sustainable outcomes.</li>
-  </ul>
-</section>
+    <h3>Why Mkulima AI?</h3>
+    <div class="features-grid">
+      <div class="feature-item">
+        <i class="fas fa-language feature-icon"></i>
+        <h4>Swahili Interface</h4>
+        <p>Designed specifically for Tanzanian farmers with full Swahili language support</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-wifi-slash feature-icon"></i>
+        <h4>Offline Functionality</h4>
+        <p>Works without internet in remote rural areas</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-leaf feature-icon"></i>
+        <h4>Organic Focus</h4>
+        <p>Promotes cost-effective organic farming solutions</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-users feature-icon"></i>
+        <h4>Farmer-Centered</h4>
+        <p>Developed with direct input from smallholder farmers</p>
+      </div>
+    </div>
   </section>
 
   <section id="founder-story" class="hidden">
-    <h2>Founder Stories</h2>
-    <div class="founder">
-      <img src="erwin-nanyaro.png" alt="Erwin Nanyaro">
-      <h3>Erwin Nanyaro</h3>
-      <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-         Hailing from Tanzania, Erwin Nanyaro is a dedicated climate advocate with a passion for creating sustainable futures. Their journey into climate action began with a transformative experience working on the landmark CLIFT project, a collaborative initiative by Mzumbe University and the University of Copenhagen. This project focused on smart climate agriculture and involved extensive data collection across Tanzania’s Iringa, Morogoro, and Arusha regions.
-    </p>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      While engaging with smallholder farmers, Erwin Nanyaro witnessed firsthand the devastating vulnerabilities they face due to climate impacts. The stark contrast between urban and rural resilience levels, shaped by unequal infrastructure priorities, ignited a deep commitment to champion climate justice. Inspired by the resilience of these communities, Erwin Nanyaro founded The Green Neighborhood to bridge these gaps and create tangible solutions for both urban and rural populations.
-    </p>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      As the founder of The Green Neighborhood, Erwin Nanyaro leads a passionate team dedicated to empowering communities through education, capacity building, and actionable climate initiatives. Under their leadership, the organization has become a beacon of hope, fostering collaboration and inspiring individuals to take urgent action against climate change.
-    </p>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      With a vision of creating a world where people and nature thrive together, Erwin Nanyaro has turned their academic expertise and field experience into a powerful platform for change. Their work continues to inspire individuals and organizations worldwide to join hands in building a sustainable and inclusive future.
-    </p>
-    </div>
-    <div class="founder">
-      <img src="new doreen-mosha.png" alt="Doreen D. Mosha">
-      <h3>Doreen D. Mosha</h3>
-      <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-       Doreen D. Mosha is a passionate advocate for environmental sustainability and a dedicated climate action leader. With a profound understanding of the challenges posed by climate change, Doreen has committed herself to creating practical solutions that address its impacts within her community and beyond.
-    </p>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      As the co-founder of the Green Neighborhood Organization, Doreen strives to inspire individuals and communities to take responsibility for protecting our planet. Her work focuses on raising awareness, promoting sustainable practices, and empowering people with the knowledge and tools to combat climate change effectively.
-    </p>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Driven by the belief that people and nature can thrive together, she is devoted to fostering harmony between humanity and the environment. Her unwavering commitment is rooted in the conviction that every action, no matter how small, can create a ripple effect toward a healthier, more sustainable future.
-    </p>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Through the Green Neighborhood Organization, Doreen aims to build a movement where everyone is a steward of the earth, contributing to a world where current and future generations can live and prosper in balance with nature.
-    </p>
+    <h2>Founder Story</h2>
+    <div class="founder-container">
+      <div class="founder-image">
+        <img src="assets/erwin-nanyaro.png" alt="Erwin Nanyaro">
+      </div>
+      <div class="founder-content">
+        <h3>Erwin Nanyaro</h3>
+        <p>Hailing from Tanzania, Erwin Nanyaro is an agricultural technologist with a passion for empowering smallholder farmers through appropriate technology. His journey into agricultural innovation began with the transformative CLIFT project research in 2024, a collaborative initiative between Mzumbe University and the University of Copenhagen.</p>
+        
+        <p>While conducting surveys across five Tanzanian regions (Morogoro, Dodoma, Iringa, Njombe, and Mbeya), Erwin witnessed firsthand the technological gaps limiting smallholder farmers. The lack of accessible, localized digital tools for these farmers - who form the backbone of Tanzania's agriculture - inspired the creation of Mkulima AI.</p>
+        
+        <p>Recognizing that 80% of Tanzania's farmers are smallholders often excluded from digital solutions, Erwin dedicated himself to developing an AI platform that works offline, in Swahili, and addresses real farmer needs identified through extensive field research.</p>
+        
+        <p>Mkulima AI represents the convergence of Erwin's technical skills with his deep understanding of rural farming challenges - creating a tool that bridges the digital divide while respecting traditional farming knowledge.</p>
+        
+        <div class="video-testimonial">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="projects" class="hidden">
-    <h2>Our Projects</h2>
-    <p>Select a specific project to learn more:</p>
+  <section id="features" class="hidden">
+    <h2>App Features</h2>
+    <div class="app-features">
+      <div class="feature-card">
+        <div class="feature-icon-container">
+          <i class="fas fa-bug"></i>
+        </div>
+        <h3>Disease Detection</h3>
+        <p>Identify crop diseases early using AI image recognition</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-container">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h3>Crop Management</h3>
+        <p>Personalized planting and harvesting schedules</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-container">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <h3>Organic Solutions</h3>
+        <p>Localized organic farming techniques and pest control</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-container">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Market Prices</h3>
+        <p>Updated local market prices when connected</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-container">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <h3>Business Tools</h3>
+        <p>Simple profit calculators and record keeping</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon-container">
+          <i class="fas fa-database"></i>
+        </div>
+        <h3>11 Crops Supported</h3>
+        <p>Strawberry, tomato, bell pepper, cabbage, potato, onion, grape, coffee, maize, rice, and beans</p>
+      </div>
+    </div>
   </section>
 
-  <section id="urban-projects" class="hidden">
-    <h2>Urban Projects</h2>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Mazingira Kwanza Project: An initiative to promote sustainable urban living, focused on community-driven environmental solutions.
-    </p>
+  <section id="research" class="hidden">
+    <h2>Research & Development</h2>
+    <div class="research-container">
+      <div class="research-text">
+        <p>Mkulima AI is built on extensive field research conducted during the CLIFT project in May 2024. We visited 10 villages across 5 regions, collecting data directly from smallholder farmers about their challenges, needs, and technological access.</p>
+        
+        <p>Our findings revealed:</p>
+        <ul>
+          <li>92% of farmers had smartphones but only 28% used agricultural apps</li>
+          <li>Internet connectivity was unreliable in 87% of farming areas</li>
+          <li>Language barriers prevented adoption of existing solutions</li>
+          <li>Farmers wanted tools that combined traditional knowledge with modern science</li>
+        </ul>
+        
+        <p>This research directly informed Mkulima AI's development priorities: offline functionality, Swahili interface, and integration of local farming wisdom.</p>
+      </div>
+      <div class="research-images">
+        <img src="assets/research-1.jpg" alt="Field research with farmers">
+        <img src="assets/research-2.jpg" alt="Data collection in rural areas">
+      </div>
+    </div>
   </section>
 
-  <section id="rural-projects" class="hidden">
-    <h2>Rural Projects</h2>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Sustainable Strawberry Pathway: Empowering rural communities around Uluguru mountain through eco-friendly farming, social capital and innovation in agriculture.
-    </p>
+  <section id="field-work" class="hidden">
+    <h2>Field Work & Pilot Program</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">May 2024</div>
+        <div class="timeline-content">
+          <h4>Initial Research</h4>
+          <p>Conducted CLIFT project surveys in 5 regions, identifying need for localized agricultural technology</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">July 2024</div>
+        <div class="timeline-content">
+          <h4>Prototype Development</h4>
+          <p>Built initial app prototype focusing on strawberry farmers in Morogoro region</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Sept 2024</div>
+        <div class="timeline-content">
+          <h4>First Pilot Launch</h4>
+          <p>Deployed to 50 farmers in 3 villages with 86% satisfaction rate</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 2025</div>
+        <div class="timeline-content">
+          <h4>Expansion</h4>
+          <p>Added 10 more crops and expanded to Dodoma region</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Now</div>
+        <div class="timeline-content">
+          <h4>Scaling Up</h4>
+          <p>Preparing to deploy to 8 regions and train 5,000+ farmers</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="support" class="hidden">
-    <h2>Support Us</h2>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Help us create a sustainable future. Whether through donations or volunteering, your support makes a difference.
-    </p>
+  <section id="support" class="hidden support-section">
+    <h2>Support Our Mission</h2>
+    <div class="support-options">
+      <div class="support-card">
+        <i class="fas fa-hands-helping support-icon"></i>
+        <h3>Partnerships</h3>
+        <p>Agricultural organizations, NGOs, and research institutions can partner with us to expand Mkulima AI's reach and capabilities.</p>
+        <a href="#contact" class="support-button">Contact Us</a>
+      </div>
+      <div class="support-card">
+        <i class="fas fa-donate support-icon"></i>
+        <h3>Donate</h3>
+        <p>Your financial support helps us train more farmers and improve the app's features.</p>
+        <button class="support-button">Donate Now</button>
+      </div>
+      <div class="support-card">
+        <i class="fas fa-mobile-alt support-icon"></i>
+        <h3>Pilot in Your Community</h3>
+        <p>Farmers' groups and cooperatives can request to participate in our rollout program.</p>
+        <a href="#contact" class="support-button">Apply</a>
+      </div>
+    </div>
+    
+    <div class="impact-stats">
+      <div class="stat-item">
+        <div class="stat-number" id="farmers-trained">0</div>
+        <div class="stat-label">Farmers Trained</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="villages-reached">0</div>
+        <div class="stat-label">Villages Reached</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="crops-covered">0</div>
+        <div class="stat-label">Crops Covered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="regions-active">0</div>
+        <div class="stat-label">Regions Active</div>
+      </div>
+    </div>
   </section>
 
   <section id="contact" class="hidden">
     <h2>Contact Us</h2>
-    <p style="font-family: 'Georgia', serif; font-size: 1.1em; line-height: 1.8; color: #333;">
-      Email: <a href="mailto:greenneighborhood@protonmail.com">greenneighborhood@protonmail.com</a>
-    </p>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@mkulimai.ai">info@mkulimai.ai</a></p>
+        <p><i class="fas fa-phone"></i> +255 XXX XXX XXX</p>
+        <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
+        
+        <div class="social-links">
+          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  <h3>Follow Us</h3>
-  <ul class="social-media">
-    <li>
-      <a href="https://www.linkedin.com/in/green-neighborhood-organization-57a47a345" target="_blank">
-        <img src="linkedin-icon.png" alt="LinkedIn">
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/greenneighborhood_tz/" target="_blank">
-        <img src="instagram-icon.png" alt="Instagram">
-      </a>
-    </li>
-  </ul>
-  <p class="copyright">© 2025 Green Neighborhood. All rights reserved.</p>
+  <div class="footer-content">
+    <div class="footer-section">
+      <img src="assets/logo-white.png" alt="Mkulima AI Logo" class="footer-logo">
+      <p>Empowering Tanzania's smallholder farmers with accessible AI technology.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">App Features</a></li>
+        <li><a href="#research">Our Research</a></li>
+        <li><a href="#support">Support Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Subscribe</h4>
+      <p>Get updates on our progress</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Your Email">
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="copyright">© 2025 Mkulima AI. All rights reserved.</p>
+  </div>
 </footer>
 
 <script src="script.js"></script>
