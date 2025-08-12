@@ -1,8 +1,8 @@
 // DOM Elements
 const menuButton = document.getElementById('menu-button');
-const navMenu = document.getElementById('menu');
+const navMenu = document.querySelector('nav');
 const sections = document.querySelectorAll('main > section');
-const navLinks = document.querySelectorAll('nav a[data-section]');
+const navLinks = document.querySelectorAll('nav a');
 const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
 const viewMoreButtons = document.querySelectorAll('.view-more');
 const closeModalButtons = document.querySelectorAll('.close-modal');
@@ -13,15 +13,22 @@ const subscribeForm = document.querySelector('.subscribe-form');
 
 // Initialize - Show home section by default
 document.addEventListener('DOMContentLoaded', () => {
-  showSection('home');
+  // Check URL hash on load
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    showSection(hash);
+  } else {
+    showSection('home');
+  }
+  
   setupEventListeners();
-  animateStatistics();
 });
 
 function setupEventListeners() {
   // Mobile Menu Toggle
-  menuButton.addEventListener('click', () => {
-    navMenu.classList.toggle('hidden');
+  menuButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navMenu.classList.toggle('show');
     document.body.classList.toggle('no-scroll');
   });
 
@@ -29,10 +36,9 @@ function setupEventListeners() {
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const sectionId = link.getAttribute('data-section');
+      const sectionId = link.getAttribute('href').substring(1);
       showSection(sectionId);
       closeMobileMenu();
-      updateActiveLink(link);
     });
   });
 
@@ -40,10 +46,9 @@ function setupEventListeners() {
   dropdownLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const sectionId = link.getAttribute('data-section');
+      const sectionId = link.getAttribute('href').substring(1);
       showSection(sectionId);
       closeMobileMenu();
-      updateActiveLink(link);
     });
   });
 
@@ -52,14 +57,14 @@ function setupEventListeners() {
     button.addEventListener('click', (e) => {
       e.preventDefault();
       const storyId = button.getAttribute('data-story');
-      document.getElementById(storyId).classList.remove('hidden');
+      document.getElementById(storyId).classList.add('active');
       document.body.classList.add('no-scroll');
     });
   });
 
   closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
-      storyModals.forEach(modal => modal.classList.add('hidden'));
+      storyModals.forEach(modal => modal.classList.remove('active'));
       document.body.classList.remove('no-scroll');
     });
   });
@@ -68,7 +73,7 @@ function setupEventListeners() {
   storyModals.forEach(modal => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.classList.add('hidden');
+        modal.classList.remove('active');
         document.body.classList.remove('no-scroll');
       }
     });
@@ -118,21 +123,8 @@ function setupEventListeners() {
   // Handle window resize
   window.addEventListener('resize', handleResize);
 
-  // Handle back/forward navigation
-  window.addEventListener('popstate', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      showSection(hash);
-    } else {
-      showSection('home');
-    }
-  });
-
-  // Initialize based on current URL hash
-  const currentHash = window.location.hash.substring(1);
-  if (currentHash) {
-    showSection(currentHash);
-  }
+  // Handle scroll for active link highlighting
+  window.addEventListener('scroll', highlightActiveSection);
 }
 
 function showSection(sectionId) {
@@ -149,86 +141,27 @@ function showSection(sectionId) {
     // Update URL without reloading
     history.pushState(null, '', `#${sectionId}`);
     
-    // Special handling for hero section
-    if (sectionId === 'home') {
-      document.querySelector('header').style.backgroundColor = 'transparent';
-      document.querySelector('header').style.boxShadow = 'none';
-    } else {
-      document.querySelector('header').style.backgroundColor = 'var(--white)';
-      document.querySelector('header').style.boxShadow = 'var(--box-shadow)';
-    }
-    
     // Scroll to top of section smoothly
     window.scrollTo({
       top: activeSection.offsetTop - 80,
       behavior: 'smooth'
     });
+    
+    // Update active link
+    updateActiveLink(sectionId);
   }
 }
 
-function updateActiveLink(activeLink) {
-  navLinks.forEach(navLink => navLink.classList.remove('active'));
-  if (activeLink) {
-    activeLink.classList.add('active');
-  }
-}
-
-function closeMobileMenu() {
-  if (window.innerWidth <= 768) {
-    navMenu.classList.add('hidden');
-    document.body.classList.remove('no-scroll');
-  }
-}
-
-function handleResize() {
-  if (window.innerWidth > 768) {
-    navMenu.classList.remove('hidden');
-    document.body.classList.remove('no-scroll');
-  } else {
-    navMenu.classList.add('hidden');
-  }
-}
-
-// Animate statistics counter
-function animateStatistics() {
-  const stats = [
-    { id: 'farmers-trained', target: 5000, duration: 2000 },
-    { id: 'villages-reached', target: 10, duration: 1500 },
-    { id: 'crops-covered', target: 11, duration: 1000 },
-    { id: 'regions-active', target: 8, duration: 1500 }
-  ];
-
-  stats.forEach(stat => {
-    const element = document.getElementById(stat.id);
-    if (!element) return;
-    
-    const increment = stat.target / (stat.duration / 16);
-    let current = 0;
-    
-    const updateCounter = () => {
-      current += increment;
-      if (current < stat.target) {
-        element.textContent = Math.floor(current);
-        requestAnimationFrame(updateCounter);
-      } else {
-        element.textContent = stat.target;
-      }
-    };
-    
-    // Only animate when section is visible
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        updateCounter();
-        observer.unobserve(element);
-      }
-    }, { threshold: 0.5 });
-    
-    observer.observe(element);
+function updateActiveLink(sectionId) {
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${sectionId}`) {
+      link.classList.add('active');
+    }
   });
 }
 
-// Add active class to current section in view
-window.addEventListener('scroll', () => {
+function highlightActiveSection() {
   let current = '';
   
   sections.forEach(section => {
@@ -240,11 +173,19 @@ window.addEventListener('scroll', () => {
     }
   });
   
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('data-section') === current || 
-        link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-});
+  updateActiveLink(current);
+}
+
+function closeMobileMenu() {
+  if (window.innerWidth <= 768) {
+    navMenu.classList.remove('show');
+    document.body.classList.remove('no-scroll');
+  }
+}
+
+function handleResize() {
+  if (window.innerWidth > 768) {
+    navMenu.classList.remove('show');
+    document.body.classList.remove('no-scroll');
+  }
+}
