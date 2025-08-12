@@ -1,4 +1,3 @@
-// DOM Elements
 const menuButton = document.getElementById('menu-button');
 const navMenu = document.getElementById('menu');
 const sections = document.querySelectorAll('main section');
