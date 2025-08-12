@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize elements
   const menuButton = document.getElementById('menu-button');
-  const navMenu = document.querySelector('nav');
+  const navMenu = document.getElementById('menu');
   const sections = document.querySelectorAll('main > section');
   const navLinks = document.querySelectorAll('nav a');
   
@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   showSection('home');
   
   // Mobile menu toggle
-  menuButton.addEventListener('click', function() {
+  menuButton.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent this click from triggering document click
     navMenu.classList.toggle('show');
     document.body.classList.toggle('no-scroll');
   });
@@ -21,14 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
       const sectionId = this.getAttribute('data-section') || 
                        this.getAttribute('href').substring(1);
       showSection(sectionId);
-      navMenu.classList.remove('show');
-      document.body.classList.remove('no-scroll');
+      
+      // Close menu on mobile
+      if (navMenu.classList.contains('show')) {
+        navMenu.classList.remove('show');
+        document.body.classList.remove('no-scroll');
+      }
     });
   });
   
   // Close menu when clicking outside
   document.addEventListener('click', function(e) {
-    if (!navMenu.contains(e.target) {
+    if (!navMenu.contains(e.target) && !menuButton.contains(e.target)) {
       navMenu.classList.remove('show');
       document.body.classList.remove('no-scroll');
     }
@@ -59,10 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for your message!');
+      alert('Thank you for your message! We will get back to you soon.');
       this.reset();
     });
   }
+  
+  // Close modals when clicking outside
+  storyModals.forEach(modal => {
+    modal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  });
 });
 
 function showSection(sectionId) {
