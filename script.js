@@ -1,97 +1,193 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const menuButton = document.getElementById("menu-button");
-  const menu = document.getElementById("menu");
-  const sections = document.querySelectorAll("main section");
-  const dropdownLinks = document.querySelectorAll("nav .dropdown-menu a");
-  const generalLinks = document.querySelectorAll('nav > ul > li > a');
-  const urbanProjects = document.getElementById("urban-projects");
-  const ruralProjects = document.getElementById("rural-projects");
+// DOM Elements
+const menuButton = document.getElementById('menu-button');
+const navMenu = document.getElementById('menu');
+const sections = document.querySelectorAll('main section');
+const navLinks = document.querySelectorAll('nav a');
+const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
 
-  // Toggle menu visibility
-  menuButton.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
+// Mobile Menu Toggle
+menuButton.addEventListener('click', () => {
+  navMenu.classList.toggle('hidden');
+  document.body.classList.toggle('no-scroll');
+});
 
-  // Helper function to show a specific section
-  const showSection = (sectionId) => {
-    sections.forEach((section) => section.classList.add("hidden")); // Hide all sections
-    if (sectionId && document.getElementById(sectionId)) {
-      document.getElementById(sectionId).classList.remove("hidden"); // Show the target section
+// Close mobile menu when clicking on a nav link
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navMenu.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
     }
-    menu.classList.add("hidden"); // Close the menu
-  };
+  });
+});
 
-  // Handle general menu links
-  generalLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const sectionId = link.getAttribute("data-section");
-      showSection(sectionId);
+// Section switching functionality
+function showSection(sectionId) {
+  sections.forEach(section => {
+    section.classList.add('hidden');
+  });
+  
+  const activeSection = document.getElementById(sectionId);
+  if (activeSection) {
+    activeSection.classList.remove('hidden');
+    
+    // Special handling for hero section
+    if (sectionId === 'home') {
+      document.querySelector('header').style.backgroundColor = 'transparent';
+      document.querySelector('header').style.boxShadow = 'none';
+    } else {
+      document.querySelector('header').style.backgroundColor = 'var(--white)';
+      document.querySelector('header').style.boxShadow = 'var(--box-shadow)';
+    }
+    
+    // Scroll to top of section
+    window.scrollTo({
+      top: activeSection.offsetTop - 80,
+      behavior: 'smooth'
     });
-  });
+  }
+}
 
-  // Handle dropdown menu links
-  dropdownLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
+// Set up navigation
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sectionId = link.getAttribute('data-section') || 
+                     link.getAttribute('href').substring(1);
+    showSection(sectionId);
+    
+    // Update active link
+    navLinks.forEach(navLink => navLink.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+// Set up dropdown navigation
+dropdownLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sectionId = link.getAttribute('data-section');
+    showSection(sectionId);
+  });
+});
+
+// Show home section by default
+document.addEventListener('DOMContentLoaded', () => {
+  showSection('home');
+  
+  // Initialize impact statistics counter
+  animateStatistics();
+  
+  // Set up smooth scrolling for all links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const sectionId = link.getAttribute("data-section");
-      showSection(sectionId);
-    });
-  });
-
-  // Toggle Urban Projects
-  document.getElementById("urban-projects-toggle")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    urbanProjects.classList.toggle("hidden");
-    ruralProjects.classList.add("hidden"); // Ensure rural projects are hidden
-  });
-
-  // Toggle Rural Projects
-  document.getElementById("rural-projects-toggle")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    ruralProjects.classList.toggle("hidden");
-    urbanProjects.classList.add("hidden"); // Ensure urban projects are hidden
-  });
-
-  // Slideshow Functionality
-  const galleryItems = document.querySelectorAll(".gallery-item");
-  let currentIndex = 0;
-
-  const updateGallery = () => {
-    galleryItems.forEach((item, index) => {
-      item.classList.remove("active");
-      if (index === currentIndex) {
-        item.classList.add("active");
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
       }
     });
-  };
-
-  const nextSlide = () => {
-    currentIndex = (currentIndex + 1) % galleryItems.length; // Loop back to the first slide
-    updateGallery();
-  };
-
-  const prevSlide = () => {
-    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; // Loop back to the last slide
-    updateGallery();
-  };
-
-  // Set up automatic slideshow transition
-  let slideshowInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-
-  // Optional: Add event listeners for manual navigation buttons
-  document.getElementById("prev-slide")?.addEventListener("click", () => {
-    clearInterval(slideshowInterval); // Pause automatic slideshow on manual interaction
-    prevSlide();
-    slideshowInterval = setInterval(nextSlide, 5000); // Restart automatic slideshow
   });
+});
 
-  document.getElementById("next-slide")?.addEventListener("click", () => {
-    clearInterval(slideshowInterval); // Pause automatic slideshow on manual interaction
-    nextSlide();
-    slideshowInterval = setInterval(nextSlide, 5000); // Restart automatic slideshow
+// Animate statistics counter
+function animateStatistics() {
+  const stats = [
+    { id: 'farmers-trained', target: 5000, duration: 2000 },
+    { id: 'villages-reached', target: 10, duration: 1500 },
+    { id: 'crops-covered', target: 11, duration: 1000 },
+    { id: 'regions-active', target: 8, duration: 1500 }
+  ];
+
+  stats.forEach(stat => {
+    const element = document.getElementById(stat.id);
+    if (!element) return;
+    
+    const increment = stat.target / (stat.duration / 16);
+    let current = 0;
+    
+    const updateCounter = () => {
+      current += increment;
+      if (current < stat.target) {
+        element.textContent = Math.floor(current);
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = stat.target;
+      }
+    };
+    
+    // Only animate when section is visible
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        updateCounter();
+        observer.unobserve(element);
+      }
+    }, { threshold: 0.5 });
+    
+    observer.observe(element);
   });
+}
 
-  // Initialize the gallery
-  updateGallery();
+// Form submission handling
+const contactForm = document.querySelector('.contact-form form');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Get form values
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    
+    // Here you would typically send the data to a server
+    console.log('Form submitted:', data);
+    
+    // Show success message
+    alert('Thank you for your message! We will get back to you soon.');
+    contactForm.reset();
+  });
+}
+
+// Subscribe form handling
+const subscribeForm = document.querySelector('.subscribe-form');
+if (subscribeForm) {
+  subscribeForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const emailInput = subscribeForm.querySelector('input[type="email"]');
+    const email = emailInput.value;
+    
+    if (email) {
+      // Here you would typically send the email to your mailing list
+      console.log('Subscribed email:', email);
+      alert('Thank you for subscribing!');
+      emailInput.value = '';
+    }
+  });
+}
+
+// Responsive adjustments
+function handleResize() {
+  if (window.innerWidth > 768) {
+    navMenu.classList.remove('hidden');
+  } else {
+    navMenu.classList.add('hidden');
+  }
+}
+
+window.addEventListener('resize', handleResize);
+handleResize();
+
+// Add class to body when menu is open to prevent scrolling
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menu-button');
+  const body = document.body;
+  
+  menuButton.addEventListener('click', () => {
+    body.classList.toggle('menu-open');
+  });
 });
