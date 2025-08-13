@@ -8,34 +8,48 @@ document.addEventListener('DOMContentLoaded', function() {
   // Show home section by default
   showSection('home');
   
-  // Mobile menu toggle
+  // Mobile menu toggle - improved
   menuButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent this click from triggering document click
+    e.stopPropagation();
+    e.preventDefault();
     navMenu.classList.toggle('show');
     document.body.classList.toggle('no-scroll');
+    
+    // Toggle aria-expanded for accessibility
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
   });
   
-  // Navigation links
+  // Navigation links - improved
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault();
+      // Don't prevent default if it's a dropdown parent
+      if (!this.parentElement.classList.contains('dropdown-menu')) {
+        e.preventDefault();
+      }
+      
       const sectionId = this.getAttribute('data-section') || 
                        this.getAttribute('href').substring(1);
-      showSection(sectionId);
       
-      // Close menu on mobile
-      if (navMenu.classList.contains('show')) {
-        navMenu.classList.remove('show');
-        document.body.classList.remove('no-scroll');
+      if (sectionId) {
+        showSection(sectionId);
+        
+        // Close menu on mobile
+        if (window.innerWidth <= 768) {
+          navMenu.classList.remove('show');
+          document.body.classList.remove('no-scroll');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }
       }
     });
   });
   
-  // Close menu when clicking outside
+  // Close menu when clicking outside - improved
   document.addEventListener('click', function(e) {
     if (!navMenu.contains(e.target) && !menuButton.contains(e.target)) {
       navMenu.classList.remove('show');
       document.body.classList.remove('no-scroll');
+      menuButton.setAttribute('aria-expanded', 'false');
     }
   });
   
@@ -81,17 +95,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function showSection(sectionId) {
-  // Hide all sections
+  // Only hide content sections, not navigation
   document.querySelectorAll('main > section').forEach(section => {
     section.classList.add('hidden');
   });
   
-  // Show requested section
   const section = document.getElementById(sectionId);
   if (section) {
     section.classList.remove('hidden');
     
-    // Scroll to top of section
     window.scrollTo({
       top: section.offsetTop - 80,
       behavior: 'smooth'
