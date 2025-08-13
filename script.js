@@ -54,24 +54,36 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Modal functionality
-  const viewMoreButtons = document.querySelectorAll('.view-more');
-  const closeModalButtons = document.querySelectorAll('.close-modal');
-  const storyModals = document.querySelectorAll('.story-modal');
-  
-  viewMoreButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const storyId = this.getAttribute('data-story');
-      document.getElementById(storyId).classList.add('active');
-      document.body.classList.add('no-scroll');
-    });
+const viewMoreButtons = document.querySelectorAll('.view-more');
+const closeModalButtons = document.querySelectorAll('.close-modal');
+const storyModals = document.querySelectorAll('.story-modal');
+
+viewMoreButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const storyId = this.getAttribute('data-story');
+    const modal = document.getElementById(storyId);
+    modal.classList.add('active');
+    document.body.classList.add('no-scroll');
   });
-  
-  closeModalButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      storyModals.forEach(modal => modal.classList.remove('active'));
+});
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const modal = this.closest('.story-modal');
+    modal.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  });
+});
+
+// Close modals when clicking outside
+storyModals.forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
       document.body.classList.remove('no-scroll');
-    });
+    }
   });
+});
   
   // Form handling
   const contactForm = document.querySelector('.contact-form form');
