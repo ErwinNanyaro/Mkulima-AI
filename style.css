@@ -1262,3 +1262,42 @@ footer {
   justify-content: center;
   gap: 10px;
 }
+
+/* ===== Add these styles to your existing CSS ===== */
+/* Ensure donation buttons are clickable */
+.donate-button {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Make sure modal appears above other content */
+.donation-modal {
+  z-index: 9999;
+}
+
+/* Ensure buttons aren't being hidden */
+.donation-card {
+  position: relative;
+  overflow: visible;
+}
+
+/* Add these if not present to ensure CTA buttons work */
+.cta-button {
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure modals don't conflict with each other */
+.story-modal {
+  z-index: 9998; /* Slightly below donation modal */
+}
