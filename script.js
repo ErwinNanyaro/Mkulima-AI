@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Show home section by default
   showSection('home');
   
-  // Mobile menu toggle - improved
+  // Mobile menu toggle
   menuButton.addEventListener('click', function(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     this.setAttribute('aria-expanded', !isExpanded);
   });
   
-  // Navigation links - improved
+  // Navigation links
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       // Don't prevent default if it's a dropdown parent
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Close menu when clicking outside - improved
+  // Close menu when clicking outside
   document.addEventListener('click', function(e) {
     if (!navMenu.contains(e.target) && !menuButton.contains(e.target)) {
       navMenu.classList.remove('show');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
- // Story Modals functionality
+  // Story Modals functionality
   const viewMoreButtons = document.querySelectorAll('.view-more');
   const closeModalButtons = document.querySelectorAll('.close-modal');
   const storyModals = document.querySelectorAll('.story-modal');
