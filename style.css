@@ -1151,3 +1151,114 @@ footer {
     gap: 30px;
   }
 }
+
+/* Donation Modal Styles */
+.donation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.donation-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.donation-modal .modal-content {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.donation-amount {
+  background-color: rgba(46, 125, 50, 0.1);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.payment-options {
+  display: grid;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.payment-method {
+  background: var(--light-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--primary-color);
+}
+
+.payment-method h4 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-method h4 i {
+  font-size: 1.5rem;
+}
+
+.payment-details {
+  margin-bottom: 15px;
+}
+
+.payment-details p {
+  margin-bottom: 8px;
+}
+
+.copy-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.copy-btn:hover {
+  background-color: var(--dark-color);
+}
+
+.copy-btn.copied {
+  background-color: var(--secondary-color);
+}
+
+.donation-confirmation {
+  background-color: rgba(255, 152, 0, 0.1);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.donation-confirmation p {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
