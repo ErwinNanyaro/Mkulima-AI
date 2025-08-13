@@ -431,45 +431,49 @@
   </section>
 
   <section id="contact" class="hidden">
-    <h2>Contact Us</h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <h3>Get In Touch</h3>
-        <p><i class="fas fa-envelope"></i> <a href="contact@mkulimaai.app">contact@mkulimaai.app</a></p>
-        <p><i class="fas fa-phone"></i> +255 754996969</p>
-        <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
-        
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" aria-label="LinkedIn" class="social-link">
-          <a href="https://www.instagram.com/erwinnanyaro1?igsh=cm95b25nZThyYnph&utm_source=qr" target="_blank" aria-label="Instagram" class="social-link">
-        </div>
-      </div>
-      <div class="contact-form">
-        <h3>Send Us a Message</h3>
-        <form>
-          <div class="form-group">
-            <input type="text" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Your Email" required>
-          </div>
-          <div class="form-group">
-            <select required>
-              <option value="">Select Inquiry Type</option>
-              <option>Partnership Opportunities</option>
-              <option>Press Inquiry</option>
-              <option>Technical Support</option>
-              <option>General Question</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="submit-button">Send Message</button>
-        </form>
+  <h2>Contact Us</h2>
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Get In Touch</h3>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:contact@mkulimaai.app">contact@mkulimaai.app</a></p>
+      <p><i class="fas fa-phone"></i> +255 754 996 969</p>
+      <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.instagram.com/erwinnanyaro1" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
     </div>
-  </section>
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <select name="inquiry" required>
+            <option value="">Select Inquiry Type</option>
+            <option value="partnership">Partnership Opportunities</option>
+            <option value="press">Press Inquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="general">General Question</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
