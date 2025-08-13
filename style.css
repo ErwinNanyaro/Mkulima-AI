@@ -1039,6 +1039,7 @@ footer {
     padding: 30px;
     overflow-y: auto;
     z-index: 999;
+    display: block !important; /* Force show in mobile */
   }
   
   nav.show {
@@ -1096,8 +1097,22 @@ footer {
   }
 }
 
-/* Ensure dropdowns work on desktop */
+/* Ensure desktop menu is always visible */
 @media (min-width: 769px) {
+  nav {
+    display: block !important;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .menu-button {
+    display: none !important;
+  }
+  
   .dropdown-menu {
     display: block;
     opacity: 0;
@@ -1110,7 +1125,6 @@ footer {
     visibility: visible;
   }
 }
-
 @media (max-width: 576px) {
   .hero-section {
     padding: 120px 20px 40px;
