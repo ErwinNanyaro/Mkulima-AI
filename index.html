@@ -440,17 +440,17 @@
       <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
       
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+        <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://www.instagram.com/erwinnanyaro1" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+        <a href="https://www.instagram.com/erwinnanyaro1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
       </div>
     </div>
     <div class="contact-form">
       <h3>Send Us a Message</h3>
-      <form id="contactForm">
+      <form id="contactForm" action="https://formspree.io/f/https://formspree.io/f/xeozdqrl" method="POST">
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" required>
         </div>
@@ -458,18 +458,19 @@
           <input type="email" name="email" placeholder="Your Email" required>
         </div>
         <div class="form-group">
-          <select name="inquiry" required>
+          <select name="inquiry-type" required>
             <option value="">Select Inquiry Type</option>
-            <option value="partnership">Partnership Opportunities</option>
-            <option value="press">Press Inquiry</option>
-            <option value="support">Technical Support</option>
-            <option value="general">General Question</option>
+            <option value="Partnership">Partnership Opportunities</option>
+            <option value="Press">Press Inquiry</option>
+            <option value="Support">Technical Support</option>
+            <option value="General">General Question</option>
           </select>
         </div>
         <div class="form-group">
           <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         </div>
         <button type="submit" class="submit-button">Send Message</button>
+        <div id="form-status"></div>
       </form>
     </div>
   </div>
