@@ -53,37 +53,86 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Modal functionality
-const viewMoreButtons = document.querySelectorAll('.view-more');
-const closeModalButtons = document.querySelectorAll('.close-modal');
-const storyModals = document.querySelectorAll('.story-modal');
+ // Story Modals functionality
+  const viewMoreButtons = document.querySelectorAll('.view-more');
+  const closeModalButtons = document.querySelectorAll('.close-modal');
+  const storyModals = document.querySelectorAll('.story-modal');
 
-viewMoreButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const storyId = this.getAttribute('data-story');
-    const modal = document.getElementById(storyId);
-    modal.classList.add('active');
-    document.body.classList.add('no-scroll');
+  viewMoreButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const storyId = this.getAttribute('data-story');
+      const modal = document.getElementById(storyId);
+      modal.classList.add('active');
+      document.body.classList.add('no-scroll');
+    });
   });
-});
 
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const modal = this.closest('.story-modal');
-    modal.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-  });
-});
-
-// Close modals when clicking outside
-storyModals.forEach(modal => {
-  modal.addEventListener('click', function(e) {
-    if (e.target === this) {
-      this.classList.remove('active');
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const modal = this.closest('.story-modal, .donation-modal');
+      modal.classList.remove('active');
       document.body.classList.remove('no-scroll');
-    }
+    });
   });
-});
+
+  // Close modals when clicking outside
+  storyModals.forEach(modal => {
+    modal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  });
+  
+  // Donation Modal functionality
+  const donateButtons = document.querySelectorAll('.donate-button');
+  const donationModal = document.getElementById('donation-modal');
+  const donationPurpose = document.getElementById('donation-purpose');
+  const donationAmount = document.getElementById('donation-amount');
+  const copyButtons = document.querySelectorAll('.copy-btn');
+
+  if (donateButtons.length && donationModal) {
+    // Donation button click handlers
+    donateButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const card = this.closest('.donation-card');
+        const purpose = card.querySelector('h4').textContent;
+        const amount = card.querySelector('p').textContent;
+        
+        donationPurpose.textContent = purpose;
+        donationAmount.textContent = amount;
+        donationModal.classList.add('active');
+        document.body.classList.add('no-scroll');
+      });
+    });
+
+    // Copy buttons functionality
+    copyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const textToCopy = this.getAttribute('data-text');
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          this.classList.add('copied');
+          this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          
+          setTimeout(() => {
+            this.classList.remove('copied');
+            this.innerHTML = `<i class="fas fa-copy"></i> Copy ${textToCopy.length > 10 ? 'Number' : 'Text'}`;
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
+      });
+    });
+
+    // Close donation modal when clicking outside
+    donationModal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  }
   
   // Form handling
   const contactForm = document.querySelector('.contact-form form');
@@ -94,16 +143,6 @@ storyModals.forEach(modal => {
       this.reset();
     });
   }
-  
-  // Close modals when clicking outside
-  storyModals.forEach(modal => {
-    modal.addEventListener('click', function(e) {
-      if (e.target === this) {
-        this.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-  });
 });
 
 function showSection(sectionId) {
