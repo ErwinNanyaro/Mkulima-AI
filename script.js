@@ -44,6 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // CTA Button handlers (NEW)
+  document.querySelectorAll('.cta-button').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('href').substring(1);
+      showSection(target);
+    });
+  });
+  
   // Close menu when clicking outside
   document.addEventListener('click', function(e) {
     if (!navMenu.contains(e.target) && !menuButton.contains(e.target)) {
@@ -95,13 +104,20 @@ document.addEventListener('DOMContentLoaded', function() {
   if (donateButtons.length && donationModal) {
     // Donation button click handlers
     donateButtons.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
         const card = this.closest('.donation-card');
         const purpose = card.querySelector('h4').textContent;
         const amount = card.querySelector('p').textContent;
         
         donationPurpose.textContent = purpose;
         donationAmount.textContent = amount;
+        
+        // Hide any other open modals
+        document.querySelectorAll('.story-modal.active, .donation-modal.active').forEach(m => {
+          m.classList.remove('active');
+        });
+        
         donationModal.classList.add('active');
         document.body.classList.add('no-scroll');
       });
@@ -155,6 +171,7 @@ function showSection(sectionId) {
   if (section) {
     section.classList.remove('hidden');
     
+    // Smooth scroll to section
     window.scrollTo({
       top: section.offsetTop - 80,
       behavior: 'smooth'
