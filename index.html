@@ -528,6 +528,7 @@
 
     .fundraising-progress {
       margin-top: 2rem;
+      display: none;
     }
 
     .progress-bar {
@@ -851,6 +852,15 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Section visibility control */
+    .section-content {
+      display: none;
+    }
+    
+    .section-content.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -901,8 +911,8 @@
     </div>
   </section>
 
-  <section id="who-we-are" class="section section-alt hidden">
-    <div class="container">
+  <section id="who-we-are" class="section section-alt">
+    <div class="container section-content">
       <h2 class="text-center">Our Mission & Vision</h2>
       <div class="mission-container">
         <div class="mission-card fade-in">
@@ -943,8 +953,8 @@
     </div>
   </section>
 
-  <section id="founder-story" class="section hidden">
-    <div class="container">
+  <section id="founder-story" class="section">
+    <div class="container section-content">
       <h2 class="text-center">Founder Story</h2>
       <div class="founder-container">
         <div class="founder-image fade-in">
@@ -964,8 +974,8 @@
     </div>
   </section>
 
-  <section id="features" class="section section-alt hidden">
-    <div class="container">
+  <section id="features" class="section section-alt">
+    <div class="container section-content">
       <h2 class="text-center">App Features</h2>
       <div class="app-features-grid">
         <div class="app-screenshot fade-in">
@@ -1012,8 +1022,8 @@
     </div>
   </section>
 
-  <section id="research-journeys" class="section hidden">
-    <div class="container">
+  <section id="research-journeys" class="section">
+    <div class="container section-content">
       <h2 class="text-center">Research Journeys in Tanzania</h2>
       <div class="research-journeys-container">
         <!-- Journey 1 -->
@@ -1193,8 +1203,8 @@
     </div>
   </section>
 
-  <section id="support" class="section section-alt hidden">
-    <div class="container">
+  <section id="support" class="section section-alt">
+    <div class="container section-content">
       <h2 class="text-center">Support Our Mission</h2>
       <div class="campaign-container fade-in">
         <div class="campaign-description">
@@ -1290,8 +1300,8 @@
     </div>
   </section>
 
-  <section id="contact" class="section hidden">
-    <div class="container">
+  <section id="contact" class="section">
+    <div class="container section-content">
       <h2 class="text-center">Contact Us</h2>
       <div class="contact-container">
         <div class="contact-info fade-in">
@@ -1393,35 +1403,76 @@
     
     // Section navigation
     const navLinks = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('section');
+    const sectionContents = document.querySelectorAll('.section-content');
     
+    // Function to show a specific section
+    function showSection(sectionId) {
+      // Hide all section contents
+      sectionContents.forEach(content => {
+        content.style.display = 'none';
+      });
+      
+      // Show the selected section
+      const targetSection = document.querySelector(`#${sectionId} .section-content`);
+      if (targetSection) {
+        targetSection.style.display = 'block';
+        
+        // Scroll to the top of the section
+        window.scrollTo({
+          top: targetSection.offsetTop - 80,
+          behavior: 'smooth'
+        });
+        
+        // Trigger fade-in animations
+        setTimeout(() => {
+          const fadeElements = targetSection.querySelectorAll('.fade-in');
+          fadeElements.forEach(element => {
+            element.classList.add('visible');
+          });
+        }, 100);
+      }
+    }
+    
+    // Set up navigation click handlers
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetSection = this.getAttribute('data-section');
         
-        // Hide all sections
-        sections.forEach(section => {
-          section.classList.add('hidden');
-        });
-        
-        // Show target section
-        document.getElementById(targetSection).classList.remove('hidden');
+        if (targetSection) {
+          // Update active link
+          navLinks.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show the target section
+          showSection(targetSection);
+          
+          // Close mobile menu if open
+          if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            menuButton.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+    
+    // Set up CTA button handlers
+    document.querySelectorAll('.cta-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.getAttribute('href').substring(1);
         
         // Update active link
         navLinks.forEach(link => link.classList.remove('active'));
-        this.classList.add('active');
+        document.querySelector(`nav a[data-section="${target}"]`).classList.add('active');
         
-        // Close mobile menu if open
-        if (menu.classList.contains('active')) {
-          menu.classList.remove('active');
-          menuButton.setAttribute('aria-expanded', 'false');
-        }
-        
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Show the target section
+        showSection(target);
       });
     });
+    
+    // Show home section by default
+    showSection('home');
     
     // Modal functionality
     const viewMoreButtons = document.querySelectorAll('.view-more');
@@ -1547,9 +1598,6 @@
         }
       });
     }
-    
-    // Initial check
-    checkFade();
     
     // Check on scroll
     window.addEventListener('scroll', checkFade);
