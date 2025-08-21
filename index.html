@@ -6,210 +6,1067 @@
   <meta name="description" content="Mkulima AI - AI-powered mobile app for smallholder farmers in Tanzania. Offline agricultural assistance in Swahili.">
   <title>Mkulima AI - Smart Farming for Tanzania</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2E7D32;
+      --primary-dark: #1B5E20;
+      --primary-light: #4CAF50;
+      --secondary: #FF9800;
+      --accent: #2196F3;
+      --text: #333333;
+      --text-light: #666666;
+      --background: #FFFFFF;
+      --background-alt: #F8F9FA;
+      --border: #E0E0E0;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--background);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-alt {
+      background-color: var(--background-alt);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-center h2:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: var(--transition);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .organization-name {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: var(--text);
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover:after,
+    nav ul li a.active:after {
+      width: 100%;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 0.5rem 0;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    nav ul li:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li {
+      padding: 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text);
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--background-alt);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 8rem 0 5rem;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(76, 175, 80, 0.1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-text {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .cta-button.primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-button.primary:hover {
+      background: var(--primary-dark);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      flex: 1;
+      position: relative;
+    }
+
+    .video-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
+      transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+      transition: var(--transition);
+    }
+
+    .video-container:hover {
+      transform: perspective(1000px) rotateY(0) rotateX(0);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      display: block;
+    }
+
+    /* Mission Section */
+    .mission-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .mission-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .mission-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    /* Founder Section */
+    .founder-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .founder-image {
+      position: relative;
+    }
+
+    .founder-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .founder-content {
+      padding: 1rem 0;
+    }
+
+    /* Features Section */
+    .app-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .app-screenshot {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .app-screenshot:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .app-screenshot img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .app-screenshot h3 {
+      padding: 1rem 1.5rem 0;
+    }
+
+    .app-screenshot p {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    /* Research Section */
+    .research-journeys-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .research-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .research-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .research-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .research-content {
+      padding: 1.5rem;
+    }
+
+    .view-more {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .view-more:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Support Section */
+    .campaign-container {
+      background: white;
+      border-radius: var(--radius);
+      padding: 3rem;
+      box-shadow: var(--shadow);
+    }
+
+    .donation-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .donation-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .donation-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .donation-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .donate-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .donate-button:hover {
+      background: var(--primary-dark);
+    }
+
+    .fundraising-progress {
+      margin-top: 2rem;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 5px;
+      width: 25%;
+      transition: width 1s ease;
+    }
+
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .contact-info {
+      padding: 1rem 0;
+    }
+
+    .contact-info p {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .contact-info i {
+      color: var(--primary);
+      width: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--background-alt);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+
+    .submit-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .submit-button:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Footer */
+    footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section h4 {
+      color: white;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-section h4:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-section p {
+      color: #ccc;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    .copyright {
+      color: #999;
+      margin-bottom: 0;
+    }
+
+    /* Modal Styles */
+    .story-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 800px;
+      margin: 2rem auto;
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-content, .hero-visual {
+        width: 100%;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-button {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+      
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      nav ul li {
+        width: 100%;
+      }
+      
+      nav ul li a {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-left: 1rem;
+        display: none;
+      }
+      
+      nav ul li:hover .dropdown-menu {
+        display: block;
+      }
+      
+      .section {
+        padding: 3rem 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .mission-card, .feature-item, .app-screenshot, .research-card, .donation-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 <header>
-  <button class="menu-button" id="menu-button" aria-expanded="false">Menu</button>
-  <div class="header-content">
-    <img src="logo.png" alt="Logo" class="logo">
-    <span class="organization-name">Mkulima AI</span>
+  <div class="container header-container">
+    <div class="logo-container">
+      <img src="logo.png" alt="Mkulima AI Logo" class="logo">
+      <span class="organization-name">Mkulima AI</span>
+    </div>
+    <button class="menu-button" id="menu-button" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="menu">
+      <ul>
+        <li><a href="#" data-section="home" class="active">Home</a></li>
+        <li>
+          <a href="#" data-section="about">About</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-section="who-we-are">Our Mission</a></li>
+            <li><a href="#" data-section="founder-story">Founder Story</a></li>
+          </ul>
+        </li>
+        <li><a href="#" data-section="features">App Features</a></li>
+        <li><a href="#" data-section="research-journeys">Research Journeys</a></li>
+        <li><a href="#" data-section="support">Support Our Mission</a></li>
+        <li><a href="#" data-section="contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-  <nav id="menu">
-    <ul>
-      <li><a href="#" data-section="home">Home</a></li>
-      <li>
-        <a href="#" data-section="about">About</a>
-        <ul class="dropdown-menu">
-          <li><a href="#" data-section="who-we-are">Our Mission</a></li>
-          <li><a href="#" data-section="founder-story">Founder Story</a></li>
-        </ul>
-      </li>
-    <li>
-      <a href="#" data-section="features">App Features</a>
-    </li>
-    <li>
-      <a href="#" data-section="research-journeys">Research Journeys</a>
-    </li>
-    <li><a href="#" data-section="support">Support Our Mission</a></li>
-    <li><a href="#" data-section="contact">Contact</a></li>
-  </ul>
-</nav>
-</header> <!-- Add this closing tag before <main> -->
+</header>
+
 <main>
   <section id="home" class="hero-section">
-    <div class="hero-content">
-      <h1>Empowering Farmers with AI</h1>
-      <p class="hero-text">Swahili-based, offline-ready artificial intelligence for smallholder farmers in Tanzania</p>
-      <div class="cta-buttons">
-        <a href="#support" class="cta-button">Support Our Mission</a>
-        <a href="#features" class="cta-button secondary">Learn About Features</a>
+    <div class="container hero-container">
+      <div class="hero-content fade-in">
+        <h1>Empowering Tanzanian Farmers with AI</h1>
+        <p class="hero-text">Swahili-based, offline-ready artificial intelligence for smallholder farmers in Tanzania</p>
+        <div class="cta-buttons">
+          <a href="#support" class="cta-button primary">Support Our Mission</a>
+          <a href="#features" class="cta-button secondary">Explore Features</a>
+        </div>
       </div>
-    </div>
-    <div class="video-container">
-      <iframe src="https://drive.google.com/file/d/1FJEiEISl_jqHkY95stIv3NHELFg1cmZ5/preview" width="560" height="315" allow="autoplay"></iframe>
-    </div>
-  </section>
-
-  <section id="who-we-are" class="hidden">
-    <h2>Our Mission & Vision</h2>
-    <div class="mission-container">
-      <div class="mission-card">
-        <i class="fas fa-bullseye mission-icon"></i>
-        <h3>Mission</h3>
-        <p>To empower rural smallholder farmers with inclusive, localized, and offline-ready artificial intelligence tools that enhance productivity, improve decision-making, and elevate household livelihoods across Tanzania and beyond.</p>
-      </div>
-      <div class="mission-card">
-        <i class="fas fa-eye mission-icon"></i>
-        <h3>Vision</h3>
-        <p>To become Africa's most accessible agricultural AI platform, closing the digital divide and transforming rural agriculture through inclusive technology designed with the farmer at heart.</p>
-      </div>
-    </div>
-
-    <h3>Why Mkulima AI?</h3>
-    <div class="features-grid">
-      <div class="feature-item">
-        <i class="fas fa-language feature-icon"></i>
-        <h4>Swahili Interface</h4>
-        <p>Designed specifically for Tanzanian farmers with full Swahili language support</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-wifi-slash feature-icon"></i>
-        <h4>Offline Functionality</h4>
-        <p>Works without internet in remote rural areas</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-leaf feature-icon"></i>
-        <h4>Organic Focus</h4>
-        <p>Promotes cost-effective organic farming solutions</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-users feature-icon"></i>
-        <h4>Farmer-Centered</h4>
-        <p>Developed with direct input from smallholder farmers</p>
+      <div class="hero-visual fade-in">
+        <div class="video-container">
+          <iframe src="https://drive.google.com/file/d/1FJEiEISl_jqHkY95stIv3NHELFg1cmZ5/preview" width="560" height="315" allow="autoplay"></iframe>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="founder-story" class="hidden">
-    <h2>Founder Story</h2>
-    <div class="founder-container">
-      <div class="founder-image">
-        <img src="erwin-nanyaro.png" alt="Erwin Nanyaro">
+  <section id="who-we-are" class="section section-alt hidden">
+    <div class="container">
+      <h2 class="text-center">Our Mission & Vision</h2>
+      <div class="mission-container">
+        <div class="mission-card fade-in">
+          <i class="fas fa-bullseye mission-icon"></i>
+          <h3>Mission</h3>
+          <p>To empower rural smallholder farmers with inclusive, localized, and offline-ready artificial intelligence tools that enhance productivity, improve decision-making, and elevate household livelihoods across Tanzania and beyond.</p>
+        </div>
+        <div class="mission-card fade-in">
+          <i class="fas fa-eye mission-icon"></i>
+          <h3>Vision</h3>
+          <p>To become Africa's most accessible agricultural AI platform, closing the digital divide and transforming rural agriculture through inclusive technology designed with the farmer at heart.</p>
+        </div>
       </div>
-      <div class="founder-content">
-        <h3>Erwin Nanyaro</h3>
-        <p>Hailing from Tanzania, Erwin Nanyaro is a project scholar and AI self taught technologist with a passion for empowering smallholder farmers through appropriate technology. His journey into agricultural innovation began with the transformative CLIFT project research in 2024, a collaborative initiative between Mzumbe University and the University of Copenhagen.</p>
+
+      <h3 class="text-center">Why Mkulima AI?</h3>
+      <div class="features-grid">
+        <div class="feature-item fade-in">
+          <i class="fas fa-language feature-icon"></i>
+          <h4>Swahili Interface</h4>
+          <p>Designed specifically for Tanzanian farmers with full Swahili language support</p>
+        </div>
+        <div class="feature-item fade-in">
+          <i class="fas fa-wifi-slash feature-icon"></i>
+          <h4>Offline Functionality</h4>
+          <p>Works without internet in remote rural areas</p>
+        </div>
+        <div class="feature-item fade-in">
+          <i class="fas fa-leaf feature-icon"></i>
+          <h4>Organic Focus</h4>
+          <p>Promotes cost-effective organic farming solutions</p>
+        </div>
+        <div class="feature-item fade-in">
+          <i class="fas fa-users feature-icon"></i>
+          <h4>Farmer-Centered</h4>
+          <p>Developed with direct input from smallholder farmers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="founder-story" class="section hidden">
+    <div class="container">
+      <h2 class="text-center">Founder Story</h2>
+      <div class="founder-container">
+        <div class="founder-image fade-in">
+          <img src="erwin-nanyaro.png" alt="Erwin Nanyaro">
+        </div>
+        <div class="founder-content fade-in">
+          <h3>Erwin Nanyaro</h3>
+          <p>Hailing from Tanzania, Erwin Nanyaro is a project scholar and AI self taught technologist with a passion for empowering smallholder farmers through appropriate technology. His journey into agricultural innovation began with the transformative CLIFT project research in 2024, a collaborative initiative between Mzumbe University and the University of Copenhagen.</p>
+          
+          <p>While conducting surveys across two Tanzanian regions (Morogoro, and Arusha), Erwin witnessed firsthand the technological gaps limiting smallholder farmers. The lack of accessible, localized digital tools for these farmers - who form the backbone of Tanzania's agriculture - inspired the creation of Mkulima AI.</p>
+          
+          <p>Recognizing that 80% of Tanzania's farmers are smallholders often excluded from digital solutions, Erwin dedicated himself to developing an AI platform that works offline, in Swahili, and addresses real farmer needs identified through extensive field research.</p>
+          
+          <p>Mkulima AI represents the convergence of Erwin's technical skills with his deep understanding of rural farming challenges - creating a tool that bridges the digital divide while respecting traditional farming knowledge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section section-alt hidden">
+    <div class="container">
+      <h2 class="text-center">App Features</h2>
+      <div class="app-features-grid">
+        <div class="app-screenshot fade-in">
+          <img src="app-homescreen.jpg" alt="Mkulima AI Homescreen">
+          <h3>Intuitive Homescreen</h3>
+          <p>Simple navigation designed for farmers with varying tech literacy</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-disease-detection.jpg" alt="Disease Detection">
+          <h3>Disease Detection</h3>
+          <p>AI-powered identification of crop diseases with 92% accuracy</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-soil-analysis.jpg" alt="Soil Analysis">
+          <h3>Soil Analysis</h3>
+          <p>Recommendations based on visual soil assessment</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-planting-guide.jpg" alt="Planting Guide">
+          <h3>Planting Guide</h3>
+          <p>Optimal planting times and techniques for each crop</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-calculator.jpg" alt="Profit Calculator">
+          <h3>Profit Calculator</h3>
+          <p>Break-even analysis and yield projections</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-storage.jpg" alt="Storage Techniques">
+          <h3>Storage Solutions</h3>
+          <p>Low-cost preservation methods to reduce post-harvest losses</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-processing.jpg" alt="Processing Techniques">
+          <h3>Processing Methods</h3>
+          <p>Value-addition techniques to increase income</p>
+        </div>
+        <div class="app-screenshot fade-in">
+          <img src="app-marketplace.jpg" alt="Agro Marketplace">
+          <h3>Market Connections</h3>
+          <p>Links farmers with buyers, agro-dealers, and seed suppliers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research-journeys" class="section hidden">
+    <div class="container">
+      <h2 class="text-center">Research Journeys in Tanzania</h2>
+      <div class="research-journeys-container">
+        <!-- Journey 1 -->
+        <div class="research-card fade-in">
+          <img src="uluguru-mountains.jpg" alt="Uluguru Mountains">
+          <div class="research-content">
+            <h3>Bridging the Gap in Uluguru Mountains</h3>
+            <p>Engaging with strawberry farmers to balance agriculture and water sustainability. Pioneering AI-driven solutions for irrigation and organic farming...</p>
+            <button class="view-more" data-story="journey1">View Full Story</button>
+          </div>
+        </div>
         
-        <p>While conducting surveys across two Tanzanian regions (Morogoro, and Arusha), Erwin witnessed firsthand the technological gaps limiting smallholder farmers. The lack of accessible, localized digital tools for these farmers - who form the backbone of Tanzania's agriculture - inspired the creation of Mkulima AI.</p>
+        <!-- Journey 2 -->
+        <div class="research-card fade-in">
+          <img src="ai-revolution.jpg" alt="AI Revolution">
+          <div class="research-content">
+            <h3>The AI Revolution by Tanzanians</h3>
+            <p>Building an app that works offline, in Swahili, with solutions based on local knowledge rather than expensive imported inputs...</p>
+            <button class="view-more" data-story="journey2">View Full Story</button>
+          </div>
+        </div>
         
-        <p>Recognizing that 80% of Tanzania's farmers are smallholders often excluded from digital solutions, Erwin dedicated himself to developing an AI platform that works offline, in Swahili, and addresses real farmer needs identified through extensive field research.</p>
+        <!-- Journey 3 -->
+        <div class="research-card fade-in">
+          <img src="eliah-farm.jpg" alt="Farmer Eliah">
+          <div class="research-content">
+            <h3>From Code to Community Impact</h3>
+            <p>Meeting Eliah in Maekani - a farmer battling crop losses until Mkulima AI provided affordable, sustainable solutions...</p>
+            <button class="view-more" data-story="journey3">View Full Story</button>
+          </div>
+        </div>
         
-        <p>Mkulima AI represents the convergence of Erwin's technical skills with his deep understanding of rural farming challenges - creating a tool that bridges the digital divide while respecting traditional farming knowledge.</p>
+        <!-- Journey 4 -->
+        <div class="research-card fade-in">
+          <img src="transformation.jpg" alt="Farm Transformation">
+          <div class="research-content">
+            <h3>Hope in Action: One Farmer's Transformation</h3>
+            <p>Returning to Eliah's farm weeks later to see remarkable recovery after implementing Mkulima AI's recommendations...</p>
+            <button class="view-more" data-story="journey4">View Full Story</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section id="features" class="hidden">
-    <h2>App Features</h2>
-    <div class="app-features-grid">
-      <div class="app-screenshot">
-        <img src="app-homescreen.jpg" alt="Mkulima AI Homescreen">
-        <h3>Intuitive Homescreen</h3>
-        <p>Simple navigation designed for farmers with varying tech literacy</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-disease-detection.jpg" alt="Disease Detection">
-        <h3>Disease Detection</h3>
-        <p>AI-powered identification of crop diseases with 92% accuracy</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-soil-analysis.jpg" alt="Soil Analysis">
-        <h3>Soil Analysis</h3>
-        <p>Recommendations based on visual soil assessment</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-planting-guide.jpg" alt="Planting Guide">
-        <h3>Planting Guide</h3>
-        <p>Optimal planting times and techniques for each crop</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-calculator.jpg" alt="Profit Calculator">
-        <h3>Profit Calculator</h3>
-        <p>Break-even analysis and yield projections</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-storage.jpg" alt="Storage Techniques">
-        <h3>Storage Solutions</h3>
-        <p>Low-cost preservation methods to reduce post-harvest losses</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-processing.jpg" alt="Processing Techniques">
-        <h3>Processing Methods</h3>
-        <p>Value-addition techniques to increase income</p>
-      </div>
-      <div class="app-screenshot">
-        <img src="app-marketplace.jpg" alt="Agro Marketplace">
-        <h3>Market Connections</h3>
-        <p>Links farmers with buyers, agro-dealers, and seed suppliers</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="research-journeys" class="hidden">
-    <h2>Research Journeys in Tanzania</h2>
-    <div class="research-journeys-container">
-      <!-- Journey 1 -->
-      <div class="research-card">
-        <img src="uluguru-mountains.jpg" alt="Uluguru Mountains">
+      <!-- Journey 5 -->
+      <div class="research-card fade-in" style="max-width: 600px; margin: 2rem auto;">
+        <img src="eliah-transformation.jpg" alt="Eliah's Farm Transformation">
         <div class="research-content">
-          <h3>Bridging the Gap in Uluguru Mountains</h3>
-          <p>Engaging with strawberry farmers to balance agriculture and water sustainability. Pioneering AI-driven solutions for irrigation and organic farming...</p>
-          <button class="view-more" data-story="journey1">View Full Story</button>
-        </div>
-      </div>
-      
-      <!-- Journey 2 -->
-      <div class="research-card">
-        <img src="ai-revolution.jpg" alt="AI Revolution">
-        <div class="research-content">
-          <h3>The AI Revolution by Tanzanians</h3>
-          <p>Building an app that works offline, in Swahili, with solutions based on local knowledge rather than expensive imported inputs...</p>
-          <button class="view-more" data-story="journey2">View Full Story</button>
-        </div>
-      </div>
-      
-      <!-- Journey 3 -->
-      <div class="research-card">
-        <img src="eliah-farm.jpg" alt="Farmer Eliah">
-        <div class="research-content">
-          <h3>From Code to Community Impact</h3>
-          <p>Meeting Eliah in Maekani - a farmer battling crop losses until Mkulima AI provided affordable, sustainable solutions...</p>
-          <button class="view-more" data-story="journey3">View Full Story</button>
-        </div>
-      </div>
-      
-      <!-- Journey 4 -->
-      <div class="research-card">
-        <img src="transformation.jpg" alt="Farm Transformation">
-        <div class="research-content">
-          <h3>Hope in Action: One Farmer's Transformation</h3>
-          <p>Returning to Eliah's farm weeks later to see remarkable recovery after implementing Mkulima AI's recommendations...</p>
-          <button class="view-more" data-story="journey4">View Full Story</button>
+          <h3>Real Impact in Maekani</h3>
+          <p>Documenting Eliah's journey from struggling with persistent crop diseases to successful recovery using Mkulima AI's diagnosis and recommendations...</p>
+          <button class="view-more" data-story="journey5">View Full Story</button>
         </div>
       </div>
     </div>
-
-    <!-- Journey 5 -->
-    <div class="research-card">
-      <img src="eliah-transformation.jpg" alt="Eliah's Farm Transformation">
-      <div class="research-content">
-        <h3>Real Impact in Maekani</h3>
-        <p>Documenting Eliah's journey from struggling with persistent crop diseases to successful recovery using Mkulima AI's diagnosis and recommendations...</p>
-        <button class="view-more" data-story="journey5">View Full Story</button>
-      </div>
-    </div>
-  </div>
     
     <!-- Full Story Modals -->
     <div id="journey1" class="story-modal">
@@ -266,255 +1123,437 @@
     </div>
 
     <!-- Journey 5 Modal -->
-<div id="journey5" class="story-modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <img src="eliah-transformation.jpg" alt="Eliah's Farm Transformation">
-    <h3>Real Impact in Maekani: From Struggle to Success</h3>
-    
-    <div class="story-intro">
-      <p>In the village of Maekani, we witnessed a remarkable transformation when Eliah, a smallholder farmer battling persistent crop diseases for over a year, adopted Mkulima AI's solutions.</p>
+    <div id="journey5" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="eliah-transformation.jpg" alt="Eliah's Farm Transformation">
+        <h3>Real Impact in Maekani: From Struggle to Success</h3>
+        
+        <div class="story-intro">
+          <p>In the village of Maekani, we witnessed a remarkable transformation when Eliah, a smallholder farmer battling persistent crop diseases for over a year, adopted Mkulima AI's solutions.</p>
+        </div>
+        
+        <div class="image-comparison">
+          <div class="comparison-item">
+            <img src="eliah-before.jpg" alt="Eliah's farm before Mkulima AI">
+            <p class="image-caption">Before: Diseased pepper plants</p>
+          </div>
+          <div class="comparison-item">
+            <img src="eliah-after.jpg" alt="Eliah's farm after Mkulima AI">
+            <p class="image-caption">After: Healthy plants 3 weeks later</p>
+          </div>
+        </div>
+        
+        <div class="story-details">
+          <h4>The Turning Point</h4>
+          <p>After countless failed attempts with chemical treatments, Mkulima AI diagnosed Pepper Early Blight within minutes. Eliah implemented our recommendations:</p>
+          
+          <ul class="solution-list">
+            <li><i class="fas fa-check-circle"></i> Removal of infected plants to prevent disease spread</li>
+            <li><i class="fas fa-check-circle"></i> Neem oil application as organic pesticide</li>
+            <li><i class="fas fa-check-circle"></i> Improved watering techniques to avoid leaf wetness</li>
+            <li><i class="fas fa-check-circle"></i> Proper mulching to prevent soil contamination</li>
+          </ul>
+          
+          <div class="testimonial-highlight">
+            <div class="quote-icon">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="testimonial-text">"After removing the infected plants, truly I did not see that challenge anymore. The difference is huge... it helped me identify the disease and solve it... and that increased my harvests."</p>
+            <p class="testimonial-author">— Eliah Zephania, Farmer</p>
+          </div>
+          
+          <h4>Lasting Impact</h4>
+          <p>Eliah's success demonstrates how accessible AI technology can revolutionize smallholder farming:</p>
+          
+          <div class="impact-grid">
+            <div class="impact-item">
+              <i class="fas fa-flask"></i>
+              <p>Accurate diagnoses without expensive lab tests</p>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-leaf"></i>
+              <p>Affordable, sustainable solutions</p>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-user-shield"></i>
+              <p>Restored agency to farmers</p>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-utensils"></i>
+              <p>Measurable impact on food security</p>
+            </div>
+          </div>
+          
+          <div class="story-conclusion">
+            <p>This transformation represents the potential for thousands of Tanzanian smallholder farmers when equipped with the right technological tools.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="image-comparison">
-      <div class="comparison-item">
-        <img src="eliah-before.jpg" alt="Eliah's farm before Mkulima AI">
-        <p class="image-caption">Before: Diseased pepper plants</p>
-      </div>
-      <div class="comparison-item">
-        <img src="eliah-after.jpg" alt="Eliah's farm after Mkulima AI">
-        <p class="image-caption">After: Healthy plants 3 weeks later</p>
-      </div>
-    </div>
-    
-    <div class="story-details">
-      <h4>The Turning Point</h4>
-      <p>After countless failed attempts with chemical treatments, Mkulima AI diagnosed Pepper Early Blight within minutes. Eliah implemented our recommendations:</p>
-      
-      <ul class="solution-list">
-        <li><i class="fas fa-check-circle"></i> Removal of infected plants to prevent disease spread</li>
-        <li><i class="fas fa-check-circle"></i> Neem oil application as organic pesticide</li>
-        <li><i class="fas fa-check-circle"></i> Improved watering techniques to avoid leaf wetness</li>
-        <li><i class="fas fa-check-circle"></i> Proper mulching to prevent soil contamination</li>
-      </ul>
-      
-      <div class="testimonial-highlight">
-        <div class="quote-icon">
-          <i class="fas fa-quote-left"></i>
-        </div>
-        <p class="testimonial-text">"After removing the infected plants, truly I did not see that challenge anymore. The difference is huge... it helped me identify the disease and solve it... and that increased my harvests."</p>
-        <p class="testimonial-author">— Eliah Zephania, Farmer</p>
-      </div>
-      
-      <h4>Lasting Impact</h4>
-      <p>Eliah's success demonstrates how accessible AI technology can revolutionize smallholder farming:</p>
-      
-      <div class="impact-grid">
-        <div class="impact-item">
-          <i class="fas fa-flask"></i>
-          <p>Accurate diagnoses without expensive lab tests</p>
-        </div>
-        <div class="impact-item">
-          <i class="fas fa-leaf"></i>
-          <p>Affordable, sustainable solutions</p>
-        </div>
-        <div class="impact-item">
-          <i class="fas fa-user-shield"></i>
-          <p>Restored agency to farmers</p>
-        </div>
-        <div class="impact-item">
-          <i class="fas fa-utensils"></i>
-          <p>Measurable impact on food security</p>
-        </div>
-      </div>
-      
-      <div class="story-conclusion">
-        <p>This transformation represents the potential for thousands of Tanzanian smallholder farmers when equipped with the right technological tools.</p>
-      </div>
-    </div>
-  </div>
-</div>
   </section>
 
-  <section id="support" class="hidden support-section">
-    <h2>Support Our Mission</h2>
-    <div class="campaign-container">
-      <div class="campaign-description">
-        <h3>National Expansion Campaign</h3>
-        <p>We're seeking funding to deploy Mkulima AI across 8 Tanzanian regions over 6 months:</p>
-        <ul>
-          <li><strong>Months 1-2:</strong> Train and install Mkulima AI for 500 farmers per region</li>
-          <li><strong>Months 3-4:</strong> Monitoring and control phase</li>
-          <li><strong>Months 5-6:</strong> Collect feedback from 4,000 farmers and conduct final refinements</li>
-        </ul>
-        <p>This campaign will culminate in launching Mkulima AI on PlayStore as a public good, freely available to all Tanzanian farmers.</p>
-        <p>Your support will directly impact food security and livelihoods across Tanzania.</p>
-      </div>
-      <div class="donation-options">
-        <div class="donation-card">
-          <i class="fas fa-seedling"></i>
-          <h4>Support a Farmer</h4>
-          <p>$25 trains one farmer on Mkulima AI</p>
-          <button class="donate-button">Donate</button>
+  <section id="support" class="section section-alt hidden">
+    <div class="container">
+      <h2 class="text-center">Support Our Mission</h2>
+      <div class="campaign-container fade-in">
+        <div class="campaign-description">
+          <h3>National Expansion Campaign</h3>
+          <p>We're seeking funding to deploy Mkulima AI across 8 Tanzanian regions over 6 months:</p>
+          <ul>
+            <li><strong>Months 1-2:</strong> Train and install Mkulima AI for 500 farmers per region</li>
+            <li><strong>Months 3-4:</strong> Monitoring and control phase</li>
+            <li><strong>Months 5-6:</strong> Collect feedback from 4,000 farmers and conduct final refinements</li>
+          </ul>
+          <p>This campaign will culminate in launching Mkulima AI on PlayStore as a public good, freely available to all Tanzanian farmers.</p>
+          <p>Your support will directly impact food security and livelihoods across Tanzania.</p>
         </div>
-        <div class="donation-card">
-          <i class="fas fa-village"></i>
-          <h4>Adopt a Village</h4>
-          <p>$500 equips an entire village</p>
-          <button class="donate-button">Donate</button>
+        <div class="donation-options">
+          <div class="donation-card">
+            <i class="fas fa-seedling"></i>
+            <h4>Support a Farmer</h4>
+            <p>$25 trains one farmer on Mkulima AI</p>
+            <button class="donate-button" data-purpose="Support a Farmer" data-amount="$25">Donate</button>
+          </div>
+          <div class="donation-card">
+            <i class="fas fa-village"></i>
+            <h4>Adopt a Village</h4>
+            <p>$500 equips an entire village</p>
+            <button class="donate-button" data-purpose="Adopt a Village" data-amount="$500">Donate</button>
+          </div>
+          <div class="donation-card">
+            <i class="fas fa-map-marked-alt"></i>
+            <h4>Sponsor a Region</h4>
+            <p>$5,000 covers an entire region</p>
+            <button class="donate-button" data-purpose="Sponsor a Region" data-amount="$5,000">Donate</button>
+          </div>
         </div>
-        <div class="donation-card">
-          <i class="fas fa-map-marked-alt"></i>
-          <h4>Sponsor a Region</h4>
-          <p>$5,000 covers an entire region</p>
-          <button class="donate-button">Donate</button>
-        </div>
-      </div>
-      <div class="fundraising-progress">
-        <h4>Campaign Progress</h4>
-        <div class="progress-bar">
-          <div class="progress" style="width: 25%"></div>
-        </div>
-        <div class="progress-stats">
-          <span>$500 raised</span>
-          <span>$50,000 goal</span>
+        <div class="fundraising-progress">
+          <h4>Campaign Progress</h4>
+          <div class="progress-bar">
+            <div class="progress" style="width: 25%"></div>
+          </div>
+          <div class="progress-stats">
+            <span>$500 raised</span>
+            <span>$50,000 goal</span>
+          </div>
         </div>
       </div>
     </div>
+    
     <!-- Donation Modal -->
-<div id="donation-modal" class="donation-modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <h3>Support Mkulima AI</h3>
-    
-    <div class="donation-amount">
-      <h4>You're donating for: <span id="donation-purpose"></span></h4>
-      <p>Amount: <strong id="donation-amount"></strong></p>
-    </div>
-    
-    <div class="payment-options">
-      <div class="payment-method">
-        <h4><i class="fas fa-university"></i> Bank Transfer (CRDB Bank, Tanzania)</h4>
-        <div class="payment-details">
-          <p>Account Name: <strong>Erwin S Nanyaro</strong></p>
-          <p>Account Number: <strong>0152433174100</strong></p>
-          <p>Bank: <strong>CRDB Bank</strong></p>
-          <p>Branch: <strong>Morogoro</strong></p>
-          <p>Swift Code: <strong>CORUTZTZ</strong></p>
+    <div id="donation-modal" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Support Mkulima AI</h3>
+        
+        <div class="donation-amount">
+          <h4>You're donating for: <span id="donation-purpose"></span></h4>
+          <p>Amount: <strong id="donation-amount"></strong></p>
         </div>
-        <button class="copy-btn" data-text="0152433174100">
-          <i class="fas fa-copy"></i> Copy Account Number
-        </button>
-      </div>
-      
-      <div class="payment-method">
-        <h4><i class="fas fa-mobile-alt"></i> Mobile Payment (M-Pesa)</h4>
-        <div class="payment-details">
-          <p>Service: <strong>Vodacom M-Pesa</strong></p>
-          <p>Number: <strong>0754996969</strong></p>
-          <p>Name: <strong>Erwin Nanyaro</strong></p>
-          <p>Network: <strong>Vodacom Tanzania</strong></p>
+        
+        <div class="payment-options">
+          <div class="payment-method">
+            <h4><i class="fas fa-university"></i> Bank Transfer (CRDB Bank, Tanzania)</h4>
+            <div class="payment-details">
+              <p>Account Name: <strong>Erwin S Nanyaro</strong></p>
+              <p>Account Number: <strong>0152433174100</strong></p>
+              <p>Bank: <strong>CRDB Bank</strong></p>
+              <p>Branch: <strong>Morogoro</strong></p>
+              <p>Swift Code: <strong>CORUTZTZ</strong></p>
+            </div>
+            <button class="donate-button copy-btn" data-text="0152433174100">
+              <i class="fas fa-copy"></i> Copy Account Number
+            </button>
+          </div>
+          
+          <div class="payment-method">
+            <h4><i class="fas fa-mobile-alt"></i> Mobile Payment (M-Pesa)</h4>
+            <div class="payment-details">
+              <p>Service: <strong>Vodacom M-Pesa</strong></p>
+              <p>Number: <strong>0754996969</strong></p>
+              <p>Name: <strong>Erwin Nanyaro</strong></p>
+              <p>Network: <strong>Vodacom Tanzania</strong></p>
+            </div>
+            <button class="donate-button copy-btn" data-text="0754996969">
+              <i class="fas fa-copy"></i> Copy Phone Number
+            </button>
+          </div>
         </div>
-        <button class="copy-btn" data-text="0754996969">
-          <i class="fas fa-copy"></i> Copy Phone Number
-        </button>
+        
+        <div class="donation-confirmation">
+          <p>After making your payment, please send the transaction details to:</p>
+          <p><i class="fas fa-envelope"></i> contact@mkulimaai.app</p>
+          <p><i class="fas fa-phone"></i> +255 628284454</p>
+        </div>
       </div>
     </div>
-    
-    <div class="donation-confirmation">
-      <p>After making your payment, please send the transaction details to:</p>
-      <p><i class="fas fa-envelope"></i> contact@mkulimaai.app</p>
-      <p><i class="fas fa-phone"></i> +255 628284454</p>
-    </div>
-  </div>
-</div>
   </section>
 
-  <section id="contact" class="hidden">
-  <h2>Contact Us</h2>
-  <div class="contact-container">
-    <div class="contact-info">
-      <h3>Get In Touch</h3>
-      <p><i class="fas fa-envelope"></i> <a href="mailto:contact@mkulimaai.app">contact@mkulimaai.app</a></p>
-      <p><i class="fas fa-phone"></i> +255 754 996 969</p>
-      <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
-      
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.instagram.com/erwinnanyaro1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
+  <section id="contact" class="section hidden">
+    <div class="container">
+      <h2 class="text-center">Contact Us</h2>
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h3>Get In Touch</h3>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:contact@mkulimaai.app">contact@mkulimaai.app</a></p>
+          <p><i class="fas fa-phone"></i> +255 754 996 969</p>
+          <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
+          
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/erwinnanyaro1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" action="https://formspree.io/f/xeozdqrl" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <select name="inquiry-type" required>
+                <option value="">Select Inquiry Type</option>
+                <option value="Partnership">Partnership Opportunities</option>
+                <option value="Press">Press Inquiry</option>
+                <option value="Support">Technical Support</option>
+                <option value="General">General Question</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Send Message</button>
+            <div id="form-status"></div>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="contact-form">
-      <h3>Send Us a Message</h3>
-      <form id="contactForm" action="https://formspree.io/f/xeozdqrl" method="POST">
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-          <select name="inquiry-type" required>
-            <option value="">Select Inquiry Type</option>
-            <option value="Partnership">Partnership Opportunities</option>
-            <option value="Press">Press Inquiry</option>
-            <option value="Support">Technical Support</option>
-            <option value="General">General Question</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="submit-button">Send Message</button>
-        <div id="form-status"></div>
-      </form>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer>
-  <div class="footer-content">
-    <div class="footer-section connect-section">
-      <h4 class="footer-heading">Connect With Us</h4>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" aria-label="LinkedIn" class="social-link">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.instagram.com/erwinnanyaro1?igsh=cm95b25nZThyYnph&utm_source=qr" target="_blank" aria-label="Instagram" class="social-link">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
-      <div class="contact-info">
-        <p><i class="fas fa-envelope"></i> contact@mkulimaai.app</p>
-        <p><i class="fas fa-phone-alt"></i> +255 754996969</p>
-      </div>
-    </div>
-
-    <div class="footer-section newsletter-section">
-      <h4 class="footer-heading">Stay Updated</h4>
-      <p class="newsletter-text">Subscribe to get news and updates about our work</p>
-      <form class="newsletter-form">
-        <div class="input-group">
-          <input type="email" placeholder="Your email address" required aria-label="Email for newsletter">
-          <button type="submit" class="submit-btn" aria-label="Subscribe">
-            <i class="fas fa-paper-plane"></i>
-          </button>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section connect-section">
+        <h4 class="footer-heading">Connect With Us</h4>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" aria-label="LinkedIn" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/erwinnanyaro1?igsh=cm95b25nZThyYnph&utm_source=qr" target="_blank" aria-label="Instagram" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
-        <p class="privacy-text">We respect your privacy. Unsubscribe at any time.</p>
-      </form>
-    </div>
-  </div>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> contact@mkulimaai.app</p>
+          <p><i class="fas fa-phone-alt"></i> +255 754996969</p>
+        </div>
+      </div>
 
-  <div class="footer-bottom">
-    <p class="copyright">© 2025 Mkulima AI. All rights reserved.</p>
+      <div class="footer-section newsletter-section">
+        <h4 class="footer-heading">Stay Updated</h4>
+        <p class="newsletter-text">Subscribe to get news and updates about our work</p>
+        <form class="newsletter-form">
+          <div class="input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email for newsletter">
+            <button type="submit" class="submit-btn" aria-label="Subscribe">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <p class="privacy-text">We respect your privacy. Unsubscribe at any time.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© 2025 Mkulima AI. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Menu toggle functionality
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+    
+    menuButton.addEventListener('click', function() {
+      const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', !expanded);
+      menu.classList.toggle('active');
+    });
+    
+    // Section navigation
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetSection = this.getAttribute('data-section');
+        
+        // Hide all sections
+        sections.forEach(section => {
+          section.classList.add('hidden');
+        });
+        
+        // Show target section
+        document.getElementById(targetSection).classList.remove('hidden');
+        
+        // Update active link
+        navLinks.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Close mobile menu if open
+        if (menu.classList.contains('active')) {
+          menu.classList.remove('active');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+    
+    // Modal functionality
+    const viewMoreButtons = document.querySelectorAll('.view-more');
+    const closeModalButtons = document.querySelectorAll('.close-modal');
+    const modals = document.querySelectorAll('.story-modal');
+    
+    viewMoreButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const storyId = this.getAttribute('data-story');
+        document.getElementById(storyId).style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    closeModalButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        modals.forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.style.overflow = 'auto';
+      });
+    });
+    
+    // Close modal when clicking outside
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+    
+    // Donation buttons
+    const donateButtons = document.querySelectorAll('.donate-button');
+    const donationModal = document.getElementById('donation-modal');
+    
+    donateButtons.forEach(button => {
+      if (button.getAttribute('data-purpose')) {
+        button.addEventListener('click', function() {
+          const purpose = this.getAttribute('data-purpose');
+          const amount = this.getAttribute('data-amount');
+          
+          document.getElementById('donation-purpose').textContent = purpose;
+          document.getElementById('donation-amount').textContent = amount;
+          donationModal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        });
+      }
+    });
+    
+    // Copy buttons
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const text = this.getAttribute('data-text');
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = this.innerHTML;
+          this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          
+          setTimeout(() => {
+            this.innerHTML = originalText;
+          }, 2000);
+        });
+      });
+    });
+    
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const formStatus = document.getElementById('form-status');
+        
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            formStatus.innerHTML = '<p style="color: var(--primary);">Message sent successfully!</p>';
+            contactForm.reset();
+          } else {
+            formStatus.innerHTML = '<p style="color: red;">There was a problem sending your message. Please try again.</p>';
+          }
+        })
+        .catch(error => {
+          formStatus.innerHTML = '<p style="color: red;">There was a problem sending your message. Please try again.</p>';
+        })
+        .finally(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send Message';
+          
+          setTimeout(() => {
+            formStatus.innerHTML = '';
+          }, 5000);
+        });
+      });
+    }
+    
+    // Fade-in animation on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function checkFade() {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100 && elementBottom > 0) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    // Initial check
+    checkFade();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkFade);
+  });
+</script>
 </body>
 </html>
