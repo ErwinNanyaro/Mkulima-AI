@@ -866,253 +866,6 @@
     .section-content.active {
       display: block;
     }
-
-    /* Homepage specific sections */
-    .homepage-section {
-      display: block;
-    }
-
-    /* Remove any overlay/shade issues */
-    .video-container::after {
-      display: none;
-    }
-
-    /* Additional styles for improved UI */
-    .hidden {
-      display: none;
-    }
-
-    /* Ensure donation buttons are clickable */
-    .donate-button {
-      position: relative;
-      z-index: 1;
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    /* Make sure modal appears above other content */
-    .story-modal {
-      z-index: 9999;
-    }
-
-    /* Ensure buttons aren't being hidden */
-    .donation-card {
-      position: relative;
-      overflow: visible;
-    }
-
-    /* Add these if not present to ensure CTA buttons work */
-    .cta-button {
-      cursor: pointer;
-      pointer-events: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-content {
-      pointer-events: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Additional styles for image comparison in journey5 */
-    .image-comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 20px 0;
-    }
-
-    .comparison-item {
-      text-align: center;
-    }
-
-    .image-caption {
-      font-style: italic;
-      margin-top: 10px;
-      color: var(--text-light);
-    }
-
-    .solution-list {
-      list-style: none;
-      margin: 20px 0;
-    }
-
-    .solution-list li {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .solution-list i {
-      color: var(--primary);
-    }
-
-    .testimonial-highlight {
-      background-color: rgba(46, 125, 50, 0.1);
-      padding: 20px;
-      border-radius: var(--radius);
-      margin: 20px 0;
-      position: relative;
-    }
-
-    .quote-icon {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 2rem;
-      color: var(--primary);
-      opacity: 0.3;
-    }
-
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      text-align: right;
-      margin-bottom: 0;
-    }
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 20px 0;
-    }
-
-    .impact-item {
-      text-align: center;
-      padding: 15px;
-    }
-
-    .impact-item i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .story-conclusion {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Donation Modal Styles */
-    .donation-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      z-index: 2000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-    }
-
-    .donation-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .donation-modal .modal-content {
-      background-color: var(--background);
-      border-radius: var(--radius);
-      width: 90%;
-      max-width: 600px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 30px;
-      position: relative;
-      animation: modalFadeIn 0.3s ease;
-    }
-
-    .donation-amount {
-      background-color: rgba(46, 125, 50, 0.1);
-      padding: 20px;
-      border-radius: var(--radius);
-      margin-bottom: 25px;
-      text-align: center;
-    }
-
-    .payment-options {
-      display: grid;
-      gap: 25px;
-      margin-bottom: 25px;
-    }
-
-    .payment-method {
-      background: var(--background-alt);
-      padding: 20px;
-      border-radius: var(--radius);
-      border-left: 4px solid var(--primary);
-    }
-
-    .payment-method h4 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .payment-method h4 i {
-      font-size: 1.5rem;
-    }
-
-    .payment-details {
-      margin-bottom: 15px;
-    }
-
-    .payment-details p {
-      margin-bottom: 8px;
-    }
-
-    .copy-btn {
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-
-    .copy-btn:hover {
-      background-color: var(--primary-dark);
-    }
-
-    .copy-btn.copied {
-      background-color: var(--secondary);
-    }
-
-    .donation-confirmation {
-      background-color: rgba(255, 152, 0, 0.1);
-      padding: 20px;
-      border-radius: var(--radius);
-      text-align: center;
-    }
-
-    .donation-confirmation p {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
   </style>
 </head>
 <body>
@@ -1164,98 +917,6 @@
     </div>
   </section>
 
-  <!-- Homepage specific sections -->
-  <section id="support-home" class="section section-alt homepage-section">
-    <div class="container">
-      <h2 class="text-center">Support Our Mission</h2>
-      <div class="campaign-container fade-in">
-        <div class="campaign-description">
-          <h3>National Expansion Campaign</h3>
-          <p>We're seeking funding to deploy Mkulima AI across 8 Tanzanian regions over 6 months:</p>
-          <ul>
-            <li><strong>Months 1-2:</strong> Train and install Mkulima AI for 500 farmers per region</li>
-            <li><strong>Months 3-4:</strong> Monitoring and control phase</li>
-            <li><strong>Months 5-6:</strong> Collect feedback from 4,000 farmers and conduct final refinements</li>
-          </ul>
-          <p>This campaign will culminate in launching Mkulima AI on PlayStore as a public good, freely available to all Tanzanian farmers.</p>
-          <p>Your support will directly impact food security and livelihoods across Tanzania.</p>
-        </div>
-        <div class="donation-options">
-          <div class="donation-card">
-            <i class="fas fa-seedling"></i>
-            <h4>Support a Farmer</h4>
-            <p>$25 trains one farmer on Mkulima AI</p>
-            <button class="donate-button" data-purpose="Support a Farmer" data-amount="$25">Donate</button>
-          </div>
-          <div class="donation-card">
-            <i class="fas fa-village"></i>
-            <h4>Adopt a Village</h4>
-            <p>$500 equips an entire village</p>
-            <button class="donate-button" data-purpose="Adopt a Village" data-amount="$500">Donate</button>
-          </div>
-          <div class="donation-card">
-            <i class="fas fa-map-marked-alt"></i>
-            <h4>Sponsor a Region</h4>
-            <p>$5,000 covers an entire region</p>
-            <button class="donate-button" data-purpose="Sponsor a Region" data-amount="$5,000">Donate</button>
-          </div>
-        </div>
-        <div class="fundraising-progress">
-          <h4>Campaign Progress</h4>
-          <div class="progress-bar">
-            <div class="progress" style="width: 25%"></div>
-          </div>
-          <div class="progress-stats">
-            <span>$500 raised</span>
-            <span>$50,000 goal</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="features-home" class="section homepage-section">
-    <div class="container">
-      <h2 class="text-center">App Features</h2>
-      <div class="app-features-grid">
-        <div class="app-screenshot fade-in">
-          <img src="app-homescreen.jpg" alt="Mkulima AI Homescreen">
-          <h3>Intuitive Homescreen</h3>
-          <p>Simple navigation designed for farmers with varying tech literacy</p>
-        </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-disease-detection.jpg" alt="Disease Detection">
-          <h3>Disease Detection</h3>
-          <p>AI-powered identification of crop diseases with 92% accuracy</p>
-        </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-soil-analysis.jpg" alt="Soil Analysis">
-          <h3>Soil Analysis</h3>
-          <p>Recommendations based on visual soil assessment</p>
-        </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-planting-guide.jpg" alt="Planting Guide">
-          <h3>Planting Guide</h3>
-          <p>Optimal planting times and techniques for each crop</p>
-        </div>
-      </div>
-      <div class="text-center" style="margin-top: 2rem;">
-        <a href="#" data-section="features" class="cta-button secondary">View All Features</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="google-doc-home" class="section section-alt homepage-section">
-    <div class="container text-center">
-      <h2>Learn About Our Project</h2>
-      <div class="video-container" style="max-width: 800px; margin: 0 auto;">
-        <iframe src="https://drive.google.com/file/d/1FJEiEISl_jqHkY95stIv3NHELFg1cmZ5/preview" width="100%" height="400" allow="autoplay"></iframe>
-      </div>
-      <p style="margin-top: 1.5rem;">Watch our detailed presentation to understand how Mkulima AI is transforming agriculture in Tanzania</p>
-    </div>
-  </section>
-
-  <!-- Regular sections (hidden on homepage) -->
   <section id="who-we-are" class="section section-alt">
     <div class="container section-content">
       <h2 class="text-center">Our Mission & Vision</h2>
@@ -1749,15 +1410,9 @@
     // Section navigation
     const navLinks = document.querySelectorAll('nav a');
     const sectionContents = document.querySelectorAll('.section-content');
-    const homepageSections = document.querySelectorAll('.homepage-section');
     
     // Function to show a specific section
     function showSection(sectionId) {
-      // Hide all homepage sections
-      homepageSections.forEach(section => {
-        section.style.display = 'none';
-      });
-      
       // Hide all section contents except home (which is always visible)
       sectionContents.forEach(content => {
         if (content.parentElement.id !== 'home') {
@@ -1786,11 +1441,6 @@
           }, 100);
         }
       } else {
-        // Show homepage sections
-        homepageSections.forEach(section => {
-          section.style.display = 'block';
-        });
-        
         // Scroll to top for home
         window.scrollTo({
           top: 0,
@@ -1840,7 +1490,7 @@
     // Show home section by default (already visible)
     // Trigger fade-in animations for home section
     setTimeout(() => {
-      const homeFadeElements = document.querySelectorAll('#home .fade-in, .homepage-section .fade-in');
+      const homeFadeElements = document.querySelectorAll('#home .fade-in');
       homeFadeElements.forEach(element => {
         element.classList.add('visible');
       });
@@ -1953,26 +1603,6 @@
             formStatus.innerHTML = '';
           }, 5000);
         });
-      });
-    }
-    
-    // Newsletter form submission
-    const newsletterForm = document.querySelector('.newsletter-form');
-    
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const emailInput = this.querySelector('input[type="email"]');
-        
-        // Simple validation
-        if (!emailInput.value || !emailInput.value.includes('@')) {
-          alert('Please enter a valid email address.');
-          return;
-        }
-        
-        // Show success message
-        alert('Thank you for subscribing to our newsletter!');
-        emailInput.value = '';
       });
     }
     
