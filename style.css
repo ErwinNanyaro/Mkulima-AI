@@ -22,18 +22,28 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: var(--text);
   background-color: var(--background);
   overflow-x: hidden;
+  padding-top: 80px; /* Account for fixed header */
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.3;
   margin-bottom: 1rem;
+  color: var(--text);
 }
 
 h1 {
@@ -102,13 +112,6 @@ a:hover {
 .text-center h2:after {
   left: 50%;
   transform: translateX(-50%);
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-light);
-  max-width: 800px;
-  margin: 0 auto 2rem;
 }
 
 /* Header Styles */
@@ -369,80 +372,6 @@ nav ul li:hover .dropdown-menu {
   margin-bottom: 1rem;
 }
 
-/* Impact Section */
-.impact-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.impact-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  text-align: center;
-}
-
-.impact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.impact-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-}
-
-.impact-card:nth-child(1) .impact-icon {
-  background-color: rgba(46, 125, 50, 0.1);
-  color: #2E7D32;
-}
-
-.impact-card:nth-child(2) .impact-icon {
-  background-color: rgba(255, 152, 0, 0.1);
-  color: #FF9800;
-}
-
-.impact-card:nth-child(3) .impact-icon {
-  background-color: rgba(33, 150, 243, 0.1);
-  color: #2196F3;
-}
-
-.impact-card:nth-child(4) .impact-icon {
-  background-color: rgba(156, 39, 176, 0.1);
-  color: #9C27B0;
-}
-
-.impact-card ul {
-  text-align: left;
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.impact-card li {
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.impact-card i {
-  color: var(--primary);
-  margin-top: 0.25rem;
-  flex-shrink: 0;
-}
-
 /* Founder Section */
 .founder-container {
   display: grid;
@@ -598,7 +527,6 @@ nav ul li:hover .dropdown-menu {
 
 .fundraising-progress {
   margin-top: 2rem;
-  display: none;
 }
 
 .progress-bar {
@@ -810,97 +738,38 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-/* Additional styles for image comparison in journey5 */
-.image-comparison {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.comparison-item {
-  text-align: center;
-}
-
-.image-caption {
-  font-style: italic;
-  margin-top: 10px;
-  color: var(--text-light);
-}
-
-.solution-list {
-  list-style: none;
-  margin: 20px 0;
-}
-
-.solution-list li {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.solution-list i {
-  color: var(--primary);
-}
-
-.testimonial-highlight {
-  background-color: rgba(46, 125, 50, 0.1);
-  padding: 20px;
-  border-radius: var(--radius);
-  margin: 20px 0;
-  position: relative;
-}
-
-.quote-icon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 2rem;
-  color: var(--primary);
-  opacity: 0.3;
-}
-
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-.testimonial-author {
-  font-weight: 600;
-  text-align: right;
-  margin-bottom: 0;
-}
-
-.impact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.impact-item {
-  text-align: center;
-  padding: 15px;
-}
-
-.impact-item i {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 10px;
-}
-
-.story-conclusion {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-
 /* Donation Modal Styles */
-.donation-modal-content {
+.donation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.donation-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.donation-modal .modal-content {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  width: 90%;
   max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
 }
 
 .donation-amount {
@@ -992,20 +861,6 @@ footer {
   transform: translateY(0);
 }
 
-/* Section visibility control */
-.section-content {
-  display: none;
-}
-
-/* Make the home section visible by default */
-#home .section-content {
-  display: block;
-}
-
-.section-content.active {
-  display: block;
-}
-
 /* Responsive Styles */
 @media (max-width: 992px) {
   h1 {
@@ -1087,10 +942,6 @@ footer {
   .section {
     padding: 3rem 0;
   }
-  
-  .impact-container {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 576px) {
@@ -1106,11 +957,138 @@ footer {
     flex-direction: column;
   }
   
-  .mission-card, .feature-item, .app-screenshot, .research-card, .donation-card, .impact-card {
+  .mission-card, .feature-item, .app-screenshot, .research-card, .donation-card {
     padding: 1.5rem;
   }
-  
-  .image-comparison {
-    grid-template-columns: 1fr;
-  }
+}
+
+/* Additional styles for improved UI */
+.hidden {
+  display: none;
+}
+
+/* Ensure donation buttons are clickable */
+.donate-button {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Make sure modal appears above other content */
+.donation-modal {
+  z-index: 9999;
+}
+
+/* Ensure buttons aren't being hidden */
+.donation-card {
+  position: relative;
+  overflow: visible;
+}
+
+/* Add these if not present to ensure CTA buttons work */
+.cta-button {
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure modals don't conflict with each other */
+.story-modal {
+  z-index: 9998; /* Slightly below donation modal */
+}
+
+/* Additional styles for image comparison in journey5 */
+.image-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.comparison-item {
+  text-align: center;
+}
+
+.image-caption {
+  font-style: italic;
+  margin-top: 10px;
+  color: var(--text-light);
+}
+
+.solution-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.solution-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.solution-list i {
+  color: var(--primary);
+}
+
+.testimonial-highlight {
+  background-color: rgba(46, 125, 50, 0.1);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin: 20px 0;
+  position: relative;
+}
+
+.quote-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 2rem;
+  color: var(--primary);
+  opacity: 0.3;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.impact-item {
+  text-align: center;
+  padding: 15px;
+}
+
+.impact-item i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.story-conclusion {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
 }
