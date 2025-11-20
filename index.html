@@ -33,18 +33,28 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       color: var(--text);
       background-color: var(--background);
       overflow-x: hidden;
+      padding-top: 80px; /* Account for fixed header */
+    }
+
+    body.no-scroll {
+      overflow: hidden;
     }
 
     h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
       line-height: 1.3;
       margin-bottom: 1rem;
+      color: var(--text);
     }
 
     h1 {
@@ -228,6 +238,29 @@
 
     .dropdown-menu a:hover {
       background: var(--background-alt);
+    }
+
+    /* Breadcrumb Navigation */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .breadcrumb a {
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary);
+    }
+
+    .breadcrumb .separator {
+      color: var(--border);
     }
 
     /* Hero Section */
@@ -528,7 +561,6 @@
 
     .fundraising-progress {
       margin-top: 2rem;
-      display: none;
     }
 
     .progress-bar {
@@ -740,6 +772,143 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Donation Modal Styles */
+    .donation-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .donation-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .donation-modal .modal-content {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .donation-amount {
+      background-color: rgba(46, 125, 50, 0.1);
+      padding: 20px;
+      border-radius: var(--radius);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .payment-options {
+      display: grid;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .payment-method {
+      background: var(--background-alt);
+      padding: 20px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+
+    .payment-method h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .payment-method h4 i {
+      font-size: 1.5rem;
+    }
+
+    .payment-details {
+      margin-bottom: 15px;
+    }
+
+    .payment-details p {
+      margin-bottom: 8px;
+    }
+
+    .copy-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .copy-btn.copied {
+      background-color: var(--secondary);
+    }
+
+    .donation-confirmation {
+      background-color: rgba(255, 152, 0, 0.1);
+      padding: 20px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .donation-confirmation p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section visibility control - IMPROVED */
+    .section {
+      display: none;
+    }
+    
+    /* Make the home section visible by default */
+    #home {
+      display: block;
+    }
+    
+    .section.active {
+      display: block;
+    }
+
     /* Responsive Styles */
     @media (max-width: 992px) {
       h1 {
@@ -841,30 +1010,166 @@
       }
     }
 
-    /* Animation Classes */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Section visibility control - UPDATED */
-    .section-content {
+    /* Additional styles for improved UI */
+    .hidden {
       display: none;
     }
-    
-    /* Make the home section visible by default */
-    #home .section-content {
-      display: block;
+
+    /* Ensure donation buttons are clickable */
+    .donate-button {
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      pointer-events: auto;
     }
-    
-    .section-content.active {
-      display: block;
+
+    /* Make sure modal appears above other content */
+    .donation-modal {
+      z-index: 9999;
+    }
+
+    /* Ensure buttons aren't being hidden */
+    .donation-card {
+      position: relative;
+      overflow: visible;
+    }
+
+    /* Add these if not present to ensure CTA buttons work */
+    .cta-button {
+      cursor: pointer;
+      pointer-events: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      pointer-events: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Ensure modals don't conflict with each other */
+    .story-modal {
+      z-index: 9998; /* Slightly below donation modal */
+    }
+
+    /* Additional styles for image comparison in journey5 */
+    .image-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .comparison-item {
+      text-align: center;
+    }
+
+    .image-caption {
+      font-style: italic;
+      margin-top: 10px;
+      color: var(--text-light);
+    }
+
+    .solution-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .solution-list li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .solution-list i {
+      color: var(--primary);
+    }
+
+    .testimonial-highlight {
+      background-color: rgba(46, 125, 50, 0.1);
+      padding: 20px;
+      border-radius: var(--radius);
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .quote-icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 2rem;
+      color: var(--primary);
+      opacity: 0.3;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      text-align: right;
+      margin-bottom: 0;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .impact-item {
+      text-align: center;
+      padding: 15px;
+    }
+
+    .impact-item i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .story-conclusion {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+      box-shadow: var(--shadow);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
     }
   </style>
 </head>
@@ -898,8 +1203,8 @@
 </header>
 
 <main>
-  <!-- Hero section is outside the normal section structure to always be visible -->
-  <section id="home" class="hero-section">
+  <!-- Hero section is always visible -->
+  <section id="home" class="hero-section active">
     <div class="container hero-container">
       <div class="hero-content fade-in visible">
         <h1>Empowering Tanzanian Farmers with AI</h1>
@@ -917,8 +1222,15 @@
     </div>
   </section>
 
-  <section id="who-we-are" class="section section-alt">
-    <div class="container section-content">
+  <section id="who-we-are" class="section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <a href="#" data-section="about">About</a>
+        <span class="separator">/</span>
+        <span>Our Mission</span>
+      </div>
       <h2 class="text-center">Our Mission & Vision</h2>
       <div class="mission-container">
         <div class="mission-card fade-in">
@@ -960,7 +1272,14 @@
   </section>
 
   <section id="founder-story" class="section">
-    <div class="container section-content">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <a href="#" data-section="about">About</a>
+        <span class="separator">/</span>
+        <span>Founder Story</span>
+      </div>
       <h2 class="text-center">Founder Story</h2>
       <div class="founder-container">
         <div class="founder-image fade-in">
@@ -981,7 +1300,12 @@
   </section>
 
   <section id="features" class="section section-alt">
-    <div class="container section-content">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>App Features</span>
+      </div>
       <h2 class="text-center">App Features</h2>
       <div class="app-features-grid">
         <div class="app-screenshot fade-in">
@@ -1029,7 +1353,12 @@
   </section>
 
   <section id="research-journeys" class="section">
-    <div class="container section-content">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>Research Journeys</span>
+      </div>
       <h2 class="text-center">Research Journeys in Tanzania</h2>
       <div class="research-journeys-container">
         <!-- Journey 1 -->
@@ -1210,7 +1539,12 @@
   </section>
 
   <section id="support" class="section section-alt">
-    <div class="container section-content">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>Support Our Mission</span>
+      </div>
       <h2 class="text-center">Support Our Mission</h2>
       <div class="campaign-container fade-in">
         <div class="campaign-description">
@@ -1307,7 +1641,12 @@
   </section>
 
   <section id="contact" class="section">
-    <div class="container section-content">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>Contact</span>
+      </div>
       <h2 class="text-center">Contact Us</h2>
       <div class="contact-container">
         <div class="contact-info fade-in">
@@ -1395,6 +1734,11 @@
   </div>
 </footer>
 
+<!-- Back to top button -->
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Menu toggle functionality
@@ -1409,22 +1753,22 @@
     
     // Section navigation
     const navLinks = document.querySelectorAll('nav a');
-    const sectionContents = document.querySelectorAll('.section-content');
+    const sections = document.querySelectorAll('.section');
     
     // Function to show a specific section
     function showSection(sectionId) {
-      // Hide all section contents except home (which is always visible)
-      sectionContents.forEach(content => {
-        if (content.parentElement.id !== 'home') {
-          content.style.display = 'none';
+      // Hide all sections except home (which is always visible)
+      sections.forEach(section => {
+        if (section.id !== 'home') {
+          section.classList.remove('active');
         }
       });
       
       // Show the selected section (if it's not home)
       if (sectionId !== 'home') {
-        const targetSection = document.querySelector(`#${sectionId} .section-content`);
+        const targetSection = document.getElementById(sectionId);
         if (targetSection) {
-          targetSection.style.display = 'block';
+          targetSection.classList.add('active');
           
           // Scroll to the top of the section
           window.scrollTo({
@@ -1472,6 +1816,25 @@
       });
     });
     
+    // Set up breadcrumb navigation
+    const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+    
+    breadcrumbLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetSection = this.getAttribute('data-section');
+        
+        if (targetSection) {
+          // Update active link in main navigation
+          navLinks.forEach(navLink => navLink.classList.remove('active'));
+          document.querySelector(`nav a[data-section="${targetSection}"]`).classList.add('active');
+          
+          // Show the target section
+          showSection(targetSection);
+        }
+      });
+    });
+    
     // Set up CTA button handlers
     document.querySelectorAll('.cta-button').forEach(button => {
       button.addEventListener('click', function(e) {
@@ -1505,7 +1868,7 @@
       button.addEventListener('click', function() {
         const storyId = this.getAttribute('data-story');
         document.getElementById(storyId).style.display = 'block';
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
       });
     });
     
@@ -1514,7 +1877,7 @@
         modals.forEach(modal => {
           modal.style.display = 'none';
         });
-        document.body.style.overflow = 'auto';
+        document.body.classList.remove('no-scroll');
       });
     });
     
@@ -1523,7 +1886,7 @@
       modal.addEventListener('click', function(e) {
         if (e.target === this) {
           this.style.display = 'none';
-          document.body.style.overflow = 'auto';
+          document.body.classList.remove('no-scroll');
         }
       });
     });
@@ -1541,7 +1904,7 @@
           document.getElementById('donation-purpose').textContent = purpose;
           document.getElementById('donation-amount').textContent = amount;
           donationModal.style.display = 'block';
-          document.body.style.overflow = 'hidden';
+          document.body.classList.add('no-scroll');
         });
       }
     });
@@ -1621,11 +1984,56 @@
       });
     }
     
+    // Back to top button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    function toggleBackToTop() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    }
+    
+    backToTopButton.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
     // Initial check for elements in view
     checkFade();
+    toggleBackToTop();
     
     // Check on scroll
-    window.addEventListener('scroll', checkFade);
+    window.addEventListener('scroll', function() {
+      checkFade();
+      toggleBackToTop();
+    });
+    
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+        
+        // Simple validation
+        if (!emailInput.value || !emailInput.value.includes('@')) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        
+        // Show success message
+        alert('Thank you for subscribing to our newsletter!');
+        emailInput.value = '';
+      });
+    }
+    
+    // Initialize the first section as active
+    document.querySelector('nav a[data-section="home"]').classList.add('active');
   });
 </script>
 </body>
