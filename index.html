@@ -555,6 +555,140 @@
       margin-bottom: 1rem;
     }
 
+    /* Report Content Styles */
+    .report-content {
+      background: white;
+      border-radius: var(--radius);
+      padding: 3rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+    }
+
+    .report-section {
+      margin-bottom: 3rem;
+    }
+
+    .report-section h3 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: var(--background-alt);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      border-left: 4px solid var(--primary);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .case-study {
+      background: var(--background-alt);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .case-study h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial {
+      background: rgba(46, 125, 50, 0.05);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .testimonial:before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--primary-light);
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      opacity: 0.3;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      text-align: right;
+      margin-bottom: 0;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .comparison-item {
+      background: var(--background-alt);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .comparison-item h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .sdg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .sdg-item {
+      text-align: center;
+      padding: 1rem;
+      background: var(--background-alt);
+      border-radius: var(--radius);
+    }
+
+    .sdg-item i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
     /* Features Section */
     .app-features-grid {
       display: grid;
@@ -1464,26 +1598,26 @@
       
       <div class="report-container">
         <div class="report-header fade-in">
-          <h2>October Mkulima AI Field Report</h2>
-          <p class="hero-text">Comprehensive analysis of our field operations, impact metrics, and farmer feedback from October 2024</p>
+          <h2>MKULIMA AI FIELD IMPACT REPORT</h2>
+          <p class="hero-text">From the Soil to AI: How Mkulima AI is Transforming Rural Farming in Tanzania</p>
         </div>
 
         <div class="report-meta fade-in">
           <div class="meta-item">
             <i class="fas fa-calendar"></i>
-            <span>October 2024</span>
-          </div>
-          <div class="meta-item">
-            <i class="fas fa-file-pdf"></i>
-            <span>10 Slides</span>
-          </div>
-          <div class="meta-item">
-            <i class="fas fa-users"></i>
-            <span>500+ Farmers Reached</span>
+            <span>October 2025</span>
           </div>
           <div class="meta-item">
             <i class="fas fa-map-marker-alt"></i>
-            <span>Morogoro & Arusha Regions</span>
+            <span>Kisosa & Maekani Villages</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-users"></i>
+            <span>500+ Farmers Represented</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-user"></i>
+            <span>Prepared By: Erwin Nanyaro</span>
           </div>
         </div>
 
@@ -1498,33 +1632,33 @@
 
         <div class="report-preview fade-in">
           <div class="preview-header">
-            <h3>Report Preview</h3>
+            <h3>Report Highlights</h3>
           </div>
           <div class="preview-content">
             <div class="slide-preview">
-              <h4>Key Findings & Impact Metrics</h4>
+              <h4>Key Impact Metrics</h4>
               <div class="slide-content">
-                <p>Our October field report highlights significant improvements in farmer productivity and adoption rates across target regions.</p>
+                <p>Documenting the transformation of 20 farmers (representing 500 regional farmers) using Mkulima AI to diagnose and treat crop diseases with agroecological methods.</p>
                 <div class="summary-grid">
                   <div class="summary-item">
                     <i class="fas fa-chart-line"></i>
-                    <h4>92%</h4>
-                    <p>Disease Detection Accuracy</p>
-                  </div>
-                  <div class="summary-item">
-                    <i class="fas fa-user-check"></i>
-                    <h4>87%</h4>
-                    <p>Farmer Satisfaction Rate</p>
+                    <h4>95%</h4>
+                    <p>Reduction in Pest Control Costs</p>
                   </div>
                   <div class="summary-item">
                     <i class="fas fa-seedling"></i>
-                    <h4>45%</h4>
-                    <p>Yield Improvement</p>
+                    <h4>35%</h4>
+                    <p>Yield Increase</p>
                   </div>
                   <div class="summary-item">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h4>60%</h4>
-                    <p>Cost Reduction</p>
+                    <i class="fas fa-tint"></i>
+                    <h4>100%</h4>
+                    <p>Offline Functionality</p>
+                  </div>
+                  <div class="summary-item">
+                    <i class="fas fa-language"></i>
+                    <h4>100%</h4>
+                    <p>Swahili Interface</p>
                   </div>
                 </div>
               </div>
@@ -1535,7 +1669,7 @@
                 <i class="fas fa-chevron-left"></i> Previous
               </button>
               <div class="slide-counter">
-                Slide 1 of 10
+                Slide 1 of 8
               </div>
               <button class="cta-button secondary" id="next-slide">
                 Next <i class="fas fa-chevron-right"></i>
@@ -1546,28 +1680,28 @@
 
         <div class="report-summary fade-in">
           <h3 class="text-center">Executive Summary</h3>
-          <p>The October 2024 field report demonstrates Mkulima AI's growing impact on smallholder farming communities in Tanzania. Key achievements include:</p>
+          <p>This field report documents how Mkulima AI empowered farmers in Kisosa and Maekani villages to diagnose and treat Gray Mold, Leaf Spot Complex, and Aphids using cost-free agroecological methods.</p>
           
           <div class="summary-grid">
             <div class="summary-item">
-              <i class="fas fa-mobile-alt"></i>
-              <h4>App Adoption</h4>
-              <p>500+ farmers trained and actively using Mkulima AI across 8 villages</p>
+              <i class="fas fa-mountain"></i>
+              <h4>Kisosa Village</h4>
+              <p>Strawberry farmers achieved 35% yield increase using organic treatments</p>
             </div>
             <div class="summary-item">
-              <i class="fas fa-clipboard-check"></i>
-              <h4>Problem Solving</h4>
-              <p>92% accuracy in diagnosing crop diseases with AI-powered detection</p>
+              <i class="fas fa-spa"></i>
+              <h4>Maekani Village</h4>
+              <p>Successfully treated aphids with homemade organic solutions</p>
             </div>
             <div class="summary-item">
-              <i class="fas fa-hand-holding-usd"></i>
-              <h4>Economic Impact</h4>
-              <p>Average 60% reduction in farming costs through organic solutions</p>
+              <i class="fas fa-money-bill-wave"></i>
+              <h4>Cost Savings</h4>
+              <p>Reduced pesticide costs from TZS 30,000-60,000 to under TZS 2,200</p>
             </div>
             <div class="summary-item">
-              <i class="fas fa-comments"></i>
-              <h4>Farmer Feedback</h4>
-              <p>87% satisfaction rate with Swahili interface and offline functionality</p>
+              <i class="fas fa-graduation-cap"></i>
+              <h4>Farmer Empowerment</h4>
+              <p>"Sasa simu yangu imekuwa mwalimu wangu" - Farmers' testimonial</p>
             </div>
           </div>
         </div>
@@ -1575,17 +1709,17 @@
         <div class="download-section fade-in">
           <div class="download-card">
             <i class="fas fa-file-pdf"></i>
-            <h3>Download Full Report</h3>
-            <p>Get the complete October 2024 Field Report with detailed analysis, charts, and farmer testimonials</p>
+            <h3>Download Full Impact Report</h3>
+            <p>Get the complete October 2025 Field Impact Report with detailed case studies, farmer testimonials, and comprehensive analysis</p>
             <a href="Report.pdf" download class="cta-button primary">
-              <i class="fas fa-download"></i> Download PDF (2.4 MB)
+              <i class="fas fa-download"></i> Download PDF
             </a>
           </div>
         </div>
       </div>
     </div>
   </section>
-
+  <!-- Rest of your existing sections -->
   <section id="features" class="section">
     <div class="container">
       <div class="breadcrumb">
@@ -1639,22 +1773,386 @@
     </div>
   </section>
 
-  <!-- Rest of your existing sections remain the same -->
   <section id="research-journeys" class="section section-alt">
-    <!-- Your existing research journeys content -->
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>Research Journeys</span>
+      </div>
+      <h2 class="text-center">Research Journeys in Tanzania</h2>
+      <div class="research-journeys-container">
+        <!-- Journey 1 -->
+        <div class="research-card fade-in">
+          <img src="uluguru-mountains.jpg" alt="Uluguru Mountains">
+          <div class="research-content">
+            <h3>Bridging the Gap in Uluguru Mountains</h3>
+            <p>Engaging with strawberry farmers to balance agriculture and water sustainability. Pioneering AI-driven solutions for irrigation and organic farming...</p>
+            <button class="view-more" data-story="journey1">View Full Story</button>
+          </div>
+        </div>
+        
+        <!-- Journey 2 -->
+        <div class="research-card fade-in">
+          <img src="ai-revolution.jpg" alt="AI Revolution">
+          <div class="research-content">
+            <h3>The AI Revolution by Tanzanians</h3>
+            <p>Building an app that works offline, in Swahili, with solutions based on local knowledge rather than expensive imported inputs...</p>
+            <button class="view-more" data-story="journey2">View Full Story</button>
+          </div>
+        </div>
+        
+        <!-- Journey 3 -->
+        <div class="research-card fade-in">
+          <img src="eliah-farm.jpg" alt="Farmer Eliah">
+          <div class="research-content">
+            <h3>From Code to Community Impact</h3>
+            <p>Meeting Eliah in Maekani - a farmer battling crop losses until Mkulima AI provided affordable, sustainable solutions...</p>
+            <button class="view-more" data-story="journey3">View Full Story</button>
+          </div>
+        </div>
+        
+        <!-- Journey 4 -->
+        <div class="research-card fade-in">
+          <img src="transformation.jpg" alt="Farm Transformation">
+          <div class="research-content">
+            <h3>Hope in Action: One Farmer's Transformation</h3>
+            <p>Returning to Eliah's farm weeks later to see remarkable recovery after implementing Mkulima AI's recommendations...</p>
+            <button class="view-more" data-story="journey4">View Full Story</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Journey 5 -->
+      <div class="research-card fade-in" style="max-width: 600px; margin: 2rem auto;">
+        <img src="eliah-transformation.jpg" alt="Eliah's Farm Transformation">
+        <div class="research-content">
+          <h3>Real Impact in Maekani</h3>
+          <p>Documenting Eliah's journey from struggling with persistent crop diseases to successful recovery using Mkulima AI's diagnosis and recommendations...</p>
+          <button class="view-more" data-story="journey5">View Full Story</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Full Story Modals -->
+    <div id="journey1" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="uluguru-mountains.jpg" alt="Uluguru Mountains">
+        <h3>Bridging the Gap: Climate Action Meets Sustainable Agriculture</h3>
+        <p>In the heart of the Uluguru Mountains, I engaged with local leaders and strawberry farmers, witnessing firsthand the challenges in balancing agricultural productivity and water resource sustainability.</p>
+        <p>At Mkulima AI, we integrate AI-driven solutions to revolutionize water management and organic farming. Our initiative uses AI-powered hydrological sensors and predictive analytics to ensure efficient irrigation and improve soil health.</p>
+        <p>We're calling on Tanzania's leading institutions - Sokoine University, Mzumbe University, and NM-AIST - to join us in pushing the boundaries of innovation in sustainable farming. Collaboration with global partners like University of Copenhagen and WWF can help integrate climate-smart practices for rural resilience.</p>
+        <p>This is just the beginning of our vision where people and nature thrive together through AI-powered, climate-resilient agricultural systems.</p>
+      </div>
+    </div>
+    
+    <div id="journey2" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="ai-revolution.jpg" alt="AI Revolution">
+        <h3>The AI Revolution by Tanzanians, for Tanzanians</h3>
+        <p>After teaching myself to code using generative AI, I built an app being tested in Turo, Kisosa, Morning Sight, Mlali, and Mgeta villages.</p>
+        <p>Unlike European houseplant apps, Mkulima AI is built in Swahili, with images of African farmers, and advice based on local solutions - not expensive imported inputs. It works offline for areas with poor coverage.</p>
+        <p>New features include weather alerts with farming advice and a profitability calculator using numbers farmers can easily collect. After the rainy season, we'll gather farmer feedback to improve the app.</p>
+        <p>This is the beginning of an AI revolution led by African youth - building tools to liberate ourselves from structures that hold us back. The dream is for Tanzanians to lead in developing solutions for our unique challenges.</p>
+      </div>
+    </div>
+    
+    <div id="journey3" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="eliah-farm.jpg" alt="Farmer Eliah">
+        <h3>From Code to Community Impact</h3>
+        <p>In Maekani near Mzumbe, I met Eliah - a young farmer battling crop losses for 1.5 years, misled by expensive chemicals that didn't cure his plants' unknown diseases.</p>
+        <p>With one photo, Mkulima AI diagnosed Bell Pepper Early Blight and provided affordable, environmentally conscious solutions. His disbelief turned to hope as he finally understood what harmed his crops and how to fix it sustainably.</p>
+        <p>This moment validated why I built this app - to restore agency to farmers excluded from tech innovation. As climate change increases disease outbreaks, our solutions must be accessible, practical, and just.</p>
+        <p>Mkulima AI proves technology can be a tool of liberation when designed by and for the people it serves.</p>
+      </div>
+    </div>
+    
+    <div id="journey4" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="transformation.jpg" alt="Farm Transformation">
+        <h3>Hope in Action: One Farmer's Transformation</h3>
+        <p>Returning to Eliah's farm weeks after introducing Mkulima AI revealed a remarkable transformation. His once-devastated pepper plants were recovering after implementing the app's recommendations:</p>
+        <ul>
+          <li>Removing infected leaves to prevent spread</li>
+          <li>Applying neem oil as natural pesticide</li>
+          <li>Watering at the base to avoid leaf wetness</li>
+          <li>Mulching to prevent soil splash</li>
+        </ul>
+        <p>Eliah's testimonial: "After removing the infected plants, truly I did not see that challenge anymore. The difference is huge... it helped me identify the disease and solve it... and that increased my harvests."</p>
+        <p>This tangible impact demonstrates how accessible AI can restore dignity and hope to smallholder farmers when rooted in local knowledge.</p>
+      </div>
+    </div>
+
+    <!-- Journey 5 Modal -->
+    <div id="journey5" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img src="eliah-transformation.jpg" alt="Eliah's Farm Transformation">
+        <h3>Real Impact in Maekani: From Struggle to Success</h3>
+        
+        <div class="story-intro">
+          <p>In the village of Maekani, we witnessed a remarkable transformation when Eliah, a smallholder farmer battling persistent crop diseases for over a year, adopted Mkulima AI's solutions.</p>
+        </div>
+        
+        <div class="image-comparison">
+          <div class="comparison-item">
+            <img src="eliah-before.jpg" alt="Eliah's farm before Mkulima AI">
+            <p class="image-caption">Before: Diseased pepper plants</p>
+          </div>
+          <div class="comparison-item">
+            <img src="eliah-after.jpg" alt="Eliah's farm after Mkulima AI">
+            <p class="image-caption">After: Healthy plants 3 weeks later</p>
+          </div>
+        </div>
+        
+        <div class="story-details">
+          <h4>The Turning Point</h4>
+          <p>After countless failed attempts with chemical treatments, Mkulima AI diagnosed Pepper Early Blight within minutes. Eliah implemented our recommendations:</p>
+          
+          <ul class="solution-list">
+            <li><i class="fas fa-check-circle"></i> Removal of infected plants to prevent disease spread</li>
+            <li><i class="fas fa-check-circle"></i> Neem oil application as organic pesticide</li>
+            <li><i class="fas fa-check-circle"></i> Improved watering techniques to avoid leaf wetness</li>
+            <li><i class="fas fa-check-circle"></i> Proper mulching to prevent soil contamination</li>
+          </ul>
+          
+          <div class="testimonial-highlight">
+            <div class="quote-icon">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <p class="testimonial-text">"After removing the infected plants, truly I did not see that challenge anymore. The difference is huge... it helped me identify the disease and solve it... and that increased my harvests."</p>
+            <p class="testimonial-author">— Eliah Zephania, Farmer</p>
+          </div>
+          
+          <h4>Lasting Impact</h4>
+          <p>Eliah's success demonstrates how accessible AI technology can revolutionize smallholder farming:</p>
+          
+          <div class="impact-grid">
+            <div class="impact-item">
+              <i class="fas fa-flask"></i>
+              <p>Accurate diagnoses without expensive lab tests</p>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-leaf"></i>
+              <p>Affordable, sustainable solutions</p>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-user-shield"></i>
+              <p>Restored agency to farmers</p>
+            </div>
+            <div class="impact-item">
+              <i class="fas fa-utensils"></i>
+              <p>Measurable impact on food security</p>
+            </div>
+          </div>
+          
+          <div class="story-conclusion">
+            <p>This transformation represents the potential for thousands of Tanzanian smallholder farmers when equipped with the right technological tools.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="support" class="section">
-    <!-- Your existing support content -->
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>Support Our Mission</span>
+      </div>
+      <h2 class="text-center">Support Our Mission</h2>
+      <div class="campaign-container fade-in">
+        <div class="campaign-description">
+          <h3>National Expansion Campaign</h3>
+          <p>We're seeking funding to deploy Mkulima AI across 8 Tanzanian regions over 6 months:</p>
+          <ul>
+            <li><strong>Months 1-2:</strong> Train and install Mkulima AI for 500 farmers per region</li>
+            <li><strong>Months 3-4:</strong> Monitoring and control phase</li>
+            <li><strong>Months 5-6:</strong> Collect feedback from 4,000 farmers and conduct final refinements</li>
+          </ul>
+          <p>This campaign will culminate in launching Mkulima AI on PlayStore as a public good, freely available to all Tanzanian farmers.</p>
+          <p>Your support will directly impact food security and livelihoods across Tanzania.</p>
+        </div>
+        <div class="donation-options">
+          <div class="donation-card">
+            <i class="fas fa-seedling"></i>
+            <h4>Support a Farmer</h4>
+            <p>$25 trains one farmer on Mkulima AI</p>
+            <button class="donate-button" data-purpose="Support a Farmer" data-amount="$25">Donate</button>
+          </div>
+          <div class="donation-card">
+            <i class="fas fa-village"></i>
+            <h4>Adopt a Village</h4>
+            <p>$500 equips an entire village</p>
+            <button class="donate-button" data-purpose="Adopt a Village" data-amount="$500">Donate</button>
+          </div>
+          <div class="donation-card">
+            <i class="fas fa-map-marked-alt"></i>
+            <h4>Sponsor a Region</h4>
+            <p>$5,000 covers an entire region</p>
+            <button class="donate-button" data-purpose="Sponsor a Region" data-amount="$5,000">Donate</button>
+          </div>
+        </div>
+        <div class="fundraising-progress">
+          <h4>Campaign Progress</h4>
+          <div class="progress-bar">
+            <div class="progress" style="width: 25%"></div>
+          </div>
+          <div class="progress-stats">
+            <span>$500 raised</span>
+            <span>$50,000 goal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Donation Modal -->
+    <div id="donation-modal" class="story-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Support Mkulima AI</h3>
+        
+        <div class="donation-amount">
+          <h4>You're donating for: <span id="donation-purpose"></span></h4>
+          <p>Amount: <strong id="donation-amount"></strong></p>
+        </div>
+        
+        <div class="payment-options">
+          <div class="payment-method">
+            <h4><i class="fas fa-university"></i> Bank Transfer (CRDB Bank, Tanzania)</h4>
+            <div class="payment-details">
+              <p>Account Name: <strong>Erwin S Nanyaro</strong></p>
+              <p>Account Number: <strong>0152433174100</strong></p>
+              <p>Bank: <strong>CRDB Bank</strong></p>
+              <p>Branch: <strong>Morogoro</strong></p>
+              <p>Swift Code: <strong>CORUTZTZ</strong></p>
+            </div>
+            <button class="donate-button copy-btn" data-text="0152433174100">
+              <i class="fas fa-copy"></i> Copy Account Number
+            </button>
+          </div>
+          
+          <div class="payment-method">
+            <h4><i class="fas fa-mobile-alt"></i> Mobile Payment (M-Pesa)</h4>
+            <div class="payment-details">
+              <p>Service: <strong>Vodacom M-Pesa</strong></p>
+              <p>Number: <strong>0754996969</strong></p>
+              <p>Name: <strong>Erwin Nanyaro</strong></p>
+              <p>Network: <strong>Vodacom Tanzania</strong></p>
+            </div>
+            <button class="donate-button copy-btn" data-text="0754996969">
+              <i class="fas fa-copy"></i> Copy Phone Number
+            </button>
+          </div>
+        </div>
+        
+        <div class="donation-confirmation">
+          <p>After making your payment, please send the transaction details to:</p>
+          <p><i class="fas fa-envelope"></i> contact@mkulimaai.app</p>
+          <p><i class="fas fa-phone"></i> +255 628284454</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="contact" class="section section-alt">
-    <!-- Your existing contact content -->
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" data-section="home">Home</a>
+        <span class="separator">/</span>
+        <span>Contact</span>
+      </div>
+      <h2 class="text-center">Contact Us</h2>
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h3>Get In Touch</h3>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:contact@mkulimaai.app">contact@mkulimaai.app</a></p>
+          <p><i class="fas fa-phone"></i> +255 754 996 969</p>
+          <p><i class="fas fa-map-marker-alt"></i> Morogoro, Tanzania</p>
+          
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/erwinnanyaro1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" action="https://formspree.io/f/xeozdqrl" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <select name="inquiry-type" required>
+                <option value="">Select Inquiry Type</option>
+                <option value="Partnership">Partnership Opportunities</option>
+                <option value="Press">Press Inquiry</option>
+                <option value="Support">Technical Support</option>
+                <option value="General">General Question</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Send Message</button>
+            <div id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  <!-- Your existing footer content -->
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section connect-section">
+        <h4 class="footer-heading">Connect With Us</h4>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/erwin-nanyaro-a4b836230" target="_blank" aria-label="LinkedIn" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/erwinnanyaro1?igsh=cm95b25nZThyYnph&utm_source=qr" target="_blank" aria-label="Instagram" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> contact@mkulimaai.app</p>
+          <p><i class="fas fa-phone-alt"></i> +255 754996969</p>
+        </div>
+      </div>
+
+      <div class="footer-section newsletter-section">
+        <h4 class="footer-heading">Stay Updated</h4>
+        <p class="newsletter-text">Subscribe to get news and updates about our work</p>
+        <form class="newsletter-form">
+          <div class="input-group">
+            <input type="email" placeholder="Your email address" required aria-label="Email for newsletter">
+            <button type="submit" class="submit-btn" aria-label="Subscribe">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <p class="privacy-text">We respect your privacy. Unsubscribe at any time.</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© 2025 Mkulima AI. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
 <!-- Back to top button -->
@@ -1777,42 +2275,11 @@
     
     // Report functionality
     const viewReportBtn = document.getElementById('view-report');
-    const prevSlideBtn = document.getElementById('prev-slide');
-    const nextSlideBtn = document.getElementById('next-slide');
     
     if (viewReportBtn) {
       viewReportBtn.addEventListener('click', function() {
         // This would open the PDF in a new tab or modal
         window.open('Report.pdf', '_blank');
-      });
-    }
-    
-    // Simple slide navigation for the preview
-    let currentSlide = 1;
-    const totalSlides = 10;
-    const slideCounter = document.querySelector('.slide-counter');
-    
-    function updateSlideCounter() {
-      if (slideCounter) {
-        slideCounter.textContent = `Slide ${currentSlide} of ${totalSlides}`;
-      }
-    }
-    
-    if (prevSlideBtn) {
-      prevSlideBtn.addEventListener('click', function() {
-        if (currentSlide > 1) {
-          currentSlide--;
-          updateSlideCounter();
-        }
-      });
-    }
-    
-    if (nextSlideBtn) {
-      nextSlideBtn.addEventListener('click', function() {
-        if (currentSlide < totalSlides) {
-          currentSlide++;
-          updateSlideCounter();
-        }
       });
     }
     
@@ -1825,8 +2292,130 @@
       });
     }, 100);
     
-    // Your existing modal, donation, and other functionality...
-    // (Keep all your existing JavaScript functionality here)
+    // Modal functionality
+    const viewMoreButtons = document.querySelectorAll('.view-more');
+    const closeModalButtons = document.querySelectorAll('.close-modal');
+    const modals = document.querySelectorAll('.story-modal');
+    
+    viewMoreButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const storyId = this.getAttribute('data-story');
+        document.getElementById(storyId).style.display = 'block';
+        document.body.classList.add('no-scroll');
+      });
+    });
+    
+    closeModalButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        modals.forEach(modal => {
+          modal.style.display = 'none';
+        });
+        document.body.classList.remove('no-scroll');
+      });
+    });
+    
+    // Close modal when clicking outside
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+          document.body.classList.remove('no-scroll');
+        }
+      });
+    });
+    
+    // Donation buttons
+    const donateButtons = document.querySelectorAll('.donate-button');
+    const donationModal = document.getElementById('donation-modal');
+    
+    donateButtons.forEach(button => {
+      if (button.getAttribute('data-purpose')) {
+        button.addEventListener('click', function() {
+          const purpose = this.getAttribute('data-purpose');
+          const amount = this.getAttribute('data-amount');
+          
+          document.getElementById('donation-purpose').textContent = purpose;
+          document.getElementById('donation-amount').textContent = amount;
+          donationModal.style.display = 'block';
+          document.body.classList.add('no-scroll');
+        });
+      }
+    });
+    
+    // Copy buttons
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const text = this.getAttribute('data-text');
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = this.innerHTML;
+          this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          
+          setTimeout(() => {
+            this.innerHTML = originalText;
+          }, 2000);
+        });
+      });
+    });
+    
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const formStatus = document.getElementById('form-status');
+        
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            formStatus.innerHTML = '<p style="color: var(--primary);">Message sent successfully!</p>';
+            contactForm.reset();
+          } else {
+            formStatus.innerHTML = '<p style="color: red;">There was a problem sending your message. Please try again.</p>';
+          }
+        })
+        .catch(error => {
+          formStatus.innerHTML = '<p style="color: red;">There was a problem sending your message. Please try again.</p>';
+        })
+        .finally(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send Message';
+          
+          setTimeout(() => {
+            formStatus.innerHTML = '';
+          }, 5000);
+        });
+      });
+    }
+    
+    // Fade-in animation on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    function checkFade() {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100 && elementBottom > 0) {
+          element.classList.add('visible');
+        }
+      });
+    }
     
     // Back to top button functionality
     const backToTopButton = document.getElementById('backToTop');
@@ -1846,21 +2435,6 @@
       });
     });
     
-    // Fade-in animation on scroll
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    function checkFade() {
-      fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementBottom = element.getBoundingClientRect().bottom;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100 && elementBottom > 0) {
-          element.classList.add('visible');
-        }
-      });
-    }
-    
     // Initial check for elements in view
     checkFade();
     toggleBackToTop();
@@ -1870,6 +2444,26 @@
       checkFade();
       toggleBackToTop();
     });
+    
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+        
+        // Simple validation
+        if (!emailInput.value || !emailInput.value.includes('@')) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        
+        // Show success message
+        alert('Thank you for subscribing to our newsletter!');
+        emailInput.value = '';
+      });
+    }
     
     // Initialize the first section as active
     document.querySelector('nav a[data-section="home"]').classList.add('active');
