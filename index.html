@@ -1170,129 +1170,485 @@
       display: block;
     }
 
-    /* Responsive Styles */
-    @media (max-width: 992px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-      
-      h2 {
-        font-size: 2rem;
-      }
-      
-      .hero-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .hero-content, .hero-visual {
-        width: 100%;
-      }
-      
-      .cta-buttons {
-        justify-content: center;
-      }
-      
-      .report-meta {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      }
+    /* Enhanced Report Section Styles */
+    /* Floating Icons Animation */
+    .floating-icons {
+      position: relative;
+      height: 80px;
+      margin-bottom: 20px;
     }
 
-    @media (max-width: 768px) {
-      .menu-button {
-        display: block;
-      }
-      
-      nav {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition);
-      }
-      
-      nav.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        gap: 0;
-      }
-      
-      nav ul li {
-        width: 100%;
-      }
-      
-      nav ul li a {
-        display: block;
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--border);
-      }
-      
-      .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        margin-left: 1rem;
-        display: none;
-      }
-      
-      nav ul li:hover .dropdown-menu {
-        display: block;
-      }
-      
-      .section {
-        padding: 3rem 0;
-      }
-      
-      .report-actions {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .slide-navigation {
-        flex-direction: column;
-        gap: 1rem;
-      }
+    .floating-icon-1, .floating-icon-2, .floating-icon-3 {
+      position: absolute;
+      font-size: 2rem;
+      color: var(--primary);
+      opacity: 0.7;
+      animation: float 6s ease-in-out infinite;
     }
 
-    @media (max-width: 576px) {
-      h1 {
-        font-size: 2rem;
-      }
-      
-      h2 {
-        font-size: 1.75rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-      }
-      
-      .mission-card, .feature-item, .app-screenshot, .research-card, .donation-card {
-        padding: 1.5rem;
-      }
-      
-      .report-summary {
-        padding: 1.5rem;
-      }
-      
-      .summary-grid {
-        grid-template-columns: 1fr;
-      }
+    .floating-icon-1 {
+      top: 10px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-icon-2 {
+      top: 30px;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .floating-icon-3 {
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Enhanced Title */
+    .title-container {
+      position: relative;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .title-underline {
+      height: 4px;
+      width: 100px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    /* Enhanced Meta Information */
+    .enhanced-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .meta-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .meta-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* Enhanced Action Buttons */
+    .enhanced-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .glow-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+
+    .glow-button:hover:before {
+      left: 100%;
+    }
+
+    .pulse-button {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+    }
+
+    /* Enhanced Preview */
+    .enhanced-preview {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-hover);
+      overflow: hidden;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(46, 125, 50, 0.1);
+    }
+
+    .header-decoration {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+    }
+
+    .decoration-line {
+      flex: 1;
+      height: 2px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 1px;
+    }
+
+    .slide-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: var(--transition);
+    }
+
+    .indicator-dot.active {
+      background: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Enhanced Grid */
+    .enhanced-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .animated-card {
+      position: relative;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .animated-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .animated-card:hover:before {
+      transform: scaleX(1);
+    }
+
+    .animated-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      background: rgba(46, 125, 50, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.8rem;
+      color: var(--primary);
+      position: relative;
+    }
+
+    .stat-bubble {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--secondary);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    /* Enhanced Navigation */
+    .enhanced-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+
+    .nav-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--background-alt);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .nav-button:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .slide-counter {
+      font-weight: 600;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .current-slide {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    /* Enhanced Summary */
+    .enhanced-summary {
+      background: white;
+      border-radius: var(--radius);
+      padding: 3rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enhanced-summary:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+    }
+
+    .summary-header {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .summary-decoration {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .decoration-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-light);
+    }
+
+    .summary-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Enhanced Features */
+    .enhanced-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--background-alt);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary);
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    .feature-content {
+      flex: 1;
+    }
+
+    .feature-content h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .feature-highlight {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-highlight {
+      transform: scaleX(1);
+    }
+
+    /* Enhanced Download Section */
+    .enhanced-download {
+      text-align: center;
+      padding: 3rem;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(76, 175, 80, 0.1) 100%);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enhanced-download:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.03"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%232E7D32" stroke-width="2"/><circle cx="50" cy="50" r="10" fill="%232E7D32"/></svg>');
+      background-size: 50px 50px;
+    }
+
+    .floating-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      box-shadow: var(--shadow-hover);
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .download-icon {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .download-icon i {
+      font-size: 4rem;
+      color: var(--primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      opacity: 0.3;
+      filter: blur(10px);
+      animation: pulse 3s infinite;
+    }
+
+    .shine-button {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine-button:after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(45deg);
+      transition: 0.5s;
+    }
+
+    .shine-button:hover:after {
+      left: 100%;
+      top: 100%;
     }
 
     /* Additional styles for improved UI */
@@ -1456,6 +1812,161 @@
       background: var(--primary-dark);
       transform: translateY(-3px);
     }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-content, .hero-visual {
+        width: 100%;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+      
+      .report-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .enhanced-meta {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-button {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+      }
+      
+      nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      nav ul li {
+        width: 100%;
+      }
+      
+      nav ul li a {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-left: 1rem;
+        display: none;
+      }
+      
+      nav ul li:hover .dropdown-menu {
+        display: block;
+      }
+      
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .report-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .slide-navigation {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .enhanced-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .enhanced-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .enhanced-features {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .floating-icons {
+        height: 60px;
+      }
+      
+      .floating-icon-1, .floating-icon-2, .floating-icon-3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .mission-card, .feature-item, .app-screenshot, .research-card, .donation-card {
+        padding: 1.5rem;
+      }
+      
+      .report-summary {
+        padding: 1.5rem;
+      }
+      
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1585,7 +2096,7 @@
     </div>
   </section>
 
-  <!-- NEW REPORT SECTION -->
+  <!-- ENHANCED REPORT SECTION -->
   <section id="report" class="section section-alt">
     <div class="container">
       <div class="breadcrumb">
@@ -1597,121 +2108,195 @@
       </div>
       
       <div class="report-container">
+        <!-- Animated Report Header -->
         <div class="report-header fade-in">
-          <h2>MKULIMA AI FIELD IMPACT REPORT</h2>
-          <p class="hero-text">From the Soil to AI: How Mkulima AI is Transforming Rural Farming in Tanzania</p>
+          <div class="title-container">
+            <div class="floating-icons">
+              <i class="fas fa-leaf floating-icon-1"></i>
+              <i class="fas fa-seedling floating-icon-2"></i>
+              <i class="fas fa-mobile-alt floating-icon-3"></i>
+            </div>
+            <h2>MKULIMA AI FIELD IMPACT REPORT</h2>
+            <div class="title-underline"></div>
+            <p class="hero-text">From the Soil to AI: How Mkulima AI is Transforming Rural Farming in Tanzania</p>
+          </div>
         </div>
 
-        <div class="report-meta fade-in">
+        <!-- Enhanced Meta Information -->
+        <div class="report-meta enhanced-meta fade-in">
           <div class="meta-item">
-            <i class="fas fa-calendar"></i>
+            <div class="meta-icon-wrapper">
+              <i class="fas fa-calendar"></i>
+            </div>
             <span>October 2025</span>
           </div>
           <div class="meta-item">
-            <i class="fas fa-map-marker-alt"></i>
+            <div class="meta-icon-wrapper">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
             <span>Kisosa & Maekani Villages</span>
           </div>
           <div class="meta-item">
-            <i class="fas fa-users"></i>
+            <div class="meta-icon-wrapper">
+              <i class="fas fa-users"></i>
+            </div>
             <span>500+ Farmers Represented</span>
           </div>
           <div class="meta-item">
-            <i class="fas fa-user"></i>
+            <div class="meta-icon-wrapper">
+              <i class="fas fa-user"></i>
+            </div>
             <span>Prepared By: Erwin Nanyaro</span>
           </div>
         </div>
 
-        <div class="report-actions fade-in">
-          <button class="cta-button primary" id="view-report">
+        <!-- Enhanced Action Buttons -->
+        <div class="report-actions enhanced-actions fade-in">
+          <button class="cta-button primary glow-button" id="view-report">
             <i class="fas fa-eye"></i> View Full Report
           </button>
-          <a href="Report.pdf" download class="cta-button secondary">
+          <a href="Report.pdf" download class="cta-button secondary pulse-button">
             <i class="fas fa-download"></i> Download PDF
           </a>
         </div>
 
-        <div class="report-preview fade-in">
+        <!-- Interactive Report Preview -->
+        <div class="report-preview enhanced-preview fade-in">
           <div class="preview-header">
-            <h3>Report Highlights</h3>
+            <div class="header-decoration">
+              <div class="decoration-line"></div>
+              <h3>Report Highlights</h3>
+              <div class="decoration-line"></div>
+            </div>
           </div>
           <div class="preview-content">
             <div class="slide-preview">
+              <div class="slide-indicator">
+                <div class="indicator-dot active"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+                <div class="indicator-dot"></div>
+              </div>
               <h4>Key Impact Metrics</h4>
               <div class="slide-content">
                 <p>Documenting the transformation of 20 farmers (representing 500 regional farmers) using Mkulima AI to diagnose and treat crop diseases with agroecological methods.</p>
-                <div class="summary-grid">
-                  <div class="summary-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>95%</h4>
-                    <p>Reduction in Pest Control Costs</p>
+                <div class="summary-grid enhanced-grid">
+                  <div class="summary-item animated-card">
+                    <div class="icon-circle">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-bubble">95%</div>
+                    <h4>Cost Reduction</h4>
+                    <p>Pest Control Costs</p>
                   </div>
-                  <div class="summary-item">
-                    <i class="fas fa-seedling"></i>
-                    <h4>35%</h4>
-                    <p>Yield Increase</p>
+                  <div class="summary-item animated-card">
+                    <div class="icon-circle">
+                      <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="stat-bubble">35%</div>
+                    <h4>Yield Increase</h4>
+                    <p>Agricultural Productivity</p>
                   </div>
-                  <div class="summary-item">
-                    <i class="fas fa-tint"></i>
-                    <h4>100%</h4>
-                    <p>Offline Functionality</p>
+                  <div class="summary-item animated-card">
+                    <div class="icon-circle">
+                      <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="stat-bubble">100%</div>
+                    <h4>Offline Access</h4>
+                    <p>Functionality</p>
                   </div>
-                  <div class="summary-item">
-                    <i class="fas fa-language"></i>
-                    <h4>100%</h4>
-                    <p>Swahili Interface</p>
+                  <div class="summary-item animated-card">
+                    <div class="icon-circle">
+                      <i class="fas fa-language"></i>
+                    </div>
+                    <div class="stat-bubble">100%</div>
+                    <h4>Swahili</h4>
+                    <p>Interface</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="slide-navigation">
-              <button class="cta-button secondary" id="prev-slide">
-                <i class="fas fa-chevron-left"></i> Previous
+            <div class="slide-navigation enhanced-navigation">
+              <button class="nav-button" id="prev-slide">
+                <i class="fas fa-chevron-left"></i>
               </button>
               <div class="slide-counter">
-                Slide 1 of 8
+                <span class="current-slide">01</span> / <span class="total-slides">08</span>
               </div>
-              <button class="cta-button secondary" id="next-slide">
-                Next <i class="fas fa-chevron-right"></i>
+              <button class="nav-button" id="next-slide">
+                <i class="fas fa-chevron-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <div class="report-summary fade-in">
-          <h3 class="text-center">Executive Summary</h3>
-          <p>This field report documents how Mkulima AI empowered farmers in Kisosa and Maekani villages to diagnose and treat Gray Mold, Leaf Spot Complex, and Aphids using cost-free agroecological methods.</p>
+        <!-- Enhanced Executive Summary -->
+        <div class="report-summary enhanced-summary fade-in">
+          <div class="summary-header">
+            <h3 class="text-center">Executive Summary</h3>
+            <div class="summary-decoration">
+              <div class="decoration-dot"></div>
+              <div class="decoration-dot"></div>
+              <div class="decoration-dot"></div>
+            </div>
+          </div>
+          <p class="summary-intro">This field report documents how Mkulima AI empowered farmers in Kisosa and Maekani villages to diagnose and treat Gray Mold, Leaf Spot Complex, and Aphids using cost-free agroecological methods.</p>
           
-          <div class="summary-grid">
-            <div class="summary-item">
-              <i class="fas fa-mountain"></i>
-              <h4>Kisosa Village</h4>
-              <p>Strawberry farmers achieved 35% yield increase using organic treatments</p>
+          <div class="summary-grid enhanced-features">
+            <div class="summary-item feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-mountain"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Kisosa Village</h4>
+                <p>Strawberry farmers achieved 35% yield increase using organic treatments</p>
+                <div class="feature-highlight"></div>
+              </div>
             </div>
-            <div class="summary-item">
-              <i class="fas fa-spa"></i>
-              <h4>Maekani Village</h4>
-              <p>Successfully treated aphids with homemade organic solutions</p>
+            <div class="summary-item feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-spa"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Maekani Village</h4>
+                <p>Successfully treated aphids with homemade organic solutions</p>
+                <div class="feature-highlight"></div>
+              </div>
             </div>
-            <div class="summary-item">
-              <i class="fas fa-money-bill-wave"></i>
-              <h4>Cost Savings</h4>
-              <p>Reduced pesticide costs from TZS 30,000-60,000 to under TZS 2,200</p>
+            <div class="summary-item feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Cost Savings</h4>
+                <p>Reduced pesticide costs from TZS 30,000-60,000 to under TZS 2,200</p>
+                <div class="feature-highlight"></div>
+              </div>
             </div>
-            <div class="summary-item">
-              <i class="fas fa-graduation-cap"></i>
-              <h4>Farmer Empowerment</h4>
-              <p>"Sasa simu yangu imekuwa mwalimu wangu" - Farmers' testimonial</p>
+            <div class="summary-item feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Farmer Empowerment</h4>
+                <p>"Sasa simu yangu imekuwa mwalimu wangu" - Farmers' testimonial</p>
+                <div class="feature-highlight"></div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="download-section fade-in">
-          <div class="download-card">
-            <i class="fas fa-file-pdf"></i>
+        <!-- Enhanced Download Section -->
+        <div class="download-section enhanced-download fade-in">
+          <div class="download-card floating-card">
+            <div class="download-icon">
+              <i class="fas fa-file-pdf"></i>
+              <div class="icon-glow"></div>
+            </div>
             <h3>Download Full Impact Report</h3>
             <p>Get the complete October 2025 Field Impact Report with detailed case studies, farmer testimonials, and comprehensive analysis</p>
-            <a href="Report.pdf" download class="cta-button primary">
+            <a href="Report.pdf" download class="cta-button primary shine-button">
               <i class="fas fa-download"></i> Download PDF
             </a>
           </div>
@@ -1719,6 +2304,7 @@
       </div>
     </div>
   </section>
+
   <!-- Rest of your existing sections -->
   <section id="features" class="section">
     <div class="container">
@@ -2273,7 +2859,7 @@
       });
     });
     
-    // Report functionality
+    // Enhanced Report functionality
     const viewReportBtn = document.getElementById('view-report');
     
     if (viewReportBtn) {
@@ -2282,6 +2868,61 @@
         window.open('Report.pdf', '_blank');
       });
     }
+    
+    // Enhanced slide navigation functionality
+    const prevSlideBtn = document.getElementById('prev-slide');
+    const nextSlideBtn = document.getElementById('next-slide');
+    const indicatorDots = document.querySelectorAll('.indicator-dot');
+    const currentSlideEl = document.querySelector('.current-slide');
+    
+    let currentSlide = 1;
+    const totalSlides = 8;
+    
+    function updateSlideNavigation() {
+      currentSlideEl.textContent = currentSlide.toString().padStart(2, '0');
+      
+      // Update indicator dots
+      indicatorDots.forEach((dot, index) => {
+        if (index === currentSlide - 1) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    if (prevSlideBtn) {
+      prevSlideBtn.addEventListener('click', function() {
+        if (currentSlide > 1) {
+          currentSlide--;
+          updateSlideNavigation();
+        }
+      });
+    }
+    
+    if (nextSlideBtn) {
+      nextSlideBtn.addEventListener('click', function() {
+        if (currentSlide < totalSlides) {
+          currentSlide++;
+          updateSlideNavigation();
+        }
+      });
+    }
+    
+    // Initialize slide navigation
+    updateSlideNavigation();
+    
+    // Add hover effects to feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
     
     // Show home section by default (already visible)
     // Trigger fade-in animations for home section
