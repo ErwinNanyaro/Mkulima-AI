@@ -1268,6 +1268,7 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       transition: var(--transition);
+      cursor: pointer;
     }
 
     .app-screenshot:hover {
@@ -1287,6 +1288,102 @@
 
     .app-screenshot p {
       padding: 0 1.5rem 1.5rem;
+    }
+
+    /* Feature Detail Modal */
+    .feature-detail-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .feature-modal-content {
+      background: white;
+      max-width: 900px;
+      margin: 2rem auto;
+      border-radius: var(--radius);
+      padding: 0;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .feature-modal-header {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .feature-modal-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-modal-header-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 2rem;
+      color: white;
+    }
+
+    .feature-modal-header-overlay h2 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-modal-header-overlay p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0;
+    }
+
+    .feature-modal-body {
+      padding: 2.5rem;
+    }
+
+    .feature-section {
+      margin-bottom: 2rem;
+    }
+
+    .feature-section h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 0.5rem;
+    }
+
+    .feature-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .feature-highlight {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--background-alt);
+      border-radius: var(--radius);
+    }
+
+    .feature-highlight i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-highlight h4 {
+      color: var(--text);
+      margin-bottom: 0.5rem;
     }
 
     /* Research Section */
@@ -1824,7 +1921,7 @@
         </li>
         <li><a href="#" data-section="features">App Features</a></li>
         <li><a href="#" data-section="research-journeys">Research Journeys</a></li>
-        <li><a href="#" data-section="support">Support Our Mission</a></li>
+        <li><a href="#" data-section="support">Field Reports</a></li>
         <li><a href="#" data-section="contact">Contact</a></li>
       </ul>
     </nav>
@@ -1839,7 +1936,7 @@
         <h1>Empowering Tanzanian Farmers with AI</h1>
         <p class="hero-text">Swahili-based, offline-ready artificial intelligence for smallholder farmers in Tanzania</p>
         <div class="cta-buttons">
-          <a href="#support" class="cta-button primary">Support Our Mission</a>
+          <a href="#support" class="cta-button primary">Field Reports</a>
           <a href="#features" class="cta-button secondary">Explore Features</a>
         </div>
       </div>
@@ -2614,49 +2711,368 @@
       </div>
       <h2 class="text-center">App Features</h2>
       <div class="app-features-grid">
-        <div class="app-screenshot fade-in">
-          <img src="app-homescreen.jpg" alt="Mkulima AI Homescreen">
-          <h3>Intuitive Homescreen</h3>
-          <p>Simple navigation designed for farmers with varying tech literacy</p>
+        <div class="app-screenshot fade-in" data-feature="homescreen">
+          <img src="app-home-screen.jpg" alt="Mkulima AI Homescreen">
+          <h3>Icon-Based Interface</h3>
+          <p>Designed for rural farmers with low digital literacy using intuitive icons and visual navigation</p>
         </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-disease-detection.jpg" alt="Disease Detection">
-          <h3>Disease Detection</h3>
-          <p>AI-powered identification of crop diseases with 92% accuracy</p>
+        <div class="app-screenshot fade-in" data-feature="disease-detection">
+          <img src="app-disease-model-detection.jpg" alt="AI Disease Detection">
+          <h3>AI Disease Detection</h3>
+          <p>Advanced computer vision model integrated in Flutter for 92% accurate disease identification</p>
         </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-soil-analysis.jpg" alt="Soil Analysis">
-          <h3>Soil Analysis</h3>
-          <p>Recommendations based on visual soil assessment</p>
+        <div class="app-screenshot fade-in" data-feature="indigenous-knowledge">
+          <img src="app-indigenous-knowledge.jpg" alt="Indigenous Farming Knowledge">
+          <h3>Indigenous Knowledge</h3>
+          <p>Tanzanian traditional farming wisdom from elders integrated with modern AI technology</p>
         </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-planting-guide.jpg" alt="Planting Guide">
-          <h3>Planting Guide</h3>
-          <p>Optimal planting times and techniques for each crop</p>
+        <div class="app-screenshot fade-in" data-feature="fertilizer-calculator">
+          <img src="app-fertilizer-calculator.jpg" alt="Organic Fertilizer Calculator">
+          <h3>Organic Fertilizer Calculator</h3>
+          <p>Step-by-step production, application, and exact calculation for farm size</p>
         </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-calculator.jpg" alt="Profit Calculator">
-          <h3>Profit Calculator</h3>
-          <p>Break-even analysis and yield projections</p>
+        <div class="app-screenshot fade-in" data-feature="traditional-storage">
+          <img src="app-traditional-storage.jpg" alt="Traditional Storage Techniques">
+          <h3>Traditional Storage</h3>
+          <p>Sustainable, cost-effective African storage methods to preserve harvests</p>
         </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-storage.jpg" alt="Storage Techniques">
-          <h3>Storage Solutions</h3>
-          <p>Low-cost preservation methods to reduce post-harvest losses</p>
+        <div class="app-screenshot fade-in" data-feature="traditional-processing">
+          <img src="app-traditional-processing.jpg" alt="Traditional Processing Techniques">
+          <h3>Traditional Processing</h3>
+          <p>African processing techniques for value addition and income generation</p>
         </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-processing.jpg" alt="Processing Techniques">
-          <h3>Processing Methods</h3>
-          <p>Value-addition techniques to increase income</p>
-        </div>
-        <div class="app-screenshot fade-in">
-          <img src="app-marketplace.jpg" alt="Agro Marketplace">
-          <h3>Market Connections</h3>
-          <p>Links farmers with buyers, agro-dealers, and seed suppliers</p>
+        <div class="app-screenshot fade-in" data-feature="crop-rotation">
+          <img src="app-crop-rotation.jpg" alt="Crop Rotation Recommendations">
+          <h3>Crop Rotation Advisor</h3>
+          <p>Personalized recommendations based on crop, region, and season</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Feature Detail Modals -->
+  <div id="homescreen-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-home-screen.jpg" alt="Mkulima AI Homescreen">
+        <div class="feature-modal-header-overlay">
+          <h2>Icon-Based Interface</h2>
+          <p>Designed for Rural Farmers with Low Digital Literacy</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Key Design Features</h3>
+          <p>Our homescreen uses intuitive icons and visual navigation specifically designed for farmers with varying levels of digital literacy. The interface eliminates complex menus and uses universally recognizable symbols.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-icons"></i>
+              <h4>Visual Icons</h4>
+              <p>Large, colorful icons representing different features</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-hand-pointer"></i>
+              <h4>Simple Navigation</h4>
+              <p>One-tap access to all features</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-volume-up"></i>
+              <h4>Voice Guidance</h4>
+              <p>Swahili voice instructions for each feature</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Accessibility Features</h3>
+          <p>The interface is designed to be accessible to farmers with limited reading skills, older farmers, and those with visual impairments.</p>
+          <ul>
+            <li>High contrast colors for better visibility</li>
+            <li>Large touch targets (minimum 48x48 pixels)</li>
+            <li>Text-to-speech for all instructions</li>
+            <li>Offline functionality with cached icons</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="disease-detection-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-disease-model-detection.jpg" alt="AI Disease Detection">
+        <div class="feature-modal-header-overlay">
+          <h2>AI Disease Detection</h2>
+          <p>Advanced Computer Vision Model Integrated in Flutter</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Technical Architecture</h3>
+          <p>Our disease detection system uses a custom-trained TensorFlow Lite model optimized for mobile devices and integrated seamlessly within our Flutter application.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-brain"></i>
+              <h4>92% Accuracy</h4>
+              <p>Highly accurate disease identification</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-mobile-alt"></i>
+              <h4>Offline Processing</h4>
+              <p>Works without internet connectivity</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-bolt"></i>
+              <h4>Fast Results</h4>
+              <p>3-5 second processing time</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Flutter Integration</h3>
+          <p>The model is integrated using Flutter's camera and image processing plugins:</p>
+          <ul>
+            <li>Real-time image capture and analysis</li>
+            <li>Optimized for low-end mobile devices</li>
+            <li>Minimal battery consumption</li>
+            <li>Automatic model updates via Bluetooth</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="indigenous-knowledge-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-indigenous-knowledge.jpg" alt="Indigenous Farming Knowledge">
+        <div class="feature-modal-header-overlay">
+          <h2>Indigenous Farming Knowledge</h2>
+          <p>Tanzanian Traditional Wisdom from Elders</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Preserving Traditional Knowledge</h3>
+          <p>We've documented and digitized farming techniques passed down through generations of Tanzanian farmers, combining this wisdom with modern AI technology.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-book"></i>
+              <h4>Documented Knowledge</h4>
+              <p>100+ traditional techniques recorded</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-users"></i>
+              <h4>Elder Contributions</h4>
+              <p>Knowledge from 50+ experienced farmers</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-seedling"></i>
+              <h4>Proven Methods</h4>
+              <p>Time-tested sustainable practices</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Integrated Features</h3>
+          <ul>
+            <li>Traditional planting calendars based on local climate patterns</li>
+            <li>Natural pest control methods using local plants</li>
+            <li>Soil enrichment techniques using organic materials</li>
+            <li>Water conservation methods from arid regions</li>
+            <li>Seed preservation and selection techniques</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="fertilizer-calculator-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-fertilizer-calculator.jpg" alt="Organic Fertilizer Calculator">
+        <div class="feature-modal-header-overlay">
+          <h2>Organic Fertilizer Calculator</h2>
+          <p>Step-by-Step Production & Application Guide</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Complete Fertilizer Management</h3>
+          <p>Our calculator helps farmers produce, apply, and store organic fertilizer while calculating exact amounts needed for their specific farm size.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-calculator"></i>
+              <h4>Precise Calculations</h4>
+              <p>Exact amounts for farm size</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-recycle"></i>
+              <h4>Local Materials</h4>
+              <p>Uses locally available resources</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-calendar-alt"></i>
+              <h4>Application Schedule</h4>
+              <p>Optimal timing for best results</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Step-by-Step Guide</h3>
+          <ul>
+            <li><strong>Step 1:</strong> Select available materials (animal waste, kitchen scraps, crop residues)</li>
+            <li><strong>Step 2:</strong> Enter farm dimensions and crop type</li>
+            <li><strong>Step 3:</strong> Get exact fertilizer recipe and quantities</li>
+            <li><strong>Step 4:</strong> Follow production instructions with visuals</li>
+            <li><strong>Step 5:</strong> Application guidelines and storage methods</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="traditional-storage-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-traditional-storage.jpg" alt="Traditional Storage Techniques">
+        <div class="feature-modal-header-overlay">
+          <h2>Traditional Storage Techniques</h2>
+          <p>Sustainable African Preservation Methods</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Cost-Effective Preservation</h3>
+          <p>African traditional storage techniques that are sustainable, cost-effective, and use locally available materials to reduce post-harvest losses.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-leaf"></i>
+              <h4>Natural Materials</h4>
+              <p>Uses local plants and materials</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-coins"></i>
+              <h4>Low Cost</h4>
+              <p>Minimal to no financial investment</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Pest Protection</h4>
+              <p>Natural pest deterrent methods</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Featured Techniques</h3>
+          <ul>
+            <li>Traditional grain storage using treated clay pots</li>
+            <li>Underground storage pits for root vegetables</li>
+            <li>Solar drying techniques for fruits and vegetables</li>
+            <li>Natural insect repellents using neem and other local plants</li>
+            <li>Community storage structures for collective benefit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="traditional-processing-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-traditional-processing.jpg" alt="Traditional Processing Techniques">
+        <div class="feature-modal-header-overlay">
+          <h2>Traditional Processing Techniques</h2>
+          <p>African Value-Addition Methods</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Income Generation Methods</h3>
+          <p>Traditional African processing techniques that add value to raw agricultural products, creating opportunities for additional income.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-money-bill-wave"></i>
+              <h4>Value Addition</h4>
+              <p>Increases product value 3-5x</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-home"></i>
+              <h4>Home-Based</h4>
+              <p>Can be done at home with basic tools</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-users"></i>
+              <h4>Women-Focused</h4>
+              <p>Designed for women entrepreneurs</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Processing Methods Included</h3>
+          <ul>
+            <li>Traditional milling and grinding techniques</li>
+            <li>Fermentation methods for dairy and grains</li>
+            <li>Preservation through smoking and drying</li>
+            <li>Oil extraction from seeds and nuts</li>
+            <li>Traditional brewing and beverage production</li>
+            <li>Handicraft production from agricultural waste</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="crop-rotation-detail" class="story-modal feature-detail-modal">
+    <div class="feature-modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="feature-modal-header">
+        <img src="app-crop-rotation.jpg" alt="Crop Rotation Recommendations">
+        <div class="feature-modal-header-overlay">
+          <h2>Crop Rotation Advisor</h2>
+          <p>Personalized Recommendations by Region & Season</p>
+        </div>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-section">
+          <h3>Smart Rotation Planning</h3>
+          <p>Our system provides personalized crop rotation recommendations based on your specific location, soil type, previous crops, and seasonal patterns.</p>
+          <div class="feature-highlights">
+            <div class="feature-highlight">
+              <i class="fas fa-map-marked-alt"></i>
+              <h4>Region-Specific</h4>
+              <p>Customized for Tanzanian regions</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-calendar-check"></i>
+              <h4>Seasonal Planning</h4>
+              <p>Optimized for rainy/dry seasons</p>
+            </div>
+            <div class="feature-highlight">
+              <i class="fas fa-chart-line"></i>
+              <h4>Soil Health</h4>
+              <p>Improves soil fertility over time</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3>Recommendation Factors</h3>
+          <ul>
+            <li><strong>Crop Compatibility:</strong> Which crops grow well together</li>
+            <li><strong>Soil Requirements:</strong> Nutrient needs and contributions</li>
+            <li><strong>Pest Management:</strong> Natural pest control through rotation</li>
+            <li><strong>Market Timing:</strong> Aligns harvest with peak market prices</li>
+            <li><strong>Climate Adaptation:</strong> Weather-resilient crop combinations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section id="research-journeys" class="section section-alt">
     <div class="container">
@@ -2769,9 +3185,9 @@
       <div class="breadcrumb">
         <a href="#" data-section="home">Home</a>
         <span class="separator">/</span>
-        <span>Support Our Mission</span>
+        <span>Field Reports</span>
       </div>
-      <h2 class="text-center">Support Our Mission</h2>
+      <h2 class="text-center">Field Reports</h2>
       <div class="campaign-container fade-in">
         <div class="campaign-description">
           <h3>National Expansion Campaign</h3>
@@ -2810,7 +3226,7 @@
             <div class="progress" style="width: 25%"></div>
           </div>
           <div class="progress-stats">
-            <span>$500 raised</span>
+            <span>Progress</span>
             <span>$50,000 goal</span>
           </div>
         </div>
@@ -2955,7 +3371,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="copyright">© 2025 Mkulima AI. All rights reserved.</p>
+      <p class="copyright">© 2026 Mkulima AI. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -3128,6 +3544,20 @@
       }
     `;
     document.head.appendChild(highlightStyle);
+    
+    // Feature detail modals
+    const appScreenshots = document.querySelectorAll('.app-screenshot');
+    
+    appScreenshots.forEach(screenshot => {
+      screenshot.addEventListener('click', function() {
+        const feature = this.getAttribute('data-feature');
+        const modal = document.getElementById(`${feature}-detail`);
+        if (modal) {
+          modal.style.display = 'block';
+          document.body.classList.add('no-scroll');
+        }
+      });
+    });
     
     // Show home section by default (already visible)
     // Trigger fade-in animations for home section
